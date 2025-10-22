@@ -22,9 +22,9 @@ export function DashMenuAllVocab({user}) {
     navigate("/homepage", { state: { user: user}})
   }
   return (
-    <Sheet className>
+    <Sheet className="text-black">
       <SheetTrigger asChild>
-        <Button variant="outline"> <Rows3 className='w-5 h-5'/> </Button>
+        <Button variant="outline"> <Rows3 className='w-5 h-5' color="black" /> </Button>
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col gap-6">
         <SheetHeader>

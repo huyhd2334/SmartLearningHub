@@ -3,7 +3,7 @@ import api from '@/lib/axios'
 import { toast } from 'sonner'
 import { Button } from '../ui/button'
 
-const ShowAllVocab = ({ value, setDataReady  }) => {
+const ShowAllVocab = ({ value, setDataReady, user }) => {
   const [vocabList, setVocabList] = useState([])
   useEffect(() => {
     const fetchVocab = async () => {
@@ -25,14 +25,22 @@ const ShowAllVocab = ({ value, setDataReady  }) => {
     if(value >= 1){ 
       fetchVocab()
     }}, [value])
+    const addVocabulary = async(vocab,type,meaning,example) =>{
+       try{
+          const addVocab = await api.post("/adduservocab",{accountName: user,vocab,type,meaning,example})
+          toast.success(`Saving ${vocab}`)
+       }catch(error){
+        console.error(error)
+       }
+    }
   return (
-    <div className='relative z-10 border-2 border-black rounded-8xl rounded-lg p-5 justify-center items-center text-black'>
+    <div className='relative z-10 border-2 border-black rounded-8xl rounded-lg p-5 justify-center items-center text-black w-210'>
       <span class="absolute -top-3 left-4 bg-green-300 px-2 text-sm font-semibold rounded-8xl rounded-lg">
         Vocabulary
       </span>
       <ul>
         {vocabList.map((vocab, idx) => (
-          <li key={idx}> <Button size="xl" className="w-150 h-5">{vocab.vocab} {vocab.type} / {vocab.meaning}</Button></li>
+          <li key={idx}> <Button size="xl" className="w-200 h-5" onClick={() => addVocabulary(vocab.vocab,vocab.type,vocab.meaning,vocab.example)}>{vocab.vocab} {vocab.type} / {vocab.meaning} / {vocab.example}</Button></li>
         ))}
       </ul>
     </div>

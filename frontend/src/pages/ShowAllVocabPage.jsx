@@ -29,7 +29,7 @@ const ShowAllVocabPage = () => {
     <div className='flex flex-col justify-center items-center space-y-10 translate-y-[+20px]'>
       <HeaderAllVocab/>
       <ChoseAllVocab value={currentPage} setValue={setCurrentPage} />
-      <ShowAllVocab value={currentPage} setDataReady={setDataReady}/>
+      <ShowAllVocab value={currentPage} setDataReady={setDataReady} user={user}/>
       <ChoseAllVocab value={currentPage} setValue={setCurrentPage} />
       <div className='absolute top-4 left-10'><DashMenuAllVocab user={user}/></div>
     </div>
