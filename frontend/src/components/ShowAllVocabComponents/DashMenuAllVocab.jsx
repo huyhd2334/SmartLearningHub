@@ -12,11 +12,15 @@ import {
 import {Brain, Gamepad2, Phone, Rows3, WalletCards } from 'lucide-react'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router'
-export function DashMenuAllVocab(user) {
+
+export function DashMenuAllVocab({user}) {
   const navigate = useNavigate()
   const navigateToFlashCard = () => {
-        navigate("/choselanguepage", { state: { user: user}})
+    navigate("/choselanguepage", { state: { user: user}})
     }
+  const handelerBHome = () => {
+    navigate("/homepage", { state: { user: user}})
+  }
   return (
     <Sheet className>
       <SheetTrigger asChild>
@@ -47,7 +51,7 @@ export function DashMenuAllVocab(user) {
           </div>
         </div>
         <SheetFooter>
-          {/* <Button type="submit">Save changes</Button> */}
+          <Button onClick={()=>handelerBHome()}>BackToHome</Button>
           <SheetClose asChild className='mt-3'>
             {/* <Button variant="outline">Close</Button> */}
           </SheetClose>

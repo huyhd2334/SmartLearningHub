@@ -81,7 +81,7 @@ export const SignUpComponent = () => {
   const [accountPassW, setAccountPassW] = useState("")
   const navigate = useNavigate()
 
-  const HandleLogin = async () => {
+  const HandleSignUp= async () => {
     try {
       if (!accountName || !accountPassW || !userName) {
         return toast.error("imformation is empty")
@@ -89,9 +89,9 @@ export const SignUpComponent = () => {
       const res = await api.post("/signup", {userName, accountName, passW: accountPassW })
       if (res.data.message) {
         toast.success("signup successfull")
+        navigate("/choselanguepage", { state: { user: accountName}})
         setAccountName("")
         setAccountPassW("")
-        navigate("/choselanguepage", { state: { user: accountName}})
       } else {
         toast.error("invalid accountName or passWord")
       }
@@ -143,12 +143,11 @@ export const SignUpComponent = () => {
         <Button
           size="lg"
           className="px-6 text-black flex items-center gap-2"
-          onClick={HandleLogin}
+          onClick={HandleSignUp}
         >
           <LogIn className="w-5 h-5" />
           SignUp
         </Button>
-
       </div>
     </div>
   )

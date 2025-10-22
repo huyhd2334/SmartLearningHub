@@ -9,10 +9,11 @@ const ChoseLangue = ({user}) => {
   const navigate = useNavigate()
   const handleChoseEnglish = async() => {
     try{
+      console.log("user prop in ChoseLangue:", user)
       const res = await api.post("/choseLangue", {accountName: user, langue: "English"})
       if(res.data.message){
         toast.success("English Chose!")
-        navigate("/homepage", { state: { user: {user}}})
+        navigate("/homepage", { state: { user: user}})
       }else{
         toast.error("Something went wrong")
       }

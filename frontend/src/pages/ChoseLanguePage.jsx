@@ -1,16 +1,19 @@
 import HeaderChose from '@/components/ChosePageComponents/HeaderChose.jsx'
 import ChoseLangue from '@/components/ChosePageComponents/MainChoseLangue.jsx'
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation  } from 'react-router';
+import { toast } from 'sonner';
 
 
 const ChoseLanguePage = () => {
+  const location = useLocation()
   const user = location.state?.user || "Guest"; 
   const navigate = useNavigate()
   useEffect(() => {
     if (user === "Guest") {
-      navigate("/choselanguepage");
+      navigate("/");
     }
+    toast.success(`Wellcome ${user}`)
   }, [user, navigate]);
   return (
   <div className="min-h-screen w-full bg-gray-900 relative">
@@ -30,7 +33,7 @@ const ChoseLanguePage = () => {
     />
       <div className='flex flex-col justify-center items-center min-h-screen translate-y-[-50px] space-y-10'>
         <HeaderChose user={user}/>
-        <ChoseLangue/>
+        <ChoseLangue user={user}/>
       </div>
   </div>
   )

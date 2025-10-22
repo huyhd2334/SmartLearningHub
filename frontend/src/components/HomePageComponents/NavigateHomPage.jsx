@@ -51,7 +51,7 @@ const VocabFunction = [
   },
 ];
 
-const NavigationHomePage = (user) => {
+const NavigationHomePage = ({user}) => {
   return (
     <NavigationMenu className = "fixed top-3 space-x-10 bg rounded-4xl w-200 shadow-md py-1 px-6 ">
       <NavigationMenuList className="flex flex-wrap gap-1">
@@ -99,6 +99,7 @@ const NavigationHomePage = (user) => {
                   key={item.title}
                   title={item.title}
                   href={item.href}
+                  user={user}
                 >
                   {item.description}
                 </ListItem>
@@ -162,12 +163,14 @@ const NavigationHomePage = (user) => {
 
 /* ===== COMPONENT PHỤ ===== */
 
-function ListItem({ title, children, href }) {
+function ListItem({ title, children, href, user }) {
+  const stateToSend = { user }
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
           to={href}
+          state={stateToSend}
           className="block p-3 rounded-md hover:bg-accent transition"
         >
           <div className="font-medium text-sm">{title}</div>

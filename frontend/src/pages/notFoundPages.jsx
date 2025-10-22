@@ -20,5 +20,4 @@ const NotFoundPages = () => {
     </div>
   );
 };
-
 export default NotFoundPages

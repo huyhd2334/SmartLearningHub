@@ -3,17 +3,18 @@ import { DashMenuAllVocab } from '@/components/ShowAllVocabComponents/DashMenuAl
 import HeaderAllVocab from '@/components/ShowAllVocabComponents/HeaderAllVocab'
 import ShowAllVocab from '@/components/ShowAllVocabComponents/ShowAllVocab'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate, useLocation  } from 'react-router';
 import { toast } from 'sonner'
 
 const ShowAllVocabPage = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [dataReady, setDataReady] = useState("")
+    const location = useLocation()
     const user = location.state?.user || "Guest"; 
     const navigate = useNavigate()
     useEffect(() => {
       if (user === "Guest") {
-        navigate("/ShowAllVocabPage");
+        navigate("/");
       }
     }, [user, navigate]);
     useEffect(() => {
