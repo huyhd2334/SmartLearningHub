@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router'
 export function DashMenuAllVocab({user}) {
   const navigate = useNavigate()
   const navigateToFlashCard = () => {
-    navigate("/choselanguepage", { state: { user: user}})
+    navigate("/flashcardpage", { state: { user: user}})
     }
   const handelerBHome = () => {
     navigate("/homepage", { state: { user: user}})
@@ -39,7 +39,7 @@ export function DashMenuAllVocab({user}) {
           </div>
           <div className="grid gap-3 border-2 border-black rounded-8xl rounded-lg p-5 flex flex-col">
             <div className='flex flex-row space-x-2 text-black'>
-              <Button size="xl" className="w-60 h-7 text-black"onclick={()=>navigateToFlashCard()}><WalletCards className='w-5 h-5'/> Flash Card</Button>
+              <Button size="xl" className="w-60 h-7 text-black" onClick={()=>navigateToFlashCard()}><WalletCards className='w-5 h-5'/> Flash Card</Button>
             </div>
             <div className='flex flex-row space-x-2 text-black'>
               <Button size="xl" className="w-60 h-7 text-black"><Gamepad2 className='w-5 h-5'/> Game</Button>

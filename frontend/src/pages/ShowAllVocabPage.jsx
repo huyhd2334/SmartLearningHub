@@ -2,6 +2,7 @@ import ChoseAllVocab from '@/components/ShowAllVocabComponents/ChoseAllVocab'
 import { DashMenuAllVocab } from '@/components/ShowAllVocabComponents/DashMenuAllVocab'
 import HeaderAllVocab from '@/components/ShowAllVocabComponents/HeaderAllVocab'
 import ShowAllVocab from '@/components/ShowAllVocabComponents/ShowAllVocab'
+import { Award, ChartNoAxesCombined } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation  } from 'react-router';
 import { toast } from 'sonner'
@@ -31,7 +32,8 @@ const ShowAllVocabPage = () => {
       <ChoseAllVocab value={currentPage} setValue={setCurrentPage} />
       <ShowAllVocab value={currentPage} setDataReady={setDataReady} user={user}/>
       <ChoseAllVocab value={currentPage} setValue={setCurrentPage} />
-      <div className='absolute top-4 left-10'><DashMenuAllVocab user={user}/></div>
+      <div className='absolute top-1 left-10'><DashMenuAllVocab user={user}/></div>
+      <div className='absolute top-1 left-300 flex flex-row space-x-5 text-black'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
     </div>
   )
 }

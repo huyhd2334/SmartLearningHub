@@ -34,13 +34,13 @@ const ShowAllVocab = ({ value, setDataReady, user }) => {
        }
     }
   return (
-    <div className='relative z-10 border-2 border-black rounded-8xl rounded-lg p-5 justify-center items-center text-black w-210'>
+    <div className='relative z-10 border-2 border-black rounded-8xl rounded-lg p-5 justify-center items-center text-black w-300'>
       <span class="absolute -top-3 left-4 bg-green-300 px-2 text-sm font-semibold rounded-8xl rounded-lg">
         Vocabulary
       </span>
       <ul>
         {vocabList.map((vocab, idx) => (
-          <li key={idx}> <Button size="xl" className="w-200 h-5" onClick={() => addVocabulary(vocab.vocab,vocab.type,vocab.meaning,vocab.example)}>{vocab.vocab} {vocab.type} / {vocab.meaning} / {vocab.example}</Button></li>
+          <li key={idx}> <Button size="xl" className="w-280 h-5" onClick={() => addVocabulary(vocab.vocab,vocab.pron,vocab.type,vocab.meaning,vocab.example)}>{vocab.vocab} {vocab.pron} {vocab.type} / {vocab.meaning} / {vocab.example}</Button></li>
         ))}
       </ul>
     </div>

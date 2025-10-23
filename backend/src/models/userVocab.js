@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const UserVocabSchema = new mongoose.Schema({
     accountName: {type: String},
+    pron: {type: String},
     vocab: {type: String},
     type: {type:String},
     meaning: {type: String},

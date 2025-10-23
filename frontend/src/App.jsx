@@ -5,6 +5,8 @@ import NotFoundPages from "./pages/notFoundPages.jsx"
 import ChoseLanguePage from "./pages/ChoseLanguePage.jsx"
 import HomePage from "./pages/HomePage.jsx"
 import ShowAllVocabPage from "./pages/ShowAllVocabPage.jsx"
+import YourLibPage from "./pages/YourLibPage.jsx"
+import FlashCardPages from "./pages/FlashCardPages.jsx"
 function App() {
   return (
     <>
@@ -30,6 +32,14 @@ function App() {
           <Route
               path = "/ShowAllVocabPage"
               element = {<ShowAllVocabPage />}
+              />
+          <Route
+              path = "/yourlibpage"
+              element = {<YourLibPage/>}
+              />
+          <Route
+              path = "/flashcardpage"
+              element = {<FlashCardPages/>}
               />
         </Routes>
     </BrowserRouter>

@@ -7,6 +7,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import routerChoseLangue from "./routers/routerChoseLevel.js";
 import FetchVocabrouter from "./routers/routerFetchVocab.js";
+import routerCrawNews from "./routers/routerCrawNews.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -24,7 +25,7 @@ if (process.env.NODE_ENV !== "production") {
 app.use("/api",routerLogin)
 app.use("/api",routerChoseLangue)
 app.use("/api",FetchVocabrouter)
-
+app.use("/api", routerCrawNews)
 
 // if (process.env.NODE_ENV === "production") {
 //    app.use(express.static(path.join(__dirname, "../frontend/dist")));

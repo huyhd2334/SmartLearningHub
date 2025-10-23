@@ -22,7 +22,7 @@ const VocabFunction = [
   },
   {
     title: "Your Lib",
-    href: "/docs/primitives/hover-card",
+    href: "/yourlibpage",
     description:
       "For sighted users to preview content available behind a link.",
   },
@@ -53,7 +53,7 @@ const VocabFunction = [
 
 const NavigationHomePage = ({user}) => {
   return (
-    <NavigationMenu className = "fixed top-3 space-x-10 bg rounded-4xl w-200 shadow-md py-1 px-6 ">
+    <NavigationMenu className = "fixed top-3 space-x-10 bg-white rounded-4xl w-200 shadow-md py-1 px-6 ">
       <NavigationMenuList className="flex flex-wrap gap-1">
         {/* HOME */}
         <NavigationMenuItem>

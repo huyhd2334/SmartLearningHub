@@ -13,7 +13,16 @@ const accountSchema = new mongoose.Schema(
   passW: {
     type: String,
     required: true
+  },
+  lastLogin: {
+    type: Date,
+    default: Date.now,
+  },
+  streak: {
+    type: Number,
+    default: 0,
   }
+
 })
 
 const Account = mongoose.model("Account", accountSchema)

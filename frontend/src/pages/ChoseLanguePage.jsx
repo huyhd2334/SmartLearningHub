@@ -31,7 +31,7 @@ const ChoseLanguePage = () => {
         backgroundSize: "100% 100%",
       }}
     />
-      <div className='flex flex-col justify-center items-center min-h-screen translate-y-[-50px] space-y-10'>
+      <div className='flex flex-col justify-center items-center min-h-screen translate-y-[-50px] space-y-20'>
         <HeaderChose user={user}/>
         <ChoseLangue user={user}/>
       </div>

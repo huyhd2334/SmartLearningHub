@@ -12,7 +12,7 @@ export const FetchUserVocab = async(req,res) => {
 
 export const AddUserVocab = async(req,res) => {
     try{
-        const {accountName, vocab, type, meaning,example} = req.body
+        const {accountName, vocab, pron, type, meaning,example} = req.body
         const vocabUpdate = await UserVocabs.findOne({ accountName, vocab });
         if(vocabUpdate){
             await UserVocabs.updateOne(
@@ -21,7 +21,7 @@ export const AddUserVocab = async(req,res) => {
                                         );
             res.status(200).json({message: "updatelevel" })
         }else{
-            await UserVocabs.create({ accountName, vocab, type, meaning, example, level: 0 });
+            await UserVocabs.create({ accountName, vocab, pron , type, meaning, example, level: 0 });
             res.status(200).json({message: "addnewvocab" })
         }
     }catch(error){

@@ -27,7 +27,7 @@ const ChoseLangue = ({user}) => {
       <p className="font-mono font-semibold text-sm"> Welcome to SmartLearningHub! Our platform is designed to make learning English simple, effective, and fun. Join our community today and start your journey to mastering English! Pick-One-Langue-To-Start</p>
       <div className='flex flex-row justify-center items-center space-x-3 text-white'>
           <div className='flex flex-row justify-center items-center space-x-5 text-white gap-3'>
-              <div className='border-2 border-green-500 rounded-8xl rounded-lg p-5 flex flex-col space-y-5'>
+              <div className='border-2 border-green-500 rounded-8xl p-5 flex flex-col space-y-5'>
               <h1 className='text-2xl font-semibold'> English </h1>
               <Button 
                 size="lg"
