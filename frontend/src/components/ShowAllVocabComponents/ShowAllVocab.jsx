@@ -40,7 +40,11 @@ const ShowAllVocab = ({ value, setDataReady, user }) => {
       </span>
       <ul>
         {vocabList.map((vocab, idx) => (
-          <li key={idx}> <Button size="xl" className="w-280 h-5" onClick={() => addVocabulary(vocab.vocab,vocab.pron,vocab.type,vocab.meaning,vocab.example)}>{vocab.vocab} {vocab.pron} {vocab.type} / {vocab.meaning} / {vocab.example}</Button></li>
+          <li key={idx}> 
+          <Button size="xl" className="w-280 h-5" onClick={() => addVocabulary(vocab.vocab,vocab.pron,vocab.type,vocab.meaning,vocab.example)}>
+            {vocab.vocab} {vocab.type} {vocab.meaning}
+            </Button>
+          </li>
         ))}
       </ul>
     </div>

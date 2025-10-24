@@ -11,7 +11,7 @@ export const createAccount = async(req,res) => {
         if(!checkExisUser){
             const account = new Account({userName, accountName, passW})
             const newAccount = await account.save()
-            res.status(200).json({message: true, userName: newAccount["userName"]})
+            res.status(200).json({message: true, streak: newAccount.streak})
         }else{
             res.status(404).json("Account Name invalid!")
         }
@@ -22,16 +22,16 @@ export const createAccount = async(req,res) => {
 
 export const loginAccount = async(req, res) => {
     try{
-        const {accountName, pasW} = req.body
+        const {accountName, passW} = req.body
         
         const checkAccountName = await Account.findOne({accountName})
 
-        if(!checkAccountName){ return res.json({message: fasle})}
-        if(checkAccountName.pasW != pasW)
+        if(!checkAccountName){ return res.json({message: false})}
+        if(checkAccountName.passW != passW)
             {
-                return res.json({message: fasle})
+                return res.json({message: false})
             }else{
-                return res.json({message: true, userName: checkAccountName})
+                return res.json({message: true, streak: checkAccountName.streak})
             }
     }catch(error){
         console.error("ERROR login")

@@ -20,7 +20,8 @@ export const LoginComponent = () => {
       const res = await api.post("/login", { accountName, passW: accountPassW })
       if (res.data.message) {
         toast.success("login successfull")
-        navigate("/choselanguepage", { state: { user: accountName}})
+        toast.success(res.data.streak)
+        navigate("/choselanguepage", { state: { user: accountName, streak: res.data.streak}})
         setAccountName("")
         setAccountPassW("")
       } else {

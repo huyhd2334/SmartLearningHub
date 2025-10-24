@@ -5,7 +5,7 @@ import api from '@/lib/axios'
 import { toast, Toaster } from 'sonner'
 import { useNavigate } from 'react-router'
 
-const ChoseLangue = ({user}) => {
+const ChoseLangue = ({user, streak}) => {
   const navigate = useNavigate()
   const handleChoseEnglish = async() => {
     try{
@@ -13,7 +13,7 @@ const ChoseLangue = ({user}) => {
       const res = await api.post("/choseLangue", {accountName: user, langue: "English"})
       if(res.data.message){
         toast.success("English Chose!")
-        navigate("/homepage", { state: { user: user}})
+        navigate("/homepage", { state: { user: user, streak: streak}})
       }else{
         toast.error("Something went wrong")
       }

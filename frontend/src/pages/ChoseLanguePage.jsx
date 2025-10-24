@@ -8,12 +8,13 @@ import { toast } from 'sonner';
 const ChoseLanguePage = () => {
   const location = useLocation()
   const user = location.state?.user || "Guest"; 
+  const streak = location.state?.streak ?? 0; 
+
   const navigate = useNavigate()
   useEffect(() => {
     if (user === "Guest") {
       navigate("/");
     }
-    toast.success(`Wellcome ${user}`)
   }, [user, navigate]);
   return (
   <div className="min-h-screen w-full bg-gray-900 relative">
@@ -33,7 +34,7 @@ const ChoseLanguePage = () => {
     />
       <div className='flex flex-col justify-center items-center min-h-screen translate-y-[-50px] space-y-20'>
         <HeaderChose user={user}/>
-        <ChoseLangue user={user}/>
+        <ChoseLangue user={user} streak={streak}/>
       </div>
   </div>
   )

@@ -5,24 +5,24 @@ import { toast } from 'sonner'
 const HomePageNews = ({ user }) => {
     const [articles, setArticles] = useState([])
 
-    // useEffect(() => {
-    //     const fetch5Articles = async () => {
-    //         try {
-    //             const res = await api.post("/crawnews", { type: "travel" })
-    //             if (res.data && Array.isArray(res.data.articles)) {
-    //                 setArticles(res.data.articles)
-    //                 toast.success("Done!")
-    //             }
-    //         } catch (error) {
-    //             console.error(error)
-    //             toast.error("Failed to fetch articles")
-    //         }
-    //     }
-    //     fetch5Articles()
-    // }, [user])
+    useEffect(() => {
+        const getReading = async () => {
+            try {
+                const res = await api.post("/getreading", { get: "get" })
+                if (res.data) {
+                    setArticles(res.data.reading)
+                }
+            } catch (error) {
+                console.error(error)
+                toast.error("Failed to get articles")
+            }
+        }
+        getReading()
+    }, [user])
 
     return (
-        <div className='border-2 border-black rounded-8xl p-5 w-[300px] h-[300px] overflow-auto'>
+        <div className='border-2 border-black rounded-4xl p-5 w-[1100px] overflow-auto'>
+            <span className='absolute -top-4 left-10 text-lg bg-green-300 px-2 rounded-4xl'> Daily Reading</span>
             {articles.length === 0 && <p>Loading articles...</p>}
             {articles.map((a, index) => (
                 <div key={index} className="mb-4">
@@ -30,9 +30,6 @@ const HomePageNews = ({ user }) => {
                     <p><b>Source:</b> {typeof a.source === "object" ? a.source.name : a.source || "Unknown source"}</p>
                     <p><b>Description:</b> {typeof a.description === "string" ? a.description : JSON.stringify(a.description) || "No description"}</p>
                     <p><b>Content:</b> {typeof a.content === "string" ? a.content : JSON.stringify(a.content) || "No content"}</p>
-                    <a href={a.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                        Read more
-                    </a>
                 </div>
             ))}
         </div>
