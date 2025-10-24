@@ -19,7 +19,7 @@ export const sendReading = async(req, res) => {
     try{
         const {get} = req.body
         if (get === "get"){
-            const data = await Reading.find().sort({ date: -1 }).limit(10)
+            const data = await Reading.find().sort({ date: -1 }).limit(1)
             if(data){
                 res.status(200).json({message: "oke", reading: data})
             }else{
@@ -54,6 +54,24 @@ export const splitReading = async(req, res) => {
                 res.status(404).json({message: "error"})
             }
         }
+    }catch(error){
+        console.error(error)
+    }
+}
+
+export const FindDetail = async(req, res) => {
+    try{
+        const db = await open({
+                                filename: "dictionary.db",
+                                driver: sqlite3.Database,
+                                });
+        const {word} = req.body
+        if (word){
+            const result = await db.get("SELECT * FROM dictionary WHERE vocab = ?", [word.toLowerCase()])
+            res.status(200).json({message: "oke", detail: result})
+            }else{
+                res.status(404).json({message: "error"})
+            }
     }catch(error){
         console.error(error)
     }
