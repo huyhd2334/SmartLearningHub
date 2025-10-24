@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate} from 'react-router'
 import { toast } from 'sonner'
 import api from "@/lib/axios";
 import { ArrowLeftFromLine, LogIn } from 'lucide-react'
@@ -7,7 +7,7 @@ import { Card } from '../ui/card';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 
-export const LoginComponent = () => {
+export const LoginComponent = ({setShowSignUp, setShowLogin, setShowButton}) => {
   const [accountName, setAccountName] = useState("")
   const [accountPassW, setAccountPassW] = useState("")
   const navigate = useNavigate()
@@ -32,7 +32,11 @@ export const LoginComponent = () => {
       toast.error("login went wrong!")
     }
   }
-
+   const handlerBack = () => {
+      setShowSignUp(false)
+      setShowLogin(false)
+      setShowButton(true)
+   }
   return (
     <div className='flex flex-col items-center gap-4'>
       <Card className="p-4 border-0 bg-gradient-card shadow-custom-lg w-full max-w-xs">
@@ -57,7 +61,7 @@ export const LoginComponent = () => {
         <Button
           size="lg"
           className="px-6 text-black flex items-center gap-2"
-          onClick={() => navigate(-1)}
+          onClick={() => handlerBack()}
         >
           <ArrowLeftFromLine className="w-5 h-5" />
           Back
@@ -76,7 +80,7 @@ export const LoginComponent = () => {
   )
 }
 
-export const SignUpComponent = () => {
+export const SignUpComponent = ({setShowSignUp, setShowLogin, setShowButton}) => {
   const [userName, setUserName] = useState("")
   const [accountName, setAccountName] = useState("")
   const [accountPassW, setAccountPassW] = useState("")
@@ -90,9 +94,15 @@ export const SignUpComponent = () => {
       const res = await api.post("/signup", {userName, accountName, passW: accountPassW })
       if (res.data.message) {
         toast.success("signup successfull")
-        navigate("/choselanguepage", { state: { user: accountName}})
+        toast.info("login now!")
+        
         setAccountName("")
         setAccountPassW("")
+
+        setShowSignUp(false)
+        setShowLogin(false)
+        setShowButton(true)
+
       } else {
         toast.error("invalid accountName or passWord")
       }
@@ -101,7 +111,11 @@ export const SignUpComponent = () => {
       toast.error("signup went wrong!")
     }
   }
-
+  const handlerBack = ()=> {
+      setShowSignUp(false)
+      setShowLogin(false)
+      setShowButton(true)
+  }
   return (
     <div className='flex flex-col items-center gap-4'>
       <Card className="p-4 border-0 bg-gradient-card shadow-custom-lg w-full max-w-xs">
@@ -135,7 +149,7 @@ export const SignUpComponent = () => {
         <Button
           size="lg"
           className="px-6 text-black flex items-center gap-2"
-          onClick={() => navigate(-1)}
+          onClick={() => handlerBack()}
         >
           <ArrowLeftFromLine className="w-5 h-5" />
           Back

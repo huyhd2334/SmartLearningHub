@@ -34,8 +34,8 @@ const LoginPage = () => {
         </div>
         <a>Wish you a wonderful day ^_-</a>
         <div className="mt-4 p-4 w-full  max-w-md h-100">
-        {showLogin && !showSignUp && <LoginComponent />}
-        {showSignUp && !showLogin && <SignUpComponent />}
+        {showLogin && !showSignUp && <LoginComponent setShowSignUp={setShowSignUp} setShowLogin={setShowLogin} setShowButton={setShowButton}/>}
+        {showSignUp && !showLogin && <SignUpComponent setShowSignUp={setShowSignUp} setShowLogin={setShowLogin} setShowButton={setShowButton}/>}
         </div>
       </div>
       <div className="absolute left-110 h-full">

@@ -21,7 +21,7 @@ const HomePage = () => {
     <div className='flex flex-col justify-center items-center translate-y-[-00px] text-black font-semibold'>
       <NavigationHomePage user={user}/>
       <div className='absolute top-4 left-10'> <DashMenu/> </div>
-      <div className='absolute top-30 left-100'><ShowStreak user={user} streak={streak}/></div>
+      <div className='absolute top-30 left-120'><ShowStreak user={user} streak={streak}/></div>
       <div className='absolute top-50 left-30'><HomePageNews user={user}/></div>
     </div>
   )
