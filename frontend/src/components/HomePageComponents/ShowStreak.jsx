@@ -15,7 +15,7 @@ const ShowStreak = ({user,streak}) => {
       <div className='flex flex-row justify-center items-center space-x-3'>
         <Zap/>
         <a> Streak </a>
-        <div className='flex flex-row justify-center items-center border-2 border-xl rounded-4xl bg-yellow-500 w-15 h-10'>
+        <div className='flex flex-row justify-center items-center border-2 border-xl rounded-4xl bg-yellow-500 w-15 h-10 animate-pulse'>
            {streak} 
         </div>
       </div>

@@ -34,15 +34,14 @@ const HomePageNews = ({ user }) => {
     }
     return (
         <div className='border-2 border-black rounded-4xl p-5 w-[1100px] overflow-auto'>
-            <Button className="absolute top-1 left-260 w-20 h-7 bg-blue-500" onClick={()=> setMode(!mode)}> learn mode</Button>
+            <Button className="absolute top-1 left-260 w-20 h-7 bg-blue-500 animate-pulse" onClick={()=> setMode(!mode)}> learn mode</Button>
             <span className='absolute -top-4 left-10 text-lg bg-green-300 px-2 rounded-4xl'> Daily Reading</span>
             {mode ? (
             <>
                 {articles.map((a, index) => (
                 <div key={index} className="mb-4">
                     <h2 className="font-bold">--- {a.title} ---</h2>
-                    <p><b>Source:</b> {a.source?.name || a.source || "Unknown source"}</p>
-                    <p><b>Description:</b> {a.description || "No description"}</p>
+                    <p><b>Author:</b> {a.author || "Unknown Author"}</p>
                     <p><b>Content:</b> {a.content || "No content"}</p>
                 </div>
                 ))}
@@ -52,8 +51,7 @@ const HomePageNews = ({ user }) => {
             {learning.map((a, index) => (
                 <div key={index} className="mb-4">
                     <h2 className="font-bold">--- {a.title} ---</h2>
-                    <p><b>Source:</b> {a.source?.name || a.source || "Unknown source"}</p>
-                    <p><b>Description:</b> {a.description || "No description"}</p>
+                    <p><b>Author:</b> {a.author || "Unknown Author"}</p>
                     <p><b>Content:</b></p>
                     <div className="flex flex-wrap gap-1 space-x-3">
                     {a.content.split(" ").map((w, i) => (
@@ -61,7 +59,7 @@ const HomePageNews = ({ user }) => {
                         <Button 
                             key={i} 
                             className="px-2 py-1 h-7 text-xs"
-                            onClick={() => findWordDetail(w)}
+                            onClick={() => findWordDetail(w.replace(/^[^\w]+|[^\w]+$/g, ""))}
                         >
                             {w}
                         </Button>

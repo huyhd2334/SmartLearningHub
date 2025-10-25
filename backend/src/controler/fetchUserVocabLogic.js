@@ -2,9 +2,14 @@ import UserVocabs from "../models/userVocab.js";
 
 export const FetchUserVocab = async(req,res) => {
     try{
-        const {accountName} = req.body
-        const Vocabs = await UserVocabs.find({ accountName });
-        res.status(200).json(Vocabs)
+        const {accountName, level} = req.body
+        if(!level){
+            const Vocabs = await UserVocabs.find({ accountName});
+            res.status(200).json(Vocabs)
+        }else{
+            const Vocabs = await UserVocabs.find({ accountName, level});
+            res.status(200).json(Vocabs)
+        }
     }catch(error){
         console.error(error)
     }

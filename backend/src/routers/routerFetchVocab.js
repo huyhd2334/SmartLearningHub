@@ -1,6 +1,6 @@
 import express from "express"
-import {fetchVocabTo} from "../controler/fetchVocabTo.js"
-import { AddUserVocab, FetchUserVocab } from "../controler/fetchUserVocab.js"
+import {fetchVocabTo} from "../controler/fetchVocabLogic.js"
+import { AddUserVocab, FetchUserVocab } from "../controler/fetchUserVocabLogic.js"
 
 const FetchVocabrouter = express.Router()
 

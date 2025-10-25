@@ -8,6 +8,7 @@ import { toast } from 'sonner'
 
 const YourLibPage = () => {
     const location = useLocation()
+    const streak = location.state?.streak ?? 0; 
     const user = location.state?.user || "Guest"; 
     const navigate = useNavigate()
     useEffect(() => {
@@ -20,7 +21,7 @@ const YourLibPage = () => {
     <div className='flex flex-col justify-center items-center text-black space-y-5 translate-y-[30px]'>
       <HeaderYourLib user={user}/>
       <MainYourLib user={user}/>
-      <div className='absolute top-1 left-10'><DashMenuYourLib user={user}/></div>
+      <div className='absolute top-1 left-10'><DashMenuYourLib user={user} streak={streak}/></div>
       <div className='absolute top-1 left-300 flex flex-row space-x-5'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
     </div>
   )

@@ -3,7 +3,7 @@ import api from '@/lib/axios'
 import { toast } from 'sonner'
 import { Button } from '../ui/button'
 
-const ShowAllVocab = ({ value, setDataReady, user }) => {
+const ShowAllVocab = ({ value, setDataReady, user, streak }) => {
   const [vocabList, setVocabList] = useState([])
   useEffect(() => {
     const fetchVocab = async () => {
