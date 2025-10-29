@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage.jsx"
 import ShowAllVocabPage from "./pages/ShowAllVocabPage.jsx"
 import YourLibPage from "./pages/YourLibPage.jsx"
 import FlashCardPages from "./pages/FlashCardPages.jsx"
+import ToeicPartFivePage from "./pages/ToeicPartFivePage.jsx"
 function App() {
   return (
     <>
@@ -40,6 +41,10 @@ function App() {
           <Route
               path = "/flashcardpage"
               element = {<FlashCardPages/>}
+              />
+          <Route
+              path = "/toeicpartfivepage"
+              element = {<ToeicPartFivePage/>}
               />
         </Routes>
     </BrowserRouter>

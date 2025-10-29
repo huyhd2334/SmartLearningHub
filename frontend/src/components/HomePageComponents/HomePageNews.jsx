@@ -54,7 +54,7 @@ const HomePageNews = ({ user }) => {
                     <p><b>Author:</b> {a.author || "Unknown Author"}</p>
                     <p><b>Content:</b></p>
                     <div className="flex flex-wrap gap-1 space-x-3">
-                    {a.content.split(" ").map((w, i) => (
+                    {a.content.replace(/[^a-zA-Z']/g, ' ').split(/\s+/).map((w, i) => (
                         binary[i] === 1 && w !== "xuongdong"? (
                         <Button 
                             key={i} 
@@ -65,7 +65,13 @@ const HomePageNews = ({ user }) => {
                         </Button>
                         ) : ( w === "xuongdong" ? (
                             <span key={i} className="w-500 h-10"></span>
-                        ) : (<span key={i} className="px-2 py-1">{w}</span>)
+                        ) : (<Button 
+                                key={i} 
+                                className="px-2 py-1 h-7 text-xs"
+                                onClick={() => findWordDetail(w.replace(/^[^\w]+|[^\w]+$/g, ""))}
+                            >
+                                {w}
+                            </Button>)
                         )
                     ))}
                     </div>

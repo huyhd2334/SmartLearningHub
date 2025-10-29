@@ -22,7 +22,8 @@
     "sqlite3": "^5.1.7",
     "todolist": "file:..",
     "todox": "file:..",
-    "wink-lemmatizer": "^3.0.4"
+    "wink-lemmatizer": "^3.0.4",
+    "wordpos": "^2.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

@@ -2,7 +2,7 @@ import Reading from "../models/news.js";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import lemmatizer from 'wink-lemmatizer';
-
+import Dict from "../models/dictAllWord.js";
 // console.log(lemmatizer.verb('running'));  // run
 // console.log(lemmatizer.noun('cars'));     // car
 // console.log(lemmatizer.adjective('better')); // good
@@ -61,22 +61,32 @@ export const splitReading = async(req, res) => {
     }
 }
 
-export const FindDetail = async(req, res) => {
-    try{
-        const db = await open({
-                                filename: "dictionary.db",
-                                driver: sqlite3.Database,
-                                });
-        const {word} = req.body
-        if (word){
-            const result = await db.get("SELECT * FROM dictionary WHERE vocab = ?", [word.toLowerCase()])
-            if (result){ res.status(200).json({message: "oke" , detail: result})}
-            else{const resultV = await db.get("SELECT * FROM dictionary WHERE vocab = ?", [lemmatizer.verb(word.toLowerCase())])
-                if(resultV){res.status(200).json({message: "oke" , detail: resultV})}
-                else{const resultN = await db.get("SELECT * FROM dictionary WHERE vocab = ?", [lemmatizer.noun(word.toLowerCase())])
-                    if(resultN){res.status(200).json({message: "oke" , detail: resultN})}
-                    else{res.status(200).json({message: "notfound"})}
-                }}
-        }else{res.status(404).json({message: "error"})}
-    }catch(error){console.error(error)}
-}
+export const FindDetail = async (req, res) => {
+    try {
+        const { word } = req.body;
+        if (!word) return res.status(404).json({ message: "error" });
+
+        const lowerWord = word.toLowerCase();
+        let result = await Dict.findOne({ vocab: lowerWord });
+        if (result) return res.status(200).json({ message: "oke", detail: result });
+        const verb = lemmatizer.verb(lowerWord);
+        if (verb) {
+            result = await Dict.findOne({ vocab: verb });
+            if (result) return res.status(200).json({ message: "oke", detail: result });
+        }
+        const noun = lemmatizer.noun(lowerWord);
+        if (noun) {
+            result = await Dict.findOne({ vocab: noun });
+            if (result) return res.status(200).json({ message: "oke", detail: result });
+        }
+        const adj = lemmatizer.adjective(lowerWord);
+        if (adj) {
+            result = await Dict.findOne({ vocab: adj });
+            if (result) return res.status(200).json({ message: "oke", detail: result });
+        }
+        return res.status(200).json({ message: "Not found" });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "internal error" });
+    }
+};
