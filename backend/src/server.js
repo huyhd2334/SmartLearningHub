@@ -9,10 +9,10 @@ import routerChoseLangue from "./routers/routerChoseLevel.js";
 import FetchVocabrouter from "./routers/routerFetchVocab.js";
 import routerCrawNews from "./routers/routerCrawNews.js";
 import QuestionRouter from "./routers/routerQuestions.js"
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 dotenv.config();
+const __dirname = path.resolve();
+
 // create app
 const app = express()
 app.use(cors())
@@ -29,13 +29,13 @@ app.use("/api",FetchVocabrouter)
 app.use("/api", routerCrawNews)
 app.use("/api", QuestionRouter)
 
-// if (process.env.NODE_ENV === "production") {
-//    app.use(express.static(path.join(__dirname, "../frontend/dist")));
+if (process.env.NODE_ENV === "production") {
+   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-//   });
-// }
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+  });
+}
 
 connectDB().then(() => {
   app.listen(8386, () => {

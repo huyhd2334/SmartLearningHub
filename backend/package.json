@@ -18,6 +18,7 @@
     "dotenv": "^17.2.1",
     "express": "^4.18.2",
     "mongoose": "^8.17.1",
+    "smartlearninghub": "file:..",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
     "todolist": "file:..",
