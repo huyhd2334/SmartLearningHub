@@ -9,5 +9,5 @@ const ChineseUserVocabSchema = new mongoose.Schema({
 }
 )
 
-const ChineseUserVocabs = mongoose.model("ChineseUserVocabs", ChineseUserVocabs)
+const ChineseUserVocabs = mongoose.model("ChineseUserVocabs", ChineseUserVocabSchema)
 export default ChineseUserVocabs

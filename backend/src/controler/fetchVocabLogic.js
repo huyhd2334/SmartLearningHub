@@ -1,5 +1,6 @@
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
+import ChineseDict from "../models/chinese/chineseDictAllWord.js"
 // Done
 export const fetchVocabTo = async(req,res) => {
     try {
@@ -14,8 +15,7 @@ export const fetchVocabTo = async(req,res) => {
       // chinese
         const offsetInt = parseInt(offset) || 0;
         const limit = 100
-        const db = await openDBChinese();
-        const rows = await db.all(`SELECT * FROM dictionary LIMIT ? OFFSET ?`, [limit, offsetInt]);
+        const rows = await ChineseDict.find().skip(offsetInt).limit(limit)
         res.status(200).json(rows);
     }
     }catch(err){
@@ -24,13 +24,6 @@ export const fetchVocabTo = async(req,res) => {
 }
 
 const openDB = async () => {
-  return open({
-    filename: "dictionary.db",
-    driver: sqlite3.Database
-  });
-};
-
-const openDBChinese = async () => {
   return open({
     filename: "dictionary.db",
     driver: sqlite3.Database

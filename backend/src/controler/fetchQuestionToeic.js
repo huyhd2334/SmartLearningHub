@@ -1,4 +1,4 @@
-import Questionpartfive from "../models/questionpartfive.js";
+import Questionpartfive from "../models/english/questionpartfive.js";
 
 const FetchQuestionToeic = async(req,res) => {
     try{
