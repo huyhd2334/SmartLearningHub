@@ -1,5 +1,6 @@
 import Account from "../models/account.js";
-
+import levelLangue from "../models/english/levelLangue.js";
+import ChineseLevelLangue from "../models/chinese/chineseLevelLangue.js";
 export const createAccount = async(req,res) => {
     try{
         const {userName} = req.body
@@ -12,6 +13,10 @@ export const createAccount = async(req,res) => {
             const account = new Account({userName, accountName, passW, lastLogin: Date.now()})
             await account.save()
             res.status(200).json({message: true})
+
+            await ChineseLevelLangue.create()
+            await levelLangue.create()
+            
         }else{
             res.status(404).json("Account Name invalid!")
         }
@@ -21,7 +26,7 @@ export const createAccount = async(req,res) => {
 }
 export const loginAccount = async (req, res) => {
     try {
-        const { accountName, passW } = req.body;
+        const { accountName, passW} = req.body;
 
         const checkAccountName = await Account.findOne({ accountName });
         if (!checkAccountName) {

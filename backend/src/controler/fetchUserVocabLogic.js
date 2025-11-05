@@ -53,7 +53,7 @@ export const AddUserVocab = async(req,res) => {
                                                 );
                     res.status(200).json({message: "updatelevel" })
                 }else{
-                    await ChineseUserVocabs.create({ accountName, vocab, meaning, english, level: 0 });
+                    await ChineseUserVocabs.create({ accountName, vocab, meaning, english, pinyin, level: 0 });
                     res.status(200).json({message: "addnewvocab" })}
             }catch(error){console.error(error)}
         }

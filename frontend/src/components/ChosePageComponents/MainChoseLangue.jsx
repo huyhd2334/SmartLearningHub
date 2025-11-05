@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router'
 
 const ChoseLangue = ({user, streak}) => {
   const navigate = useNavigate()
-  const handleChoseEnglish = async() => {
+  const handleChose = async(langue) => {
     try{
       console.log("user prop in ChoseLangue:", user)
-      const res = await api.post("/choseLangue", {accountName: user, langue: "English"})
+      const res = await api.post("/choseLangue", {accountName: user, langue: langue})
       if(res.data.message){
-        toast.success("English Chose!")
-        navigate("/homepage", { state: { user: user, streak: streak}})
+        toast.success("Chose Successfully")
+        navigate("/homepage", { state: { user: user, streak: streak, langue: langue}})
       }else{
         toast.error("Something went wrong")
       }
@@ -32,18 +32,19 @@ const ChoseLangue = ({user, streak}) => {
               <Button 
                 size="lg"
                 className="text-black w-[250px] h-[200px] flex items-center gap-2"
-                onClick={handleChoseEnglish}
+                onClick={()=>handleChose("english")}
                 >
                   <Languages className="w-10 h-10"/> Hello 
                 </Button>
               </div>
               <div className=' border-2 border-green-500 rounded-8xl rounded-lg p-5 flex flex-col space-y-5'>
-              <h1 className='text-2xl font-semibold'> Comming Soon!</h1>
+              <h1 className='text-2xl font-semibold'> Chinses</h1>
               <Button 
                 size="lg"
                 className="text-black w-[250px] h-[200px] flex items-center gap-2"
+                onClick={()=>handleChose("chinese")}
                 >
-                  <Languages className="w-10 h-10"/> Comming Soon
+                  <Languages className="w-10 h-10"/> xia xia
                 </Button>
               </div>
           </div>

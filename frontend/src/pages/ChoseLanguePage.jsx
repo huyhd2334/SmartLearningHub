@@ -34,7 +34,7 @@ const ChoseLanguePage = () => {
     />
       <div className='flex flex-col justify-center items-center min-h-screen translate-y-[-50px] space-y-20'>
         <HeaderChose user={user}/>
-        <ChoseLangue user={user} streak={streak}/>
+        <ChoseLangue user={user} streak={streak} />
       </div>
   </div>
   )

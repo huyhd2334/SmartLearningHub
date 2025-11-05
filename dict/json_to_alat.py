@@ -17,7 +17,8 @@ for value in data:
     entry = {
         "vocab": value.get("vocab", ""),
         "meaning": value.get("meaning", ""),
-        "english": value.get("english", "")
+        "english": value.get("english", ""),
+        "pinyin": value.get("pinyin", ""),
     }
     converted.append(entry)
 

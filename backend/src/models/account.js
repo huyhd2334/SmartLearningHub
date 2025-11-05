@@ -18,11 +18,14 @@ const accountSchema = new mongoose.Schema(
     type: Date,
     default: Date.now,
   },
-  streak: {
+  streakEnglish: {
+    type: Number,
+    default: 0,
+  },
+  streakChinese: {
     type: Number,
     default: 0,
   }
-
 })
 
 const Account = mongoose.model("Account", accountSchema)
