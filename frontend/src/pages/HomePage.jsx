@@ -2,7 +2,7 @@ import { DashMenu } from '@/components/HomePageComponents/DashMenu';
 import HomePageNews from '@/components/HomePageComponents/HomePageNews';
 import NavigationHomePage from '@/components/HomePageComponents/NavigateHomPage'
 import ShowStreak from '@/components/HomePageComponents/ShowStreak';
-import TranslateTool from '@/components/HomePageComponents/TranslateTool';
+import TranslateTool from '@/components/TranslateTool';
 import React, { useEffect } from 'react'
 import { useNavigate, useLocation  } from 'react-router';
 import { toast } from 'sonner';
@@ -19,7 +19,7 @@ const HomePage = () => {
     toast.success(`WellCome ${user} to EnglishHome `)
   }, [user, navigate]);
   return (
-    <div className='flex flex-col justify-center items-center translate-y-[-00px] text-black font-semibold'>
+    <div className='flex flex-col justify-center items-center min-h-screen translate-y-0 text-black font-semibold'>
       <NavigationHomePage user={user} streak={streak}/>
       <div className='absolute top-4 left-10'> <DashMenu/> </div>
       <div className='absolute top-24 left-120'><ShowStreak user={user} streak={streak}/></div>

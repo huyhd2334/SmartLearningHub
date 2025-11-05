@@ -1,4 +1,4 @@
-import TranslateTool from '@/components/HomePageComponents/TranslateTool';
+import TranslateTool from '@/components/TranslateTool';
 import { DashMenuToeicPartFive } from '@/components/ToeicPartFive/DashMenuToeicPartFive';
 import HeaderToeicPartFive from '@/components/ToeicPartFive/HeaderToeicPartFive.jsx'
 import MainToeicPartFive from '@/components/ToeicPartFive/MainToeicPartFive';
@@ -16,7 +16,7 @@ const ToeicPartFivePage = () => {
       }
     }, [user, navigate]);
   return (
-    <div>
+    <div className='min-h-screen'>
     <div className='flex flex-col justify-center items-center translate-y-[30px] space-y-5'>
       <HeaderToeicPartFive user={user}/>
       <div className='absolute top-1 left-7'><DashMenuToeicPartFive user={user} streak={streak}/></div>

@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [showSignUp, setShowSignUp] = useState(false)
   const [showButton, setShowButton] = useState(true)
   return (
-    <div className="w-full h-screen flex">
+    <div className="w-full h-screen min-h-screen flex">
       <div className="absolute top-6 left-6 flex flex-col justify-center items-center space-y-5 bg-slate-50 p-10">
         <Header/>
         <div className={`transition-all duration-500 ${showButton ? "opacity-100" : "opacity-0 pointer-events-none"}`}>

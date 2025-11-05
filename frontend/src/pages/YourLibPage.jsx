@@ -18,7 +18,7 @@ const YourLibPage = () => {
       toast.success(`${user} library`)
     }, [user, navigate]);
   return (
-    <div className='flex flex-col justify-center items-center text-black space-y-5 translate-y-[30px]'>
+    <div className='flex flex-col justify-center items-center text-black space-y-5 translate-y-[30px] h-min-screen'>
       <HeaderYourLib user={user}/>
       <MainYourLib user={user}/>
       <div className='absolute top-1 left-10'><DashMenuYourLib user={user} streak={streak}/></div>

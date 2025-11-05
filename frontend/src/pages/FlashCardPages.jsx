@@ -20,7 +20,7 @@ const FlashCardPages = () => {
       toast.success(`${user} flashcards`)
     }, [user, navigate]);
   return (
-    <div className='flex flex-col justify-center items-center text-black space-y-10 translate-y-[30px]'>
+    <div className='flex flex-col min-h-screen justify-center items-center text-black space-y-10 translate-y-[30px]'>
        <HeaderFlashCard user={user} levelFlashCard={levelFlashCard}/>
        <MainFlashCard user={user} levelFlashCard={levelFlashCard} />
        <div className='absolute top-1 left-10'><DashMenuFlashCard user={user} streak={streak}/></div>

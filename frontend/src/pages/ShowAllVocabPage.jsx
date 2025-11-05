@@ -28,7 +28,7 @@ const ShowAllVocabPage = () => {
     }, [dataReady, currentPage])
 
   return (
-    <div className='flex flex-col justify-center items-center space-y-10 translate-y-[+20px]'>
+    <div className='flex flex-col justify-center items-center space-y-10 translate-y-5 min-h-screen'>
       <HeaderAllVocab/>
       <ChoseAllVocab value={currentPage} setValue={setCurrentPage} />
       <ShowAllVocab value={currentPage} setDataReady={setDataReady} user={user} streak={streak}/>

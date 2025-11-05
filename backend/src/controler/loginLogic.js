@@ -19,7 +19,6 @@ export const createAccount = async(req,res) => {
         console.error("ERROR signup")
     }
 }
-
 export const loginAccount = async (req, res) => {
     try {
         const { accountName, passW } = req.body;
