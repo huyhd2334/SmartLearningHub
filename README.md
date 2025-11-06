@@ -16,6 +16,7 @@
     <li>📚 Add new words, meanings, examples, and pronunciation.</li>
     <li>🔁 Review randomly by day or by forgetting rate.</li>
     <li>🈶 Learn Chinese characters with Pinyin and Vietnamese meanings.</li>
+    <li>US Learn English characters with sample and Vietnamese meanings.</li>
     <li>📈 Track personal learning progress with statistics and streaks.</li>
   </ul>
 
