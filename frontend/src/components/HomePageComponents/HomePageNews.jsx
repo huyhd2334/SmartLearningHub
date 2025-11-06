@@ -34,8 +34,8 @@ const HomePageNews = ({ user, langue }) => {
     const findWordDetail = async(word) => {
         const detail = await api.post("/finddetail",{word: word, langue: langue}) 
         if(langue === "english"){
-           toast.loading(detail.data.detail["meaning"])
-        }else{toast.loading(`${detail.data.detail["pinyin"]} \n ${detail.data.detail["meaning"]} \n ${detail.data.detail["english"]}`)}
+           toast.info(detail.data.detail["meaning"], {duration: 5000})
+        }else{toast.info(`${detail.data.detail["pinyin"]} \n ${detail.data.detail["meaning"]} \n ${detail.data.detail["english"]}`, {duration: 5000})}
     }
     return (
         <div className='border-2 border-black rounded-4xl p-5 w-[1100px] overflow-auto'>
