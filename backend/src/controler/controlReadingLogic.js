@@ -39,7 +39,7 @@ export const sendReading = async(req, res) => {
     try{
         const {get, langue} = req.body
         if (get === "get" && langue === "english" ){
-            const data = await Reading.find().sort({createDate: -1 }).limit(1)
+            const data = await Reading.find().sort({createDate: -1 }).limit(2)
             if(data){
                 res.status(200).json({message: "oke", reading: data})
             }else{res.status(404).json({message: "error"})}
@@ -117,9 +117,9 @@ const translateChineseWord = async (word) => {
     const meaning = res.data[0].map(item => item[0]).join("");
     return {
       vocab: word,
-      pinyin: "", // Google API free không trả Pinyin
+      pinyin: "",
       meaning,
-      english: "" // có thể thêm nếu muốn gọi tl: "en"
+      english: ""
     };
   } catch (err) {
     console.error(err);

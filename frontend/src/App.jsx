@@ -43,7 +43,7 @@ function App() {
               element = {<FlashCardPages/>}
               />
           <Route
-              path = "/toeicpartfivepage"
+              path = "/toeic/toeicpartfivepage"
               element = {<ToeicPartFivePage/>}
               />
         </Routes>

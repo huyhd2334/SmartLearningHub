@@ -3,12 +3,12 @@ import api from '@/lib/axios'
 import { toast } from 'sonner'
 import { Button } from '../ui/button'
 
-const ShowAllVocab = ({ value, setDataReady, user, streak }) => {
+const ShowAllVocab = ({ value, setDataReady, user, langue }) => {
   const [vocabList, setVocabList] = useState([])
   useEffect(() => {
     const fetchVocab = async () => {
     try {
-        const res = await api.post("/get100vocab", { offset: (value-1) * 100 + 1 })
+        const res = await api.post("/get100vocab", { offset: (value-1) * 100 + 1 , langue: langue})
         toast.success(`get page ${value}`)
         if(res.data){
           setDataReady(true)
@@ -41,14 +41,18 @@ const ShowAllVocab = ({ value, setDataReady, user, streak }) => {
       <ul>
         {vocabList.map((vocab, idx) => (
           <li key={idx}> 
-          <Button size="xl" className="w-280 h-5" onClick={() => addVocabulary(vocab.vocab,vocab.pron,vocab.type,vocab.meaning,vocab.example)}>
-            {vocab.vocab} {vocab.type} {vocab.meaning}
-            </Button>
+              {langue === "english"
+                  ? <Button size="xl" className="w-280 h-5" onClick={() => addVocabulary(vocab.vocab,vocab.pron,vocab.type,vocab.meaning,vocab.example)}>
+                      {vocab.vocab} {vocab.type} {vocab.meaning}
+                    </Button>
+
+                  : <Button size="xl" className="w-280 h-5 bg-blue-400">
+                      {vocab.vocab} {vocab.pinyin} {vocab.meaning}
+                    </Button>}
           </li>
         ))}
       </ul>
     </div>
   )
 }
-
 export default ShowAllVocab

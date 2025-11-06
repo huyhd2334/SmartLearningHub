@@ -32,7 +32,7 @@ const ChoseLanguePage = () => {
         backgroundSize: "100% 100%",
       }}
     />
-      <div className='flex flex-col justify-center items-center min-h-screen translate-y-[-50px] space-y-20'>
+      <div className='flex flex-col justify-center items-center min-h-screen translate-y-[-50px] space-y-20 md:space-y-16 sm:space-y-10 px-4 max-w-[1200px] mx-auto'>
         <HeaderChose user={user}/>
         <ChoseLangue user={user} streak={streak} />
       </div>

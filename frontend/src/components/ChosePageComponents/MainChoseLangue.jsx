@@ -38,7 +38,7 @@ const ChoseLangue = ({user, streak}) => {
                 </Button>
               </div>
               <div className=' border-2 border-green-500 rounded-8xl rounded-lg p-5 flex flex-col space-y-5'>
-              <h1 className='text-2xl font-semibold'> Chinses</h1>
+              <h1 className='text-2xl font-semibold'> Chinese</h1>
               <Button 
                 size="lg"
                 className="text-black w-[250px] h-[200px] flex items-center gap-2"

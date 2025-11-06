@@ -86,12 +86,12 @@ const HomePageNews = ({ user, langue }) => {
                         <div className="flex flex-wrap gap-1 space-x-3">
                         {binary.map((w, i) => (
                             w !== "hassh"? (
-                            <Button key={i} className="px-2 py-1 h-7 text-xs" onClick={() => findWordDetail(w)}>
+                            <Button key={i} className="px-2 py-1 h-7 text-xs gb-red-500" onClick={() => findWordDetail(w)}>
                                 {w}
                             </Button>
                             ) : ( w === "hassh" ? (
                                 <span key={i} className="w-500 h-10"></span>
-                            ) : (<Button key={i} className="px-2 py-1 h-7 text-xs" onClick={() => findWordDetail(w)}>{w}</Button>)
+                            ) : (<Button key={i} className="px-2 py-1 h-7 text-xs gb-red-500" onClick={() => findWordDetail(w)}>{w}</Button>)
                             )
                         ))}
                         </div>

@@ -4,7 +4,7 @@ import { Button } from '../ui/button'
 
 const HeaderChose = () => {
   return (
-    <div className='relative z-10 flex flex-row justify-center items-center space-x-[600px]'>
+    <div className='relative z-10 flex flex-row justify-center items-center md:space-x-100 sm:space-x-20 px-4 max-w mx-auto'>
        <Drone className="w-7 h-7"/>
        <div className='flex flex-row justify-center items-center space-x-5'>
             <Button size="sm">

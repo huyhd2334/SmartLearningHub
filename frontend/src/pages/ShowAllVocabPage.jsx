@@ -12,6 +12,7 @@ const ShowAllVocabPage = () => {
     const [dataReady, setDataReady] = useState("")
     const location = useLocation()
     const streak = location.state?.streak ?? 0; 
+    const langue = location.state?.langue 
     const user = location.state?.user || "Guest"; 
     const navigate = useNavigate()
     useEffect(() => {
@@ -30,9 +31,9 @@ const ShowAllVocabPage = () => {
   return (
     <div className='flex flex-col justify-center items-center space-y-10 translate-y-5 min-h-screen'>
       <HeaderAllVocab/>
-      <ChoseAllVocab value={currentPage} setValue={setCurrentPage} />
-      <ShowAllVocab value={currentPage} setDataReady={setDataReady} user={user} streak={streak}/>
-      <ChoseAllVocab value={currentPage} setValue={setCurrentPage} />
+      <ChoseAllVocab value={currentPage} setValue={setCurrentPage} langue={langue}/>
+      <ShowAllVocab value={currentPage} setDataReady={setDataReady} user={user} langue={langue}/>
+      <ChoseAllVocab value={currentPage} setValue={setCurrentPage} langue={langue} />
       <div className='absolute top-1 left-10'><DashMenuAllVocab user={user} streak={streak}/></div>
       <div className='absolute top-1 left-300 flex flex-row space-x-5 text-black'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
     </div>
