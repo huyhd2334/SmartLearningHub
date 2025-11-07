@@ -1,5 +1,5 @@
 import express from "express"
-import imageToText from "../controler/fetchTextFromImg";
+import imageToText from "../controler/fetchTextFromImg.js";
 
 const routerFecthGgAPI = express.Router();
 

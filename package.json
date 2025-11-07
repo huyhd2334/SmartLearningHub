@@ -20,6 +20,7 @@
   "homepage": "https://github.com/huyhd2334/SmartLearningHub#readme",
   "dependencies": {
     "20": "^3.1.9",
+    "@google-cloud/vision": "^5.3.4",
     "chinese-tokenizer": "^2.4.0",
     "tokenizer": "^0.1.0"
   }
