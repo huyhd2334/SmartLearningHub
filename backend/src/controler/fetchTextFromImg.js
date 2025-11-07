@@ -1,26 +1,32 @@
+// pages/api/imagetotext.js
 import axios from "axios";
 
-export default async function imageToText(req, res) {
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   try {
-    let { image } = req.body;
+    const { image } = req.body;
 
     if (!image) {
+      console.log("⚠️ No image received");
       return res.status(400).json({ error: "Image is required" });
     }
 
-    console.log("IMAGE RECEIVED:", image.substring(0, 50));
+    // 🔹 Debug client gửi lên
+    console.log("✅ IMAGE RECEIVED");
+    console.log("PREFIX CHECK:", image.substring(0, 30));  // in prefix
+    console.log("LENGTH:", image.length);                  // in độ dài base64
 
-    // ✅ Nếu base64 chưa có prefix → tự thêm vào (OCR.Space bắt buộc)
-    if (!image.startsWith("data:")) {
-      image = "data:image/png;base64," + image;
-    }
-
-    const OCR_SPACE_API_KEY = "K88629564188957";
+    const OCR_SPACE_API_KEY = "K88629564188957"; // đổi thành key của bạn
 
     const formData = new URLSearchParams();
-    formData.append("base64Image", image);
-    formData.append("language", "chs");
+    formData.append("base64Image", image);           // ⚡ y nguyên base64
+    formData.append("language", "eng");              // ⚡ phải đúng
+    formData.append("isOverlayRequired", "false");
 
+    // 🔹 Gửi sang OCR.Space
     const response = await axios.post(
       "https://api.ocr.space/parse/image",
       formData.toString(),
@@ -32,14 +38,22 @@ export default async function imageToText(req, res) {
       }
     );
 
-    console.log("OCR RESULT:", response.data);
+    // 🔹 Debug OCR response
+    console.log("✅ OCR RESULT RAW:", response.data);
+    console.log("OCRExitCode:", response.data.OCRExitCode);
+    if (response.data.ParsedResults) {
+      console.log("ParsedText (first 200 chars):", response.data.ParsedResults[0].ParsedText.substring(0, 200));
+    } else {
+      console.log("No ParsedResults, check ErrorMessage:", response.data.ErrorMessage);
+    }
 
     const parsedText = response.data.ParsedResults?.[0]?.ParsedText || "";
 
-    res.json({ text: parsedText });
+    // 🔹 Trả về client
+    res.status(200).json({ text: parsedText });
 
   } catch (error) {
-    console.error(error.response?.data || error.message);
+    console.error("❌ OCR ERROR:", error.response?.data || error.message);
     res.status(500).json({ error: "OCR failed" });
   }
 }
