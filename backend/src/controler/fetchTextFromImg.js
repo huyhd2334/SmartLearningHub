@@ -20,7 +20,7 @@ export const imageToTextHandler = [
       const OCR_SPACE_API_KEY = "K88629564188957";
       const formData = new URLSearchParams();
       formData.append("base64Image", base64);
-      formData.append("language", "eng"); // eng / chs / vie
+      formData.append("language", "chs"); // eng / chs / vie
       formData.append("isOverlayRequired", "false");
 
       const response = await axios.post(
