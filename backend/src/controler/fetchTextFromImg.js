@@ -1,38 +1,46 @@
-import nextConnect from "next-connect";
+// backend/src/controller/fetchTextFromImg.js
 import multer from "multer";
-import fs from "fs";
 import axios from "axios";
 
+// Multer memory storage
 const upload = multer({ storage: multer.memoryStorage() });
 
-const handler = nextConnect();
-handler.use(upload.single("file"));
+// Middleware handler
+export const imageToTextHandler = [
+  upload.single("file"), // expect field name = "file"
+  async (req, res) => {
+    try {
+      if (!req.file) return res.status(400).json({ error: "No file uploaded" });
 
-handler.post(async (req, res) => {
-  try {
-    const buffer = req.file.buffer;
-    const base64 = `data:image/jpeg;base64,${buffer.toString("base64")}`;
+      // Convert buffer -> base64
+      const base64 = `data:image/jpeg;base64,${req.file.buffer.toString("base64")}`;
+      console.log("BASE64 PREFIX:", base64.slice(0, 50));
 
-    const OCR_SPACE_API_KEY = "K88629564188957";
-    const formData = new URLSearchParams();
-    formData.append("base64Image", base64);
-    formData.append("language", "chs");
-    formData.append("isOverlayRequired", "false");
+      // OCR.Space API
+      const OCR_SPACE_API_KEY = "K88629564188957";
+      const formData = new URLSearchParams();
+      formData.append("base64Image", base64);
+      formData.append("language", "eng"); // eng / chs / vie
+      formData.append("isOverlayRequired", "false");
 
-    const response = await axios.post(
-      "https://api.ocr.space/parse/image",
-      formData.toString(),
-      { headers: { apikey: OCR_SPACE_API_KEY, "Content-Type": "application/x-www-form-urlencoded" } }
-    );
+      const response = await axios.post(
+        "https://api.ocr.space/parse/image",
+        formData.toString(),
+        {
+          headers: {
+            apikey: OCR_SPACE_API_KEY,
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
 
-    const parsedText = response.data.ParsedResults?.[0]?.ParsedText || "";
-    res.json({ text: parsedText });
+      const parsedText = response.data.ParsedResults?.[0]?.ParsedText || "";
+      console.log("OCR RESULT:", parsedText);
 
-  } catch (err) {
-    console.error("OCR ERROR:", err.response?.data || err.message);
-    res.status(500).json({ error: "OCR failed" });
-  }
-});
-
-export const config = { api: { bodyParser: false } };
-export default handler;
+      res.json({ text: parsedText });
+    } catch (err) {
+      console.error("OCR ERROR:", err.response?.data || err.message);
+      res.status(500).json({ error: "OCR failed" });
+    }
+  },
+];
