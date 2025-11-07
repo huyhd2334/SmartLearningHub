@@ -19,7 +19,7 @@ export default async function imageToText(req, res) {
 
     const formData = new URLSearchParams();
     formData.append("base64Image", image);
-    formData.append("language", "eng+chs");
+    formData.append("language", "chs");
 
     const response = await axios.post(
       "https://api.ocr.space/parse/image",
