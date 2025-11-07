@@ -61,42 +61,54 @@ export const splitReading = async(req, res) => {
             filename: "dictionary.db",
             driver: sqlite3.Database,
         });
-        const {id, langue} = req.body;
+        const {id, langue, textChinese} = req.body;
+        if(!textChinese){
+            if (langue === "english") {
+                if (id) {
+                    const data = await Reading.findById(id);
+                    if(data){
+                        const words = data.content
+                            ? data.content.toLowerCase().replace(/[^a-zA-Z\s']/g, '').split(/\s+/)
+                            : [];
+                        const binary = words.map(() => 1);
+                        res.status(200).json({message: "oke", data: binary});
+                    } else {
+                        res.status(404).json({message: "error"});
+                    }
+                }
+            // Chinese
+            } else {
+                if(id) {
+                    const data = await ChineseReading.findById(id);
+                    if(data){
+                        const chineseStopWords = new Set(["的","了","在","是","和","也","上","。","，","、"]);
 
-        if (langue === "english") {
-            if (id) {
-                const data = await Reading.findById(id);
-                if(data){
-                    const words = data.content
-                        ? data.content.toLowerCase().replace(/[^a-zA-Z\s']/g, '').split(/\s+/)
-                        : [];
-                    const binary = words.map(() => 1);
-                    res.status(200).json({message: "oke", data: binary});
-                } else {
-                    res.status(404).json({message: "error"});
+                        // Dùng segment trực tiếp trên nội dung
+                        const segmented = segment.doSegment(data.content);
+
+                        // Lọc stopwords
+                        const words = segmented
+                        .map(w => w.w)               // lấy từ
+                        .filter(w => !chineseStopWords.has(w));
+
+                        console.log("Segmented words:", words);
+                        res.status(200).json({ message: "oke", data: words });
+                    } else {
+                        res.status(404).json({ message: "error" });
+                    }
                 }
             }
-        } else { // Chinese
-            if(id) {
-                const data = await ChineseReading.findById(id);
-                if(data){
-                    const chineseStopWords = new Set(["的","了","在","是","和","也","上","。","，","、"]);
-
-                    // Dùng segment trực tiếp trên nội dung
-                    const segmented = segment.doSegment(data.content);
-
-                    // Lọc stopwords
-                    const words = segmented
-                    .map(w => w.w)               // lấy từ
+        }else{
+        // chinese app mobile
+            const chineseStopWords = new Set(["的","了","在","是","和","也","上","。","，","、"]);
+            // Dùng segment trực tiếp trên nội dung
+            const segmented = segment.doSegment(textChinese);
+            // Lọc stopwords
+            const words = segmented
+                    .map(w => w.w) // lấy từ
                     .filter(w => !chineseStopWords.has(w));
-
-                    console.log("Segmented words:", words);
-                    res.status(200).json({ message: "oke", data: words });
-                } else {
-                    res.status(404).json({ message: "error" });
-                }
-            }
-
+            console.log("Segmented words:", words);
+                res.status(200).json({ message: "oke", data: words });
         }
     } catch(error) {
         console.error(error);
