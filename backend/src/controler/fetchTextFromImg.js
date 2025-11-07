@@ -16,7 +16,7 @@ handler.post(async (req, res) => {
     const OCR_SPACE_API_KEY = "K88629564188957";
     const formData = new URLSearchParams();
     formData.append("base64Image", base64);
-    formData.append("language", "eng");
+    formData.append("language", "chs");
     formData.append("isOverlayRequired", "false");
 
     const response = await axios.post(
