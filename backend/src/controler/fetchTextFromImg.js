@@ -19,11 +19,11 @@ export default async function handler(req, res) {
     console.log("PREFIX CHECK:", image.substring(0, 30));  // in prefix
     console.log("LENGTH:", image.length);                  // in độ dài base64
 
-    const OCR_SPACE_API_KEY = "K88629564188957"; // đổi thành key của bạn
+    const OCR_SPACE_API_KEY = "K88629564188957";
 
     const formData = new URLSearchParams();
-    formData.append("base64Image", image);           // ⚡ y nguyên base64
-    formData.append("language", "eng");              // ⚡ phải đúng
+    formData.append("base64Image", image);           
+    formData.append("language", "chs");          
     formData.append("isOverlayRequired", "false");
 
     // 🔹 Gửi sang OCR.Space
