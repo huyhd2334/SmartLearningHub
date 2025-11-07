@@ -9,6 +9,8 @@ import routerChoseLangue from "./routers/routerChoseLevel.js";
 import FetchVocabrouter from "./routers/routerFetchVocab.js";
 import routerCrawNews from "./routers/routerCrawNews.js";
 import QuestionRouter from "./routers/routerQuestions.js"
+import routerFecthGgAPI from "./routers/fecthGgAPI.js"
+
 
 dotenv.config();
 const __dirname = path.resolve();
@@ -28,6 +30,8 @@ app.use("/api",routerChoseLangue)
 app.use("/api",FetchVocabrouter)
 app.use("/api", routerCrawNews)
 app.use("/api", QuestionRouter)
+app.use("/api", routerFecthGgAPI)
+
 
 if (process.env.NODE_ENV === "production") {
    app.use(express.static(path.join(__dirname, "../frontend/dist")));
