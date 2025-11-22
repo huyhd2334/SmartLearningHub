@@ -1,6 +1,6 @@
 <div class="flex flex-col space-y-6 font-sans leading-relaxed">
   <h1 class="text-3xl font-bold text-blue-600 flex items-center gap-2">
-    🏫 English + Chinese Learning Web
+    🏫 English + Chinese Learning Web (non-JWT project)
   </h1>
 
   <h2 class="text-2xl font-semibold text-gray-800 flex items-center gap-2">
