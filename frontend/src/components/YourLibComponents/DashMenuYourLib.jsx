@@ -13,13 +13,13 @@ import {Brain, Gamepad2, Phone, Rows3, WalletCards } from 'lucide-react'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router'
 
-export function DashMenuYourLib({user, streak}) {
+export function DashMenuYourLib({user, streak, langue}) {
   const navigate = useNavigate()
   const navigateToFlashCard = () => {
-    navigate("/flashcardpage", { state: { user: user, streak:streak}})
+    navigate("/flashcardpage", { state: { user: user, streak:streak, langue:langue}})
     }
   const handelerBHome = () => {
-    navigate("/homepage", { state: { user: user, streak:streak}})
+    navigate("/homepage", { state: { user: user, streak:streak, langue: langue}})
   }
   return (
     <Sheet className="text-black">
@@ -47,13 +47,11 @@ export function DashMenuYourLib({user, streak}) {
             <div className='flex flex-row space-x-2 text-black'>
               <Button size="xl" className="w-60 h-7 text-black"><Brain className='w-5 h-5'/> Practice</Button>
             </div>
-            {/* <Input id="sheet-demo-username" defaultValue="@peduarte" /> */}
           </div>
         </div>
         <SheetFooter>
           <Button onClick={()=>handelerBHome()}>BackToHome</Button>
           <SheetClose asChild className='mt-3'>
-            {/* <Button variant="outline">Close</Button> */}
           </SheetClose>
         </SheetFooter>
       </SheetContent>

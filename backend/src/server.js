@@ -10,7 +10,7 @@ import FetchVocabrouter from "./routers/routerFetchVocab.js";
 import routerCrawNews from "./routers/routerCrawNews.js";
 import QuestionRouter from "./routers/routerQuestions.js"
 import routerFecthGgAPI from "./routers/fecthGgAPI.js"
-
+import routerHist from "./routers/routerHist.js"
 
 dotenv.config();
 const __dirname = path.resolve();
@@ -24,6 +24,7 @@ app.use(express.json())
 if (process.env.NODE_ENV !== "production") {
   app.use(cors({ origin: "http://localhost:5173" }));
 }
+
 // user different route
 app.use("/api",routerLogin)
 app.use("/api",routerChoseLangue)
@@ -31,7 +32,7 @@ app.use("/api",FetchVocabrouter)
 app.use("/api", routerCrawNews)
 app.use("/api", QuestionRouter)
 app.use("/api", routerFecthGgAPI)
-
+app.use("/api", routerHist)
 
 if (process.env.NODE_ENV === "production") {
    app.use(express.static(path.join(__dirname, "../frontend/dist")));

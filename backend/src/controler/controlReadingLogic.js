@@ -5,9 +5,6 @@ import lemmatizer from 'wink-lemmatizer';
 import Dict from "../models/english/dictAllWord.js";
 import ChineseDict from "../models/chinese/chineseDictAllWord.js"
 import ChineseReading from "../models/chinese/chineseReading.js"
-// console.log(lemmatizer.verb('running'));  // run
-// console.log(lemmatizer.noun('cars'));     // car
-// console.log(lemmatizer.adjective('better')); // good
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const Segment = require("segment"); // CommonJS
@@ -85,8 +82,6 @@ export const splitReading = async(req, res) => {
 
                         // Dùng segment trực tiếp trên nội dung
                         const segmented = segment.doSegment(data.content);
-
-                        // Lọc stopwords
                         const words = segmented
                         .map(w => w.w)               // lấy từ
                         .filter(w => !chineseStopWords.has(w));
@@ -101,11 +96,9 @@ export const splitReading = async(req, res) => {
         }else{
         // chinese app mobile
             const chineseStopWords = new Set(["的","了","在","是","和","也","上","。","，","、"]);
-            // Dùng segment trực tiếp trên nội dung
             const segmented = segment.doSegment(textChinese);
-            // Lọc stopwords
             const words = segmented
-                    .map(w => w.w) // lấy từ
+                    .map(w => w.w)
                     .filter(w => !chineseStopWords.has(w));
             console.log("Segmented words:", words);
                 res.status(200).json({ message: "oke", data: words });

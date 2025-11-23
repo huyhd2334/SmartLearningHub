@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 import { toast } from 'sonner'
 import api from '@/lib/axios'
-const MainYourLib = ({user}) => {
+const MainYourLib = ({user, langue}) => {
     const [vocabList, setVocabList] = useState([])
     useEffect(() => {
         const fetchVocab = async () => {
             try {
-                const res = await api.post("/getuservocab", {accountName: user})
-                if(res.data){
-                    setVocabList(res.data)
+                const res = await api.post("/getuservocab", {accountName: user, langue: langue})
+                if(res.data.vocabs){
+                    setVocabList(res.data.vocabs)
                     toast.success("receive data")
-                    console.log("res.data:", res.data);
+                    console.log("res.data:", res.data.vocabs);
                 }
             } catch (error) {
                 console.error(error)

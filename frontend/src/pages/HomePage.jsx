@@ -7,6 +7,7 @@ import React, { useEffect } from 'react'
 import { useNavigate, useLocation  } from 'react-router';
 import { toast } from 'sonner';
 import Footer from '@/components/HomePageComponents/Footer';
+import ToHistPage from '@/components/HomePageComponents/ToHistPage';
 
 const HomePage = () => {
   const location = useLocation()
@@ -27,6 +28,7 @@ const HomePage = () => {
       <div className='absolute top-24 left-85'><ShowStreak user={user} streak={streak}/></div>
       <div className='absolute top-50 left-15 flex flex-col justify-center items-center space-y-10'><HomePageNews user={user} langue={langue}/> <Footer/> </div>
       <div className='absolute top-27 left-200'><TranslateTool langue={langue}/></div>
+      <div className='absolute top-4 left-300'> <ToHistPage user={user} streak={streak} langue={langue}/> </div>
     </div>
   )
 }

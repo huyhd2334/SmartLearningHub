@@ -87,9 +87,9 @@ const MainToeicPartFive = ({user, streak}) => {
             )
           ))
           }
+        <div><Button className="w-300 h-10" onClick={()=>setReload(!reload)}> Save & Next 30 questions </Button></div>
         </ul>
       </div>
-      <Button className="w-30 h-7" onClick={()=>setReload(!reload)}> Next 30 questions </Button>
     </div>
   )
 }

@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import {BookOpenText, Brain, Gamepad2, Phone, Rows3, WalletCards } from 'lucide-react'
+import {BookOpenText, Rows3} from 'lucide-react'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router'
 
@@ -28,7 +28,7 @@ export function DashMenuToeicPartFive({user, streak}) {
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col gap-6">
         <SheetHeader>
-          <SheetTitle> <div className='border-3 border-blue-500 rounded-4xl text-center w-35 h-10 text-black flex flex-row justify-center items-center'>TEST Options</div></SheetTitle>
+          <SheetTitle> <div className='border-3 border-green-600 rounded-4xl text-center w-35 h-10 text-black flex flex-row justify-center items-center'>TEST Options</div></SheetTitle>
           <SheetDescription>
             Switch
           </SheetDescription>
