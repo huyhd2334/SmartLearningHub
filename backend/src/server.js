@@ -26,7 +26,7 @@ app.use(express.json());
 
 // cors
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://smartlearninghub-2.onrender.com",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -37,11 +37,12 @@ app.use(cookieParser())
 
 // public routers
 app.use("/api/auth", routerAuth)
-app.use("/api", routerUser)
+
 
 // private routers
 app.use(protectedRouter)
 
+app.use("/api", routerUser)
 app.use("/api",routerChoseLangue)
 app.use("/api",FetchVocabrouter)
 app.use("/api", routerCrawNews)

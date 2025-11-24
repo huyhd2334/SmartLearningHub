@@ -65,11 +65,11 @@ export const loginAccount = async (req, res) => {
         
         // return refresh token to cookie
         res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production", //HTTPS  prod
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // cross-origin prod
-            maxAge: REFRESH_TOKEN_TTL,
-        });
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+        maxAge: REFRESH_TOKEN_TTL,
+        })
 
         const last = new Date(checkAccountName.lastLogin);
         const now = new Date();
