@@ -10,7 +10,7 @@ const accountSchema = new mongoose.Schema(
     type: String,
     required: true
   },
-  passW: {
+  hashPassW: {
     type: String,
     required: true
   },

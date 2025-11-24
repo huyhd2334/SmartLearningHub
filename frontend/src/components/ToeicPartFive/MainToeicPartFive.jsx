@@ -4,7 +4,7 @@ import { toast } from 'sonner'
 import { Button } from '../ui/button'
 import { CircleCheckBig, CircleX } from 'lucide-react'
 
-const MainToeicPartFive = ({user, streak}) => {
+const MainToeicPartFive = ({user}) => {
     const [reload, setReload] = useState(false)
     const [questionList, setQuestionList] = useState([])
     const [correct, setCorrect] = useState(0)
@@ -12,9 +12,12 @@ const MainToeicPartFive = ({user, streak}) => {
     const [correctCheck, setCorrectCheck] = useState([])
     const [incorrectCheck, setIncorrectCheck] = useState([])    
     useEffect(()=>{
+        const accessToken = localStorage.getItem("accessToken");
         const getQuestions = async() => {
             try{
-                const question = await api.post("/questionpartfive",{questionpartfive: "get"})
+                const question = await api.post("/questionpartfive",{questionpartfive: "get"},
+                                               {headers: {Authorization: `Bearer ${accessToken}`},
+                                               withCredentials: true })
                 if(question.data.questions){
                     setQuestionList(question.data.questions)
                     toast.success("questions already!")

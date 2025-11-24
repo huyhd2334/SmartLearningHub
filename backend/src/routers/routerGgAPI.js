@@ -1,5 +1,5 @@
 import express from "express"
-import { imageToTextHandler } from "../controler/fetchTextFromImg.js";
+import { imageToTextHandler } from "../controler/LogicTextFromImg.js";
 
 const routerFecthGgAPI = express.Router();
 

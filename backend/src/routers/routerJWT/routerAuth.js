@@ -1,6 +1,6 @@
 import express from "express"
 
-import { createAccount, loginAccount } from "../controler/loginLogic.js"
+import { createAccount, loginAccount } from "../../controler/LogicAuth.js"
 
 const router = express.Router();
 

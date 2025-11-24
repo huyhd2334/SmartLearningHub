@@ -5,9 +5,12 @@ import api from '@/lib/axios'
 const MainYourLib = ({user, langue}) => {
     const [vocabList, setVocabList] = useState([])
     useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
         const fetchVocab = async () => {
             try {
-                const res = await api.post("/getuservocab", {accountName: user, langue: langue})
+                const res = await api.post("/getuservocab", {accountName: user, langue: langue},
+                                                            {headers: {Authorization: `Bearer ${accessToken}`},
+                                                            withCredentials: true })
                 if(res.data.vocabs){
                     setVocabList(res.data.vocabs)
                     toast.success("receive data")

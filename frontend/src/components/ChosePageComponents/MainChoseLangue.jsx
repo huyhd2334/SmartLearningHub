@@ -5,15 +5,19 @@ import api from '@/lib/axios'
 import { toast, Toaster } from 'sonner'
 import { useNavigate } from 'react-router'
 
-const ChoseLangue = ({user, streak}) => {
+const ChoseLangue = ({user, streakEnglish, streakChinese}) => {
   const navigate = useNavigate()
   const handleChose = async(langue) => {
+    const accessToken = localStorage.getItem("accessToken");
     try{
       console.log("user prop in ChoseLangue:", user)
-      const res = await api.post("/choseLangue", {accountName: user, langue: langue})
+      const res = await api.post("/choseLangue", 
+                                {accountName: user, langue: langue},
+                                {headers: {Authorization: `Bearer ${accessToken}`},
+                                withCredentials: true})
       if(res.data.message){
         toast.success("Chose Successfully")
-        navigate("/homepage", { state: { user: user, streak: streak, langue: langue}})
+        navigate("/homepage", { state: { user: user, streakEnglish: streakEnglish, streakChinese: streakChinese, langue: langue}})
       }else{
         toast.error("Something went wrong")
       }

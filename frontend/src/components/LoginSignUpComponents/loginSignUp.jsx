@@ -17,11 +17,18 @@ export const LoginComponent = ({setShowSignUp, setShowLogin, setShowButton}) => 
       if (!accountName || !accountPassW) {
         return toast.error("accountName or accountPassW is empty")
       }
-      const res = await api.post("/login", { accountName, passW: accountPassW })
+      // api + jwt
+      const res = await api.post("/auth/login", 
+                                 { accountName, passW: accountPassW }, 
+                                 { withCredentials: true }) // cookie refreshToken 
+      
+      const accessToken = res.data.accessToken
+      localStorage.setItem("accessToken", accessToken) 
+
       if (res.data.message) {
         toast.success("login successfull")
         toast.success(res.data.streak)
-        navigate("/choselanguepage", { state: { user: accountName, streak: res.data.streak}})
+        navigate("/choselanguepage", { state: { user: accountName, streakEnglish: res.data.streakEnglish, streakChinese: res.data.streakChinese }})
         setAccountName("")
         setAccountPassW("")
       } else {
@@ -91,7 +98,7 @@ export const SignUpComponent = ({setShowSignUp, setShowLogin, setShowButton}) =>
       if (!accountName || !accountPassW || !userName) {
         return toast.error("imformation is empty")
       }
-      const res = await api.post("/signup", {userName, accountName, passW: accountPassW })
+      const res = await api.post("/auth/signup", {userName, accountName, passW: accountPassW })
       if (res.data.message) {
         toast.success("signup successfull")
         toast.info("login now!")

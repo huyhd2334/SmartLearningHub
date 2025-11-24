@@ -14,11 +14,14 @@ import { Label } from '@radix-ui/react-dropdown-menu'
 
 const MainFlashCard = ({user, levelFlashCard, langue}) => {
     const [vocabList, setVocabList] = useState([])
+    const accessToken = localStorage.getItem("accessToken");
     useEffect(() => {
         const getuservocab = async() => {
             try{
                 console.log("Fetching:", { user, levelFlashCard, langue })
-                const res = await api.post("/getuservocab",{accountName: user, level: levelFlashCard, langue: langue})
+                const res = await api.post("/getuservocab",{accountName: user, level: levelFlashCard, langue: langue}, 
+                                                           {headers: {Authorization: `Bearer ${accessToken}`},
+                                                           withCredentials: true })
                 if(res.data.vocabs){
                     setVocabList(res.data.vocabs)
                     console.log(res.data.vocabs)
@@ -32,9 +35,13 @@ const MainFlashCard = ({user, levelFlashCard, langue}) => {
     getuservocab()
 },[user, levelFlashCard, langue])
     const upLevel = async (vocab, pron, type, meaning, example, english, pinyin) => {
-      await api.post("/adduservocab",{accountName: user, vocab: vocab, pron: pron, type: type, meaning: meaning,example: example, langue: langue, });
+      await api.post("/adduservocab",{accountName: user, vocab: vocab, pron: pron, type: type, meaning: meaning,example: example, langue: langue},
+                                     {headers: {Authorization: `Bearer ${accessToken}`},
+                                      withCredentials: true });
       console.log("Fetching:", { user, levelFlashCard, langue })
-      const res = await api.post("/getuservocab", { accountName: user, level: levelFlashCard, langue: langue, english: english, pinyin: pinyin });
+      const res = await api.post("/getuservocab", { accountName: user, level: levelFlashCard, langue: langue, english: english, pinyin: pinyin },
+                                                  {headers: {Authorization: `Bearer ${accessToken}`},
+                                                  withCredentials: true });
       if (res.data.vocabs) setVocabList(res.data.vocabs);
     };
 

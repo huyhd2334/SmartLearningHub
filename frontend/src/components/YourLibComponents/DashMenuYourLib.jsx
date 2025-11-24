@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import {Brain, Gamepad2, Phone, Rows3, WalletCards } from 'lucide-react'
+import {Brain, Gamepad2, Rows3, WalletCards } from 'lucide-react'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router'
 

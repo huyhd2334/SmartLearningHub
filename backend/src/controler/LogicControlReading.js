@@ -1,8 +1,8 @@
-import Reading from "../models/english/news.js";
+import Reading from "../models/english/englishReading.js";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import lemmatizer from 'wink-lemmatizer';
-import Dict from "../models/english/dictAllWord.js";
+import Dict from "../models/english/englishDictAllWord.js";
 import ChineseDict from "../models/chinese/chineseDictAllWord.js"
 import ChineseReading from "../models/chinese/chineseReading.js"
 import { createRequire } from "module";

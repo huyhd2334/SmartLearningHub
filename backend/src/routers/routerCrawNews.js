@@ -1,5 +1,5 @@
 import express from "express"
-import { FindDetail, newReading, sendReading, splitReading } from "../controler/controlReadingLogic.js"
+import { FindDetail, newReading, sendReading, splitReading } from "../controler/LogicControlReading.js"
 
 const routerCrawReading = express.Router()
 

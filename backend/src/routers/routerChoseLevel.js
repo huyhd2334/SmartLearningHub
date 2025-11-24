@@ -1,4 +1,4 @@
-import { choseLangue } from "../controler/choseLevelLogic.js";
+import { choseLangue } from "../controler/LogicChoseLevel.js";
 import express from "express"
 
 const routerChoseLangue = express.Router();

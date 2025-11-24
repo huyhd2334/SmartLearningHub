@@ -1,32 +1,46 @@
 import express from "express";
-import routerLogin from "./routers/routerLogin.js"
 import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
 import cors from "cors";
 import path from "path";
-import { fileURLToPath } from "url";
 import routerChoseLangue from "./routers/routerChoseLevel.js";
 import FetchVocabrouter from "./routers/routerFetchVocab.js";
 import routerCrawNews from "./routers/routerCrawNews.js";
 import QuestionRouter from "./routers/routerQuestions.js"
-import routerFecthGgAPI from "./routers/fecthGgAPI.js"
+import routerFecthGgAPI from "./routers/routerGgAPI.js"
 import routerHist from "./routers/routerHist.js"
+import routerAuth from "./routers/routerJWT/routerAuth.js"
+import routerUser from "./routers/routerJWT/routerUser.js"
+import {protectedRouter} from "./middlewares/authMiddleware.js"
+
+import cookieParser from "cookie-parser"
 
 dotenv.config();
 const __dirname = path.resolve();
 
 // create app
 const app = express()
-app.use(cors())
 
-// midware
-app.use(express.json())
-if (process.env.NODE_ENV !== "production") {
-  app.use(cors({ origin: "http://localhost:5173" }));
-}
+// middleware
+app.use(express.json());
 
-// user different route
-app.use("/api",routerLogin)
+// cors
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
+// cookie
+app.use(cookieParser())
+
+// public routers
+app.use("/api/auth", routerAuth)
+
+// private routers
+app.use(protectedRouter)
+app.use("/api/auth", routerUser)
 app.use("/api",routerChoseLangue)
 app.use("/api",FetchVocabrouter)
 app.use("/api", routerCrawNews)
@@ -43,7 +57,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 connectDB().then(() => {
-  app.listen(8386, () => {
-    console.log(`server bắt đầu trên cổng ${8386}`);
+  app.listen(process.env.PORT, () => {
+    console.log(`server bắt đầu trên cổng ${process.env.PORT}`);
   });
 });

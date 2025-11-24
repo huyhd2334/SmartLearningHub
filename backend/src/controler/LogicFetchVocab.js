@@ -2,7 +2,7 @@ import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import ChineseDict from "../models/chinese/chineseDictAllWord.js"
 // Done
-export const fetchVocabTo = async(req,res) => {
+export const get100Vocabs = async(req,res) => {
     try {
     const { offset, langue } = req.body;
     if(langue === "english"){

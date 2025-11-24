@@ -3,15 +3,18 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { Button } from '../ui/button'
 
-const HomePageNews = ({ user, langue }) => {
+const HomePageNews = ({ langue }) => {
     const [articles, setArticles] = useState([])
     const [binary, setBinary] = useState([])
     const [learning, setLearning] = useState([])
     const [mode, setMode] = useState(true)
     useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
     const getReading = async () => {
         try {
-        const res = await api.post("/getreading", { get: "get", langue: langue });
+        const res = await api.post("/getreading", { get: "get", langue: langue },
+                                  {headers: {Authorization: `Bearer ${accessToken}`},
+                                  withCredentials: true });
         setArticles(res.data.reading);
         } catch (error) {
         toast.error("Failed to get articles");
@@ -23,7 +26,9 @@ const HomePageNews = ({ user, langue }) => {
     useEffect(() => {
     if (!mode && articles.length > 0) {
         const getBinary = async () => {
-        const res = await api.post("/splitreading", { id: articles[0]._id, langue: langue });
+        const res = await api.post("/splitreading", { id: articles[0]._id, langue: langue },
+                                                    {headers: {Authorization: `Bearer ${accessToken}`},
+                                                    withCredentials: true })
         setBinary(res.data.data);
         setLearning(articles);
         };
@@ -32,7 +37,9 @@ const HomePageNews = ({ user, langue }) => {
     }, [mode, articles]);
 
     const findWordDetail = async(word) => {
-        const detail = await api.post("/finddetail",{word: word, langue: langue}) 
+        const detail = await api.post("/finddetail",{word: word, langue: langue},
+                                     {headers: {Authorization: `Bearer ${accessToken}`},
+                                     withCredentials: true }) 
         if(langue === "english"){
            toast.info(detail.data.detail["meaning"], {duration: 5000})
         }else{toast.info(`${detail.data.detail["pinyin"]} \n ${detail.data.detail["meaning"]} \n ${detail.data.detail["english"]}`, {duration: 5000})}

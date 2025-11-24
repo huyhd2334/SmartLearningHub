@@ -1,4 +1,4 @@
-import UserVocabs from "../models/english/userVocab.js";
+import UserVocabs from "../models/english/englishUserVocab.js";
 import ChineseUserVocabs from "../models/chinese/chineseUserVocab.js"
 export const FetchUserVocab = async(req,res) => {
     try{
