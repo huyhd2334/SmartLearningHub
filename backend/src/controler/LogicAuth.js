@@ -66,10 +66,11 @@ export const loginAccount = async (req, res) => {
         // return refresh token to cookie
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
-            secure: true,
-            sameSite: "none",
+            secure: process.env.NODE_ENV === "production", //HTTPS  prod
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // cross-origin prod
             maxAge: REFRESH_TOKEN_TTL,
-        })
+        });
+
         const last = new Date(checkAccountName.lastLogin);
         const now = new Date();
  
@@ -93,7 +94,11 @@ export const logout = async(req, res) => {
         // delete refresh token in session
            await Session.deleteOne({refreshToken: token});
         // delete cookie
-           res.clearCookie("refreshToken")
+        res.clearCookie("refreshToken", {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        });
         }
 
         return res.sendStatus(204)
