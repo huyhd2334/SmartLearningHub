@@ -26,7 +26,7 @@ app.use(express.json());
 
 // cors
 app.use(cors({
-  origin: "https://smartlearninghub-2.onrender.com",
+  origin: "http://localhost:5173",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -38,17 +38,15 @@ app.use(cookieParser())
 // public routers
 app.use("/api/auth", routerAuth)
 
-
 // private routers
-app.use(protectedRouter)
 
-app.use("/api", routerUser)
-app.use("/api",routerChoseLangue)
-app.use("/api",FetchVocabrouter)
-app.use("/api", routerCrawNews)
-app.use("/api", QuestionRouter)
-app.use("/api", routerFecthGgAPI)
-app.use("/api", routerHist)
+app.use("/api", protectedRouter, routerUser)
+app.use("/api", protectedRouter, routerChoseLangue)
+app.use("/api", protectedRouter, FetchVocabrouter)
+app.use("/api", protectedRouter, routerCrawNews)
+app.use("/api", protectedRouter, QuestionRouter)
+app.use("/api", protectedRouter, routerFecthGgAPI)
+app.use("/api", protectedRouter, routerHist)
 
 if (process.env.NODE_ENV === "production") {
    app.use(express.static(path.join(__dirname, "../frontend/dist")));
