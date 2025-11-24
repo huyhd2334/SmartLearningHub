@@ -37,10 +37,11 @@ app.use(cookieParser())
 
 // public routers
 app.use("/api/auth", routerAuth)
+app.use("/api", routerUser)
 
 // private routers
 app.use(protectedRouter)
-app.use("/api", routerUser)
+
 app.use("/api",routerChoseLangue)
 app.use("/api",FetchVocabrouter)
 app.use("/api", routerCrawNews)
