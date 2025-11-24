@@ -3,7 +3,10 @@ import { getNewAccessToken } from "@/lib/auth";
 
 const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:8386/api" : "/api";
 
-const api = axios.create({baseURL: BASE_URL,});
+const api = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true
+});
 
 api.interceptors.response.use(
   response => response,

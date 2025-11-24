@@ -40,7 +40,7 @@ app.use("/api/auth", routerAuth)
 
 // private routers
 app.use(protectedRouter)
-app.use("/api/auth", routerUser)
+app.use("/api", routerUser)
 app.use("/api",routerChoseLangue)
 app.use("/api",FetchVocabrouter)
 app.use("/api", routerCrawNews)
