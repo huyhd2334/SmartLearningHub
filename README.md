@@ -40,6 +40,6 @@
     👨‍💻 Development Member
   </h2>
   <p class="text-gray-700">
-    <b>Vũ Văn Quốc Huy</b> — Fullstack Developer
+    <b>Quốc Huy</b> — Fullstack Developer
   </p>
 </div>
