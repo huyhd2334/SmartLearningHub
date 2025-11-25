@@ -12,7 +12,6 @@ import routerHist from "./routers/routerHist.js"
 import routerAuth from "./routers/routerJWT/routerAuth.js"
 import routerUser from "./routers/routerJWT/routerUser.js"
 import {protectedRouter} from "./middlewares/authMiddleware.js"
-
 import cookieParser from "cookie-parser"
 
 dotenv.config();

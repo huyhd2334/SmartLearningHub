@@ -9,7 +9,7 @@ const sessionSchema = new mongoose.Schema(
     },
 
     refreshToken: {
-      type: String,   // sửa: String viết hoa
+      type: String,  
       required: true,
     },
 
@@ -23,7 +23,6 @@ const sessionSchema = new mongoose.Schema(
   }
 );
 
-// auto delete when token expires
-sessionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 }); // sửa: expiresAt đúng tên
+sessionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 export default mongoose.model('Session', sessionSchema);

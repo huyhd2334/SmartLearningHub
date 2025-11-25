@@ -59,6 +59,7 @@ export const splitReading = async(req, res) => {
             driver: sqlite3.Database,
         });
         const {id, langue, textChinese} = req.body;
+        console.log("split reading", id, langue)
         if(!textChinese){
             if (langue === "english") {
                 if (id) {

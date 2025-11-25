@@ -25,7 +25,9 @@ const HomePageNews = ({ langue }) => {
 
     useEffect(() => {
     if (!mode && articles.length > 0) {
+        const accessToken = localStorage.getItem("accessToken")
         const getBinary = async () => {
+        console.log("split reading", articles[0]._id, langue)
         const res = await api.post("/splitreading", { id: articles[0]._id, langue: langue },
                                                     {headers: {Authorization: `Bearer ${accessToken}`},
                                                     withCredentials: true })
@@ -37,6 +39,7 @@ const HomePageNews = ({ langue }) => {
     }, [mode, articles]);
 
     const findWordDetail = async(word) => {
+        const accessToken = localStorage.getItem("accessToken")
         const detail = await api.post("/finddetail",{word: word, langue: langue},
                                      {headers: {Authorization: `Bearer ${accessToken}`},
                                      withCredentials: true }) 
