@@ -28,9 +28,7 @@ const HistoryStatics = ({user, streak, langue}) => {
       const accessToken = localStorage.getItem("accessToken");
       const labelFlashCard = ["level0","level1", "level2", "level3", "level4", "level5", "level6"];
       if(type === "flashcard"){
-      const res = await api.post("/hist/countflashcard", {user: user, langue: langue}, 
-                                {headers: {Authorization: `Bearer ${accessToken}`},
-                                withCredentials: true })
+      const res = await api.post("/hist/countflashcard", {user: user, langue: langue})
       let dataFlashCardRecv = {
         labels: labelFlashCard,
         datasets: [
@@ -42,9 +40,7 @@ const HistoryStatics = ({user, streak, langue}) => {
       setDataFlashCard(dataFlashCardRecv)
       return 
     }if(type === "totalvocab"){
-      const res = await api.post("/hist/countallvocab", {user: user, langue: langue}, 
-                                                        {headers: {Authorization: `Bearer ${accessToken}`},
-                                                        withCredentials: true })
+      const res = await api.post("/hist/countallvocab", {user: user, langue: langue})
       if(langue === "english"){
               let dataTotalVocabRecv = {
           datasets: [{data: [res.data.totalVocab, 116117],

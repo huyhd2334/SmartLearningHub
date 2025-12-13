@@ -12,9 +12,7 @@ const ChoseLangue = ({user, streakEnglish, streakChinese}) => {
     try{
       console.log("user prop in ChoseLangue:", user)
       const res = await api.post("/choseLangue", 
-                                {accountName: user, langue: langue},
-                                {headers: {Authorization: `Bearer ${accessToken}`},
-                                withCredentials: true})
+                                {accountName: user, langue: langue})
       if(res.data.message){
         toast.success("Chose Successfully")
         navigate("/homepage", { state: { user: user, streakEnglish: streakEnglish, streakChinese: streakChinese, langue: langue}})

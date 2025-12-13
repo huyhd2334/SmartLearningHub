@@ -15,9 +15,7 @@ const MainToeicPartFive = ({user}) => {
         const accessToken = localStorage.getItem("accessToken");
         const getQuestions = async() => {
             try{
-                const question = await api.post("/questionpartfive",{questionpartfive: "get"},
-                                               {headers: {Authorization: `Bearer ${accessToken}`},
-                                               withCredentials: true })
+                const question = await api.post("/questionpartfive",{questionpartfive: "get"})
                 if(question.data.questions){
                     setQuestionList(question.data.questions)
                     toast.success("questions already!")

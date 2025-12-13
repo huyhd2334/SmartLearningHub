@@ -1,4 +1,4 @@
-import {Toaster, toast} from "sonner"
+import {Toaster} from "sonner"
 import {BrowserRouter, Routes, Route} from "react-router"
 import LoginPage from "./pages/loginPage.jsx"
 import NotFoundPages from "./pages/notFoundPages.jsx"

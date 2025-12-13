@@ -12,9 +12,7 @@ const HomePageNews = ({ langue }) => {
     const accessToken = localStorage.getItem("accessToken");
     const getReading = async () => {
         try {
-        const res = await api.post("/getreading", { get: "get", langue: langue },
-                                  {headers: {Authorization: `Bearer ${accessToken}`},
-                                  withCredentials: true });
+        const res = await api.post("/getreading", { get: "get", langue: langue });
         setArticles(res.data.reading);
         } catch (error) {
         toast.error("Failed to get articles");
@@ -28,9 +26,7 @@ const HomePageNews = ({ langue }) => {
         const accessToken = localStorage.getItem("accessToken")
         const getBinary = async () => {
         console.log("split reading", articles[0]._id, langue)
-        const res = await api.post("/splitreading", { id: articles[0]._id, langue: langue },
-                                                    {headers: {Authorization: `Bearer ${accessToken}`},
-                                                    withCredentials: true })
+        const res = await api.post("/splitreading", { id: articles[0]._id, langue: langue })
         setBinary(res.data.data);
         setLearning(articles);
         };
@@ -40,9 +36,7 @@ const HomePageNews = ({ langue }) => {
 
     const findWordDetail = async(word) => {
         const accessToken = localStorage.getItem("accessToken")
-        const detail = await api.post("/finddetail",{word: word, langue: langue},
-                                     {headers: {Authorization: `Bearer ${accessToken}`},
-                                     withCredentials: true }) 
+        const detail = await api.post("/finddetail",{word: word, langue: langue}) 
         if(langue === "english"){
            toast.info(detail.data.detail["meaning"], {duration: 5000})
         }else{toast.info(`${detail.data.detail["pinyin"]} \n ${detail.data.detail["meaning"]} \n ${detail.data.detail["english"]}`, {duration: 5000})}

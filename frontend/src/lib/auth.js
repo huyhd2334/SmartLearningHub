@@ -1,13 +1,21 @@
-import api from "@/lib/axios";
+import axios from "axios";
+
+const BASE_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:8386/api"
+    : "/api";
+    
+const authApi = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true
+});
 
 export const getNewAccessToken = async () => {
   try {
-    const res = await api.post("/refresh-token", {}, { withCredentials: true });
-    const newAccessToken = res.data.accessToken;
-    localStorage.setItem("accessToken", newAccessToken);
-    return newAccessToken;
-  } catch (error) {
-    console.error("Refresh token failed:", error);
+    const res = await authApi.post("/refresh-token");
+    localStorage.setItem("accessToken", res.data.accessToken);
+    return res.data.accessToken;
+  } catch (err) {
     window.location.href = "/login";
   }
 };

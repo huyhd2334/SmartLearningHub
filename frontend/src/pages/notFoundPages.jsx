@@ -9,7 +9,7 @@ const NotFoundPages = () => {
         className="max-w-full mb-6 w-96"
       />
 
-      <p className="text-xl font-semibold"> lỗi đường dẫn 🚫</p>
+      <p className="text-xl font-semibold"> lỗi đường dẫn </p>
 
       <a
         href="/"

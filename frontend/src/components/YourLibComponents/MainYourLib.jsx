@@ -8,9 +8,7 @@ const MainYourLib = ({user, langue}) => {
         const accessToken = localStorage.getItem("accessToken");
         const fetchVocab = async () => {
             try {
-                const res = await api.post("/getuservocab", {accountName: user, langue: langue},
-                                                            {headers: {Authorization: `Bearer ${accessToken}`},
-                                                            withCredentials: true })
+                const res = await api.post("/getuservocab", {accountName: user, langue: langue})
                 if(res.data.vocabs){
                     setVocabList(res.data.vocabs)
                     toast.success("receive data")

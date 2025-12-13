@@ -6,31 +6,29 @@
 
 @layer base {
   :root {
-    /* Modern todo app color palette */
-    --background: 120 20% 98%;          /* nền xanh lá rất nhạt */
-    --background-secondary: 120 30% 55%; /* nền xanh lá nhạt hơn */
-    --foreground: 120 80% 27%;          /* chữ xanh lá đậm */
+    --background: 120 20% 98%;      
+    --background-secondary: 120 30% 55%; 
+    --foreground: 120 80% 27%;     
 
 
     --card: 0 0% 100%;
     --card-foreground: 120 28% 27%;
-    --card-shadow: 120 36% 18%; /* slate 800 */
+    --card-shadow: 120 36% 18%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 215 28% 27%;
 
-    /* Beautiful gradient colors */
     --primary: 120 85% 35%;
     --primary-light: 120 80% 50%;
     --primary-dark: 120 90% 25%;
-    --primary-foreground: 0 0% 100%; /* chữ trắng */
+    --primary-foreground: 0 0% 100%;
 
 
     --secondary: 240 5% 96%;
     --secondary-foreground: 240 6% 10%;
 
     --muted: 240 5% 96%;
-    --muted-foreground: 215 18% 47%; /* slate-500 */
+    --muted-foreground: 215 18% 47%; 
 
     --accent: 204 94% 94%;
     --accent-foreground: 204 100% 40%;
@@ -44,11 +42,11 @@
     --info: 226, 100%, 63%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 120 32% 91%; /* slate-200 */
+    --border: 120 32% 91%; 
     --input: 210 40% 96%;
     --ring: 258 89% 65%;
 
-    /* Gradients */
+
     --gradient-primary: linear-gradient(
       135deg,
       hsl(255 92% 76%) 0%,
@@ -65,7 +63,6 @@
       hsl(240 10% 99%) 100%
     );
 
-    /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(218 36% 18% / 0.05);
     --shadow-md: 0 4px 6px -1px hsl(218 36% 18% / 0.1),
       0 2px 4px -2px hsl(218 36% 18% / 0.1);
@@ -73,7 +70,6 @@
       0 4px 6px -4px hsl(218 36% 18% / 0.1);
     --shadow-glow: 0 0 20px hsl(258 89% 65% / 0.3);
 
-    /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 

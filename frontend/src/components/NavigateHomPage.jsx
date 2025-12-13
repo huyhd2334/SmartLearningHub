@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Link } from "react-router-dom";
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon, LogOut, UserCog } from "lucide-react";
+import { LogOut, UserCog } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,

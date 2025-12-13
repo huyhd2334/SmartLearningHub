@@ -9,9 +9,7 @@ const ShowAllVocab = ({ value, setDataReady, user, langue }) => {
   useEffect(() => {
     const fetchVocab = async () => {
     try {
-        const res = await api.post("/get100vocab", { offset: (value-1) * 100 + 1 , langue: langue},
-                                                   {headers: {Authorization: `Bearer ${accessToken}`},
-                                                   withCredentials: true })
+        const res = await api.post("/get100vocab", { offset: (value-1) * 100 + 1 , langue: langue})
         toast.success(`get page ${value}`)
         if(res.data){
           setDataReady(true)
@@ -31,9 +29,7 @@ const ShowAllVocab = ({ value, setDataReady, user, langue }) => {
     }}, [value])
     const addVocabulary = async(vocab,pron,type,meaning,example) =>{
        try{
-          await api.post("/adduservocab",{accountName: user, vocab, pron, type, meaning, example, langue: langue},
-                                                           {headers: {Authorization: `Bearer ${accessToken}`},
-                                                           withCredentials: true })
+          await api.post("/adduservocab",{accountName: user, vocab, pron, type, meaning, example, langue: langue})
           toast.success(`Saving ${vocab}`)
        }catch(error){
         console.error(error)
@@ -41,9 +37,7 @@ const ShowAllVocab = ({ value, setDataReady, user, langue }) => {
     }
     const addChinsesVocabulary = async(vocab,meaning,english,pinyin) =>{
        try{
-          await api.post("/adduservocab",{accountName: user, vocab, meaning, english, pinyin, langue: langue},
-                                                           {headers: {Authorization: `Bearer ${accessToken}`},
-                                                           withCredentials: true })
+          await api.post("/adduservocab",{accountName: user, vocab, meaning, english, pinyin, langue: langue})
           toast.success(`Saving ${vocab}`)
        }catch(error){
         console.error(error)
