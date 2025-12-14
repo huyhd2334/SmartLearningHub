@@ -8,7 +8,7 @@ import { useNavigate, useLocation  } from 'react-router';
 import { toast } from 'sonner';
 import Footer from '@/components/HomePageComponents/Footer';
 import ToHistPage from '@/components/HomePageComponents/ToHistPage';
-import Announcement from '@/components/announcement';
+import Announcement from '@/components/Announcement';
 
 const HomePage = () => {
   const location = useLocation()
