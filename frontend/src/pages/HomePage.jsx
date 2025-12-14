@@ -30,7 +30,7 @@ const HomePage = () => {
       {announcement && (
         <div className='fixed inset-0 z-50 w-full h-full'>
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
-          <div className="flex justify-center items-center z-40 translate-y-15"><Announcement/></div>
+          <div className="flex justify-center items-center z-40 translate-y-15"> <Announcement userName={user} streak={streak} langue={langue}/> </div>
         </div>
        )
       }

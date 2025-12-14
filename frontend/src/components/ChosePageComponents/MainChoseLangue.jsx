@@ -2,7 +2,7 @@ import { Languages } from 'lucide-react'
 import React from 'react'
 import { Button } from '../ui/button'
 import api from '@/lib/axios'
-import { toast, Toaster } from 'sonner'
+import { toast } from 'sonner'
 import { useNavigate } from 'react-router'
 
 const ChoseLangue = ({user, streakEnglish, streakChinese}) => {
