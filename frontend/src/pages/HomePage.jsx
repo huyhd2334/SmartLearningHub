@@ -25,7 +25,8 @@ const HomePage = () => {
     toast.success(`WellCome ${user} to ${langue}Home `)
   }, [user, navigate]);
   return (
-    <div onClick={()=>{setAnnouncement(false)}}className='flex flex-col justify-center items-center min-h-screen translate-y-0 text-black font-semibold md:space-y-30 sm:space-y-20 px-4 inset-0'>
+    <div onClick={()=>{setAnnouncement(false)}}
+         className='flex flex-col justify-center items-center min-h-screen translate-x-5 text-black font-semibold md:space-y-30 sm:space-y-20 px-4 inset-0'>
       <NavigationHomePage user={user} streak={streak} langue={langue}/>
       {announcement && (
         <div className='fixed inset-0 z-50 w-full h-full'>

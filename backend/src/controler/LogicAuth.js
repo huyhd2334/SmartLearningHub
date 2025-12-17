@@ -9,7 +9,7 @@ import Session from "../models/session.js"
 
 dotenv.config()
 const ACCESS_TOKEN_TTL = '30m'
-const REFRESH_TOKEN_TTL = 14 * 24 * 60 * 60 * 100 // 14 DAYS
+const REFRESH_TOKEN_TTL = 14 * 24 * 60 * 60 * 100 
 
 export const createAccount = async(req,res) => {
     try{

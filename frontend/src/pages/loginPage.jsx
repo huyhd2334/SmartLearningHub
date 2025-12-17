@@ -38,7 +38,7 @@ const LoginPage = () => {
         {showSignUp && !showLogin && <SignUpComponent setShowSignUp={setShowSignUp} setShowLogin={setShowLogin} setShowButton={setShowButton}/>}
         </div>
       </div>
-      <div className="absolute left-110 h-full">
+      <div className="absolute left-120 h-full">
         <img
           src="hello.jpg"
           alt="hello"

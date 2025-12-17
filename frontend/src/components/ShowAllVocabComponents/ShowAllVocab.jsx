@@ -9,7 +9,7 @@ const ShowAllVocab = ({ value, setDataReady, user, langue }) => {
   useEffect(() => {
     const fetchVocab = async () => {
     try {
-        const res = await api.post("/get100vocab", { offset: (value-1) * 100 + 1 , langue: langue})
+        const res = await api.post("/getallvocab", { offset: (value-1) * 100 + 1 , langue: langue})
         toast.success(`get page ${value}`)
         if(res.data){
           setDataReady(true)
@@ -48,15 +48,15 @@ const ShowAllVocab = ({ value, setDataReady, user, langue }) => {
       <span className="absolute -top-3 left-4 bg-green-300 px-2 text-sm font-semibold rounded-8xl rounded-lg">
         Vocabulary
       </span>
-      <ul>
+      <ul className='space-y-2'>
         {vocabList.map((vocab, idx) => (
           <li key={idx}> 
               {langue === "english"
-                  ? <Button size="xl" className="w-280 h-5" onClick={() => addVocabulary(vocab.vocab,vocab.pron,vocab.type,vocab.meaning,vocab.example)}>
-                      {vocab.vocab} {vocab.type} {vocab.meaning}
+                  ? <Button className="w-280 h-12 text-base" onClick={() => addVocabulary(vocab.vocab,vocab.pron,vocab.type,vocab.meaning,vocab.example)}>
+                      {vocab.vocab} {vocab.type} {vocab.meaning} {vocab.example}
                     </Button>
 
-                  : <Button size="xl" className="w-280 h-5 bg-blue-400" onClick={() => addChinsesVocabulary(vocab.vocab,vocab.meaning,vocab.english, vocab.pinyin)}>
+                  : <Button className="w-280 h-12 bg-blue-400 " onClick={() => addChinsesVocabulary(vocab.vocab,vocab.meaning,vocab.english, vocab.pinyin)}>
                       {vocab.vocab} {vocab.pinyin} {vocab.meaning}
                     </Button>}
           </li>

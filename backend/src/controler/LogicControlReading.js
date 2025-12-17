@@ -54,10 +54,6 @@ export const sendReading = async(req, res) => {
 
 export const splitReading = async(req, res) => {
     try {
-        const db = await open({
-            filename: "dictionary.db",
-            driver: sqlite3.Database,
-        });
         const {id, langue, textChinese} = req.body;
         console.log("split reading", id, langue)
         if(!textChinese){
@@ -81,7 +77,6 @@ export const splitReading = async(req, res) => {
                     if(data){
                         const chineseStopWords = new Set(["的","了","在","是","和","也","上","。","，","、"]);
 
-                        // Dùng segment trực tiếp trên nội dung
                         const segmented = segment.doSegment(data.content);
                         const words = segmented
                         .map(w => w.w)               // lấy từ

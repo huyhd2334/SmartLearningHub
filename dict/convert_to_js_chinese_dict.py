@@ -26,7 +26,6 @@ with open(input_path, "r", encoding="utf-16") as f:
         vietnamese_text = re.sub(r"\{[^}]+\}", "", rest)
         vietnamese_text = vietnamese_text.replace("|=", "").strip()
 
-        # 🔥 Thêm pinyin tự động
         pinyin_text = ' '.join([item[0] for item in pinyin(chinese_word, style=Style.TONE3)])
 
         entries.append({
@@ -37,7 +36,6 @@ with open(input_path, "r", encoding="utf-16") as f:
             "synonyms": []
         })
 
-# --- Ghi ra file JSON ---
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(entries, f, ensure_ascii=False, indent=2)
 
