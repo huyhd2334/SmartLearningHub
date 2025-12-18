@@ -1,29 +1,49 @@
-import express from "express"
-import { spawn } from "child_process"
-import path from "path"
-export const getVocabForSurvey = async(req, res) => {
-    try {
-        const {number, offset} = req.body
-        const pyPath = path.resolve(process.cwd(),"..", "ML", "data","create_data_survey", "generate_survey.py")
-        
-        const pythonCmd = process.platform === "win32" ? "python" : "python3";
-        const py = spawn(pythonCmd, [pyPath, String(number), String(offset)]);
-        
-        let result = ""
+import Dict from "../models/english/englishDictAllWord.js"
 
-        py.stdout.on("data", (chunk) => {
-        result += chunk.toString()
-        });
+const PREFIXES = ["un", "re", "pre", "mis", "dis", "in", "im", "non"];
+const SUFFIXES = ["tion", "sion", "ing", "ed", "able", "ible", "ment", "ness"];
 
-        py.on("close", () => {
-        const parsed = JSON.parse(result)
-        res.status(200).send(parsed)
-        console.log(parsed)
-        });
-
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: "Server error" })
-    }   
-
+function checkPrefix(word) {
+  for (const p of PREFIXES) {
+    if (word.startsWith(p) && word.length > p.length + 2) {
+      return p;
+    }
+  }
+  return "";
 }
+
+function checkSuffix(word) {
+  for (const s of SUFFIXES) {
+    if (word.endsWith(s) && word.length > s.length + 2) {
+      return s;
+    }
+  }
+  return "";
+}
+
+
+export const getVocabForSurvey = async (req, res) => {
+  try {
+    const { number, offset} = req.body;
+
+    const rows = await collection.find({}, { projection: { _id: 0, vocab: 1 } }).skip(Number(offset)).limit(Number(number)).toArray();
+    const result = rows.map((row) => {
+      const word = row.vocab;
+      return {
+        word,
+        length_word: word.length,
+        prefix: checkPrefix(word),
+        suffix: checkSuffix(word),
+      };
+    });
+
+    res.status(200).json({
+      form_title: "Vocabulary Survey",
+      words: result,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
