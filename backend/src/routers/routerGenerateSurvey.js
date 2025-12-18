@@ -1,5 +1,5 @@
 import express from "express"
-import { getVocabForSurvey } from "../controler/LogicGenerateSurvey"
+import { getVocabForSurvey } from "../controler/LogicGenerateSurvey.js"
 
 const routerSurvey = express.Router()
 

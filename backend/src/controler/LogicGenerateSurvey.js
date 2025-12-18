@@ -1,11 +1,13 @@
 import express from "express"
 import { spawn } from "child_process"
-
+import path from "path"
 export const getVocabForSurvey = async(req, res) => {
     try {
         const {number, offset} = req.body
-        const pyPath = path.resolve(process.cwd(), "ML", "generate_survey.py")
-        const py = spawn("python",[pyPath, String(number), String(offset)])
+        const pyPath = path.resolve(process.cwd(),"..", "ML", "data","create_data_survey", "generate_survey.py")
+        
+        const pythonCmd = process.platform === "win32" ? "python" : "python3";
+        const py = spawn(pythonCmd, [pyPath, String(number), String(offset)]);
         
         let result = ""
 
