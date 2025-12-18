@@ -23,7 +23,6 @@
     "@google-cloud/vision": "^5.3.4",
     "chinese-tokenizer": "^2.4.0",
     "pandas": "^0.0.3",
-    "tokenizer": "^0.1.0",
-    "pymongo"
+    "tokenizer": "^0.1.0"
   }
 }
