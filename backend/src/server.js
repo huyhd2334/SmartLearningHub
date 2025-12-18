@@ -11,7 +11,7 @@ import routerFecthGgAPI from "./routers/routerGgAPI.js"
 import routerHist from "./routers/routerHist.js"
 import routerAuth from "./routers/routerJWT/routerAuth.js"
 import routerUser from "./routers/routerJWT/routerUser.js"
-import routerSurvey from "./routers/routersurvey.js"
+import routerSurvey from "./routers/routerGenerateSurvey.js"
 import {protectedRouter} from "./middlewares/authMiddleware.js"
 import cookieParser from "cookie-parser"
 
