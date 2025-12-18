@@ -2,7 +2,7 @@ import json
 import re
 from pypinyin import pinyin, Style
 
-input_path = "dict/Chinese - Vietnamese.csv"
+input_path = "dict/chinese_dict.csv"
 output_path = "dict/chinese_dict.json"
 
 entries = []

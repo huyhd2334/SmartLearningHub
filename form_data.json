@@ -1,0 +1,602 @@
+[
+  {
+    "word": "everyday",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "inspiration",
+    "word_length": 11,
+    "suffix": "tion",
+    "prefix": "in"
+  },
+  {
+    "word": "market",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "preparation",
+    "word_length": 11,
+    "suffix": "tion",
+    "prefix": "pre"
+  },
+  {
+    "word": "casually",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "movie",
+    "word_length": 5,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "influence",
+    "word_length": 9,
+    "suffix": null,
+    "prefix": "in"
+  },
+  {
+    "word": "theme",
+    "word_length": 5,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "draw",
+    "word_length": 4,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "session",
+    "word_length": 7,
+    "suffix": "sion",
+    "prefix": null
+  },
+  {
+    "word": "logical",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "aware",
+    "word_length": 5,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "courier",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "multiple",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "distinguish",
+    "word_length": 11,
+    "suffix": null,
+    "prefix": "dis"
+  },
+  {
+    "word": "recruit",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": "re"
+  },
+  {
+    "word": "beverage",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "bargain",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "comprehensive",
+    "word_length": 13,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "deluxe",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "directory",
+    "word_length": 9,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "remainder",
+    "word_length": 9,
+    "suffix": null,
+    "prefix": "re"
+  },
+  {
+    "word": "software",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "retire",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": "re"
+  },
+  {
+    "word": "be aware of",
+    "word_length": 11,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "lock into",
+    "word_length": 9,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "portion",
+    "word_length": 7,
+    "suffix": "tion",
+    "prefix": null
+  },
+  {
+    "word": "quality",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "museum",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "busy",
+    "word_length": 4,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "contact",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "disappoint",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": "dis"
+  },
+  {
+    "word": "thrill",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "collaboration",
+    "word_length": 13,
+    "suffix": "tion",
+    "prefix": null
+  },
+  {
+    "word": "appreciation",
+    "word_length": 12,
+    "suffix": "tion",
+    "prefix": null
+  },
+  {
+    "word": "representation",
+    "word_length": 14,
+    "suffix": "tion",
+    "prefix": "re"
+  },
+  {
+    "word": "allocate",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "accommodate",
+    "word_length": 11,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "attend",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "location",
+    "word_length": 8,
+    "suffix": "tion",
+    "prefix": null
+  },
+  {
+    "word": "overview",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "go ahead",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "progress",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "designate",
+    "word_length": 9,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "escort",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "mission",
+    "word_length": 7,
+    "suffix": "sion",
+    "prefix": "mis"
+  },
+  {
+    "word": "budget",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "burden",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "settle",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "integral",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": "in"
+  },
+  {
+    "word": "ship",
+    "word_length": 4,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "dialogue",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "prevent",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": "pre"
+  },
+  {
+    "word": "coordinate",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "candidate",
+    "word_length": 9,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "shopping",
+    "word_length": 8,
+    "suffix": "ing",
+    "prefix": null
+  },
+  {
+    "word": "checkout",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "terms",
+    "word_length": 5,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "disparate",
+    "word_length": 9,
+    "suffix": null,
+    "prefix": "dis"
+  },
+  {
+    "word": "disk",
+    "word_length": 4,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "delicately",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "reject",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": "re"
+  },
+  {
+    "word": "diversify",
+    "word_length": 9,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "stationery",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "admire",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "schedule",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "optional",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "tempt",
+    "word_length": 5,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "predict",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": "pre"
+  },
+  {
+    "word": "hesitant",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "scrutiny",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "combine",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "description",
+    "word_length": 11,
+    "suffix": "tion",
+    "prefix": null
+  },
+  {
+    "word": "successive",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "method",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "relinquish",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": "re"
+  },
+  {
+    "word": "conference",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "variety",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "experiment",
+    "word_length": 10,
+    "suffix": "ment",
+    "prefix": null
+  },
+  {
+    "word": "waste",
+    "word_length": 5,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "media",
+    "word_length": 5,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "constitute",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "hospital",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "identify",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "usually",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "pick up",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "sell out",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "serious",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "qualification",
+    "word_length": 13,
+    "suffix": "tion",
+    "prefix": null
+  },
+  {
+    "word": "reason",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": "re"
+  },
+  {
+    "word": "punctually",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "process",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "technically",
+    "word_length": 11,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "compensate",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "as needed",
+    "word_length": 9,
+    "suffix": "ed",
+    "prefix": null
+  },
+  {
+    "word": "conduct",
+    "word_length": 7,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "update",
+    "word_length": 6,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "maintain",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "productive",
+    "word_length": 10,
+    "suffix": null,
+    "prefix": null
+  },
+  {
+    "word": "deadline",
+    "word_length": 8,
+    "suffix": null,
+    "prefix": null
+  }
+]

@@ -22,9 +22,11 @@ export const getAllVocabs = async(req,res) => {
         res.status(500).json({ error: "Database error" });}  
 }
 
-const openDB = async () => {
-  return open({
-    filename: "dictionary.db",
-    driver: sqlite3.Database
-  });
-};
+export const getAllVocabsTopic =  async(req, res) => {
+       const langue = req.body
+       try {
+        
+       } catch (error) {
+        
+       }
+}
