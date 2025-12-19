@@ -28,14 +28,14 @@ export const getVocabForSurvey = async (req, res) => {
 
     const rows = await Dict.find({}).skip(Number(offset)).limit(Number(number))
     
-    const result = rows.map((row) => {
-      const word = row["vocab"];
-      return {
-        word,
-        length_word: word.length,
-        prefix: checkPrefix(word),
-        suffix: checkSuffix(word),
-      };
+    const result = rows.filter(row => row.vocab.length >= 5).map((row) => {
+      const word = row["vocab"]
+        return {
+          word,
+          length_word: word.length,
+          prefix: checkPrefix(word),
+          suffix: checkSuffix(word),
+        }
     });
 
     res.status(200).json({
