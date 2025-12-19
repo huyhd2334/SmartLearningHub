@@ -1,6 +1,6 @@
 import {Toaster} from "sonner"
 import {BrowserRouter, Routes, Route} from "react-router"
-import LoginPage from "./pages/LoginPage.jsx"
+import LoginPage from "./pages/loginPage.jsx"
 import NotFoundPages from "./pages/NotFoundPage.jsx"
 import ChoseLanguePage from "./pages/ChoseLanguePage.jsx"
 import HomePage from "./pages/HomePage.jsx"
