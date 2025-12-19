@@ -37,11 +37,11 @@ const FlashCardPages = () => {
       />
       {/* Your content goes here */}
      <div className='flex flex-col min-h-screen justify-center items-center text-black space-y-10 translate-y-[30px]'>
-       <div className='absolute top-1 left-125'> <HeaderFlashCard user={user} levelFlashCard={levelFlashCard}/> </div>
-       <div className='absolute top-25 left-125 '> <MainFlashCard user={user} levelFlashCard={levelFlashCard} langue={langue}/></div>
+       <div className='absolute top-1 left-[500px]'> <HeaderFlashCard user={user} levelFlashCard={levelFlashCard}/> </div>
+       <div className='absolute top-25 left-[500px] '> <MainFlashCard user={user} levelFlashCard={levelFlashCard} langue={langue}/></div>
        <div className='absolute top-1 left-10'><DashMenuFlashCard user={user} streak={streak} langue={langue}/></div>
-       <div className='absolute top-1 left-300 flex flex-row space-x-5'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
-       <div className='absolute top-30 left-65 flex flex-row space-x-5'><ChoseLevelFlashCard setLevelFlashCard={setLevelFlashCard}/></div>
+       <div className='absolute top-1 right-10 flex flex-row space-x-5'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
+       <div className='absolute top-30 left-[275px] flex flex-row space-x-5'><ChoseLevelFlashCard setLevelFlashCard={setLevelFlashCard}/></div>
      </div>
     </div>
   )
