@@ -91,8 +91,7 @@ export const SignUpComponent = ({setShowSignUp, setShowLogin, setShowButton}) =>
   const [userName, setUserName] = useState("")
   const [accountName, setAccountName] = useState("")
   const [accountPassW, setAccountPassW] = useState("")
-  const navigate = useNavigate()
-
+  
   const HandleSignUp= async () => {
     try {
       if (!accountName || !accountPassW || !userName) {

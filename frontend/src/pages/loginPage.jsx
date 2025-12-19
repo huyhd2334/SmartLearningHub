@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [showSignUp, setShowSignUp] = useState(false)
   const [showButton, setShowButton] = useState(true)
   return (
-    <div className="w-full h-screen min-h-screen flex">
+    <div className="w-full">
       <div className="absolute top-6 left-6 flex flex-col justify-center items-center space-y-5 bg-slate-50 p-10">
         <Header/>
         <div className={`transition-all duration-500 ${showButton ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
@@ -33,12 +33,12 @@ const LoginPage = () => {
             </div>
         </div>
         <a>Wish you a wonderful day ^_-</a>
-        <div className="mt-4 p-4 w-full  max-w-md h-100">
+        <div className="mt-4 p-4 w-full  max-w-md">
         {showLogin && !showSignUp && <LoginComponent setShowSignUp={setShowSignUp} setShowLogin={setShowLogin} setShowButton={setShowButton}/>}
         {showSignUp && !showLogin && <SignUpComponent setShowSignUp={setShowSignUp} setShowLogin={setShowLogin} setShowButton={setShowButton}/>}
         </div>
       </div>
-      <div className="absolute left-120 h-full">
+      <div className="absolute left-125 h-full">
         <img
           src="hello.jpg"
           alt="hello"

@@ -43,7 +43,7 @@ const HistoryStatics = ({user, streak, langue}) => {
       const res = await api.post("/hist/countallvocab", {user: user, langue: langue})
       if(langue === "english"){
               let dataTotalVocabRecv = {
-          datasets: [{data: [res.data.totalVocab, 116117],
+          datasets: [{data: [res.data.totalVocab, 615],
                       backgroundColor: ["#36A2EB","#FFCE56"],
           borderWidth: 1}],
           labels: ['YourWords','TotalWords'],

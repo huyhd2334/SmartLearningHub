@@ -1,14 +1,14 @@
 import {Toaster} from "sonner"
 import {BrowserRouter, Routes, Route} from "react-router"
-import LoginPage from "./pages/loginPage.jsx"
-import NotFoundPages from "./pages/notFoundPages.jsx"
+import LoginPage from "./pages/LoginPage.jsx"
+import NotFoundPages from "./pages/NotFoundPage.jsx"
 import ChoseLanguePage from "./pages/ChoseLanguePage.jsx"
 import HomePage from "./pages/HomePage.jsx"
 import ShowAllVocabPage from "./pages/ShowAllVocabPage.jsx"
 import YourLibPage from "./pages/YourLibPage.jsx"
-import FlashCardPages from "./pages/FlashCardPages.jsx"
+import FlashCardPages from "./pages/FlashCardPage.jsx"
 import ToeicPartFivePage from "./pages/ToeicPartFivePage.jsx"
-import PageHist from "./pages/PageHist.jsx"
+import PageHist from "./pages/HistPage.jsx"
 function App() {
   return (
     <>
