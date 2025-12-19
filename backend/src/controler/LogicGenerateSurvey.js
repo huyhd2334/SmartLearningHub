@@ -28,7 +28,7 @@ export const getVocabForSurvey = async (req, res) => {
 
     const rows = await Dict.find({}).skip(Number(offset)).limit(Number(number))
     
-    const result = rows.filter(row => row.vocab.length >= 5).map((row) => {
+    const result = rows.filter(row => row.vocab.length >= 10).map((row) => {
       const word = row["vocab"]
         return {
           word,
@@ -38,6 +38,7 @@ export const getVocabForSurvey = async (req, res) => {
         }
     });
 
+    console.log("number of vocab: ", result.length)
     res.status(200).json({
       form_title: "Vocabulary Survey",
       words: result,
