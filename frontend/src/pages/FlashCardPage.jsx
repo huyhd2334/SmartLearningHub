@@ -40,7 +40,7 @@ const FlashCardPages = () => {
        <div className='absolute top-1 left-[500px]'> <HeaderFlashCard user={user} levelFlashCard={levelFlashCard}/> </div>
        <div className='absolute top-25 left-[500px] '> <MainFlashCard user={user} levelFlashCard={levelFlashCard} langue={langue}/></div>
        <div className='absolute top-1 left-10'><DashMenuFlashCard user={user} streak={streak} langue={langue}/></div>
-       <div className='absolute top-1 right-10 flex flex-row space-x-5'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
+       <div className='absolute top-1 right-[50px] flex flex-row space-x-5'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
        <div className='absolute top-30 left-[275px] flex flex-row space-x-5'><ChoseLevelFlashCard setLevelFlashCard={setLevelFlashCard}/></div>
      </div>
     </div>
