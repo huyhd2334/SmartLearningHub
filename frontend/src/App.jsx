@@ -9,6 +9,8 @@ import YourLibPage from "./pages/YourLibPage.jsx"
 import FlashCardPages from "./pages/FlashCardPage.jsx"
 import ToeicPartFivePage from "./pages/ToeicPartFivePage.jsx"
 import PageHist from "./pages/HistPage.jsx"
+import PageVocabTopics from "./pages/PageVocabTopics.jsx"
+
 function App() {
   return (
     <>
@@ -32,11 +34,11 @@ function App() {
               element = {<HomePage />}
               />
           <Route
-              path = "/ShowAllVocabPage"
+              path = "/vocab/showallvocabPage"
               element = {<ShowAllVocabPage />}
               />
           <Route
-              path = "/yourlibpage"
+              path = "/vocab/yourlibpage"
               element = {<YourLibPage/>}
               />
           <Route
@@ -50,6 +52,10 @@ function App() {
           <Route
               path = "/history"
               element = {<PageHist/>}
+              />
+          <Route
+              path = "/vocab/topicspage"
+              element = {<PageVocabTopics/>}
               />
         </Routes>
     </BrowserRouter>

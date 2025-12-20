@@ -26,7 +26,8 @@ const ShowAllVocab = ({ value, setDataReady, user, langue }) => {
     }
     if(value >= 1){ 
       fetchVocab()
-    }}, [value])
+    }
+  }, [value])
     const addVocabulary = async(vocab,pron,type,meaning,example) =>{
        try{
           await api.post("/adduservocab",{accountName: user, vocab, pron, type, meaning, example, langue: langue})

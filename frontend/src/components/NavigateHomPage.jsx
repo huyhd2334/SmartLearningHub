@@ -13,13 +13,13 @@ import {
 
 const VocabFunction = [
   {
-    title: "New Vocab",
-    href: "/",
+    title: "Vocab Topics",
+    href: "/vocab/topicspage",
     description: "Study new words with spaced repetition.",
   },
   {
     title: "Your Lib",
-    href: "/yourlibpage",
+    href: "/vocab/yourlibpage",
     description: "For sighted users to preview content available behind a link.",
   },
   {
@@ -34,7 +34,7 @@ const VocabFunction = [
   },
   {
     title: "All Vocabulary",
-    href: "/ShowAllVocabPage",
+    href: "/vocab/showallvocabpage",
     description: "a font, a fortiori, a posteriori, .... ",
   },
 ];
