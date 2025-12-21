@@ -125,14 +125,14 @@ const hskFunction = [
   },
 ];
 
-const NavigationHomePage = ({ user, streak, langue }) => {
+const NavigationHome = ({ user, streak, langue }) => {
   return (
-    <NavigationMenu className="fixed top-3 space-x-10 bg-white rounded-4xl w-200 shadow-md py-1 px-6">
-      <NavigationMenuList className="flex flex-wrap gap-1">
+    <NavigationMenu className="mx-auto max-w-7xl py-1 px-6">
+      <NavigationMenuList className="flex w-full items-center justify-between gap-8 bg-gray-50">
 
         {/* Vocabulary */}
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-lg font-semibold px-4 py-3 hover:bg-gray-100 rounded-lg">
+        <NavigationMenuItem className="flex-1 flex justify-center bg-white relative">
+          <NavigationMenuTrigger className="text-2xl font-semibold px-4 py-3 hover:bg-gray-100 rounded-lg">
             Vocabulary
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -154,8 +154,8 @@ const NavigationHomePage = ({ user, streak, langue }) => {
         </NavigationMenuItem>
 
         {/* Toeic */}
-        <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger className="text-lg font-semibold px-4 py-3 hover:bg-gray-100 rounded-lg">
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="text-2xl font-semibold px-4 py-3 hover:bg-gray-100 rounded-lg">
               {langue === "english" ? <a>Toeic</a> : <a>Hsk</a>}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -176,9 +176,9 @@ const NavigationHomePage = ({ user, streak, langue }) => {
         </NavigationMenuItem>
 
         {/* User icon */}
-        <NavigationMenuItem className="hidden md:block">
+        <NavigationMenuItem>
           <NavigationMenuTrigger>
-            <UserCog className="w-5 h-5" />
+            <UserCog className="w-7 h-7" />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-2 p-4">
@@ -236,4 +236,4 @@ function IconLink() {
   );
 }
 
-export default NavigationHomePage;
+export default NavigationHome;

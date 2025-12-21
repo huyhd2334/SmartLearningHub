@@ -15,7 +15,7 @@ export function DashMenu() {
   return (
     <Sheet className>
       <SheetTrigger asChild>
-        <Button variant="outline"> <Rows3 className='w-5 h-5'/> </Button>
+        <Button variant="outline" > <Rows3 className='w-10 h-10'/> </Button>
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col gap-6">
         <SheetHeader>

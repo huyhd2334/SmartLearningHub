@@ -1,6 +1,6 @@
 import { DashMenu } from '@/components/HomePageComponents/DashMenu';
 import HomePageNews from '@/components/HomePageComponents/HomePageNews';
-import NavigationHomePage from '@/components/NavigateHomPage'
+import NavigationHome from '@/components/NavigateHomPage'
 import ShowStreak from '@/components/HomePageComponents/ShowStreak';
 import TranslateTool from '@/components/TranslateTool';
 import { useEffect, useState } from 'react'
@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <div onClick={()=>{setAnnouncement(false)}}
          className='flex flex-col justify-center items-center min-h-screen left-10 text-black font-semibold md:space-y-30 sm:space-y-20 px-4 inset-0'>
-      <NavigationHomePage user={user} streak={streak} langue={langue}/>
+      <div className='absolute top-0 h-20 flex justify-center items-center border-2 border-gray-100 w-full bg-gray-50'><NavigationHome user={user} streak={streak} langue={langue}/></div>
       {announcement && (
         <div className='fixed inset-0 z-50 w-full h-full'>
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
@@ -36,9 +36,9 @@ const HomePage = () => {
        )
       }
       <div className='absolute top-4 left-10'> <DashMenu/> </div>
-      <div className='absolute top-24 left-[375px]'><ShowStreak user={user} streak={streak}/></div>
-      <div className='absolute top-50 left-[150px] flex flex-col justify-center items-center space-y-10'><HomePageNews user={user} langue={langue}/> <Footer/> </div>
-      <div className='absolute top-27 right-[475px]'><TranslateTool langue={langue}/></div>
+      <div className='absolute top-28 left-[430px]'><ShowStreak user={user} streak={streak}/></div>
+      <div className='absolute top-50 left-[190px] flex flex-col justify-center items-center space-y-10'><HomePageNews user={user} langue={langue}/> <Footer/> </div>
+      <div className='absolute top-32 right-[530px]'><TranslateTool langue={langue}/></div>
       <div className='absolute top-4 right-10'> <ToHistPage user={user} streak={streak} langue={langue}/> </div>
     </div>
   )

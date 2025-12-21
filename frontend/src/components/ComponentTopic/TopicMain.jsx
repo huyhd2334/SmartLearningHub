@@ -27,12 +27,12 @@ const TopicMain = ({langue}) => {
         {topics.map((topic, index) => (
           index % 2 === 0 
             ? (
-                <ul key={index} className='col-start-1 rounded-4xl bg-blue-100 text-black w-[300px] h-[100px] text-2xl text-center items-center '>
+                <ul key={index} className='col-start-1 rounded-4xl border border-black bg-blue-100 text-black w-[300px] h-[100px] text-2xl text-center items-center '>
                   {topic}
                 </ul>
               )
             : (
-                <ul key = {index} className='col-start-2 rounded-4xl bg-blue-100 text-black w-[300px] h-[100px] text-2xl text-center items-center '>
+                <ul key = {index} className='col-start-2 rounded-4xl border border-black bg-blue-100 text-black w-[300px] h-[100px] text-2xl text-center items-center '>
                   {topic}
                 </ul>
               )
