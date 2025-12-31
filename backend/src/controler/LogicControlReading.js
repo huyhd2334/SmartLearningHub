@@ -150,7 +150,11 @@ export const FindDetail = async (req, res) => {
                 result = await Dict.findOne({ vocab: adj });
                 if (result) return res.status(200).json({ message: "oke", detail: result });
             }
-            return res.status(200).json({ message: "Not found" });  
+            // fallback Google API
+            const apiResult = await translateChineseWord(word);
+            if (apiResult) return res.status(200).json({ message: "oke", detail: apiResult });
+            
+            return res.status(200).json({ message: "Not found" });
         }else{
             let result = await ChineseDict.findOne({ vocab: word });
             if (result) return res.status(200).json({ message: "oke", detail: result });

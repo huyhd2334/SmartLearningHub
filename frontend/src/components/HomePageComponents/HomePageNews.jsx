@@ -8,8 +8,8 @@ const HomePageNews = ({ langue }) => {
     const [binary, setBinary] = useState([])
     const [learning, setLearning] = useState([])
     const [mode, setMode] = useState(true)
+
     useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
     const getReading = async () => {
         try {
         const res = await api.post("/getreading", { get: "get", langue: langue });
@@ -23,7 +23,6 @@ const HomePageNews = ({ langue }) => {
 
     useEffect(() => {
     if (!mode && articles.length > 0) {
-        const accessToken = localStorage.getItem("accessToken")
         const getBinary = async () => {
         console.log("split reading", articles[0]._id, langue)
         const res = await api.post("/splitreading", { id: articles[0]._id, langue: langue })
@@ -35,7 +34,6 @@ const HomePageNews = ({ langue }) => {
     }, [mode, articles]);
 
     const findWordDetail = async(word) => {
-        const accessToken = localStorage.getItem("accessToken")
         const detail = await api.post("/finddetail",{word: word, langue: langue}) 
         if(langue === "english"){
            toast.info(detail.data.detail["meaning"], {duration: 5000})
@@ -43,8 +41,8 @@ const HomePageNews = ({ langue }) => {
     }
     return (
         <div className='border-2 border-black rounded-4xl p-5 w-[1100px] overflow-auto'>
-            <Button className="absolute top-1 left-260 w-20 h-7 bg-blue-500 animate-pulse" onClick={()=> setMode(!mode)}> learn mode</Button>
-            <span className='absolute -top-4 left-10 text-lg bg-green-300 px-2 rounded-4xl'> Daily Reading</span>
+            <Button className="absolute top-1 left-260 w-20 h-7 bg-blue-500 animate-pulse" onClick={()=> setMode(!mode)}> learn mode </Button>
+            <span className='absolute -top-4 left-10 text-lg bg-green-300 px-2 rounded-4xl'> Daily Reading </span>
             {mode ? (
             <>
                 {articles.map((a, index) => (
