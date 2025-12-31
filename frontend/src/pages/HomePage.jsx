@@ -36,9 +36,9 @@ const HomePage = () => {
        )
       }
       <div className='absolute top-4 left-10'> <DashMenu/> </div>
-      <div className='absolute top-28 left-[430px]'><ShowStreak user={user} streak={streak}/></div>
+      <div className='absolute top-28 left-[455px]'><ShowStreak user={user} streak={streak}/></div>
       <div className='absolute top-50 left-[190px] flex flex-col justify-center items-center space-y-10'><HomePageNews user={user} langue={langue}/> <Footer/> </div>
-      <div className='absolute top-32 right-[530px]'><TranslateTool langue={langue}/></div>
+      <div className='absolute top-32 right-[555px]'><TranslateTool langue={langue}/></div>
       <div className='absolute top-4 right-10'> <ToHistPage user={user} streak={streak} langue={langue}/> </div>
     </div>
   )

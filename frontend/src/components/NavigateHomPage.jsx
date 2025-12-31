@@ -131,11 +131,11 @@ const NavigationHome = ({ user, streak, langue }) => {
       <NavigationMenuList className="flex w-full items-center justify-between gap-8 bg-gray-50">
 
         {/* Vocabulary */}
-        <NavigationMenuItem className="flex-1 flex justify-center bg-white relative">
-          <NavigationMenuTrigger className="text-2xl font-semibold px-4 py-3 hover:bg-gray-100 rounded-lg">
+        <NavigationMenuItem className="flex-1 flex justify-center bg-white">
+          <NavigationMenuTrigger className="text-xl px-4 py-3 hover:bg-gray-100 rounded-lg">
             Vocabulary
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="bg-white rounded-md">
             <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {VocabFunction.map((item) => (
                 <ListItem
@@ -154,11 +154,11 @@ const NavigationHome = ({ user, streak, langue }) => {
         </NavigationMenuItem>
 
         {/* Toeic */}
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-2xl font-semibold px-4 py-3 hover:bg-gray-100 rounded-lg">
+        <NavigationMenuItem className="relative">
+          <NavigationMenuTrigger className="text-xl px-4 py-3 hover:bg-gray-100 rounded-lg">
               {langue === "english" ? <a>Toeic</a> : <a>Hsk</a>}
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="bg-white rounded-md">
             <ul className="grid w-[600px] gap-2 p-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {(langue === "english" ? ToeicFunction : hskFunction).map((item) => (
                 <li key={item.title}>

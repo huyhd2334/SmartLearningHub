@@ -35,7 +35,7 @@ const ShowAllVocabPage = () => {
       <ShowAllVocab value={currentPage} setDataReady={setDataReady} user={user} langue={langue}/>
       <ChoseAllVocab value={currentPage} setValue={setCurrentPage} langue={langue} />
       <div className='absolute top-1 left-10'><DashMenuAllVocab user={user} streak={streak} langue={langue}/></div>
-      <div className='absolute top-1 left-300 flex flex-row space-x-5 text-black'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
+      <div className='absolute top-1 right-5 flex flex-row space-x-5 text-black'><ChartNoAxesCombined className='w-7 h-7'/> <Award className='w-7 h-7'/> </div>
     </div>
   )
 }
