@@ -25,14 +25,23 @@ export const getAllVocabs = async(req,res) => {
 export const getAllVocabsTopic =  async(req, res) => {
     try {
        console.log("frontend call backend to get topics")
-       const {langue} = req.body;
-       if(langue === "english"){
+       const {langue, topic} = req.body;
+       if(langue === "english" && topic === ""){
          const topics = await Dict.distinct("topic")
          if(topics){
             console.log("send topics: ", topics)
-            res.status(200).json({topics: topics})
+            return res.status(200).json({topics: topics})
          }else{res.status(500).send("error when get topics from mongo")
-               console.log("error send topic")
+            return console.log("error send topic")
+         }
+       }
+       if(langue === "english"){
+         const vocabs = await Dict.find({topic: topic})
+         if(vocabs){
+            console.log("send vocabs: ", vocabs)
+            return res.status(200).json({vocabs: vocabs})
+         }else{res.status(500).send("error when get vocabs from mongo")
+            return console.log("error send vocab topic")
          }
        }
     } catch (error) {

@@ -7,6 +7,6 @@ const FetchVocabrouter = express.Router()
 FetchVocabrouter.post("/getallvocab", getAllVocabs)
 FetchVocabrouter.post("/adduservocab",AddUserVocab)
 FetchVocabrouter.post("/getuservocab",FetchUserVocab)
-FetchVocabrouter.post("/getallvocabstopic", getAllVocabsTopic)
+FetchVocabrouter.post("/getvocabstopic", getAllVocabsTopic)
 export default FetchVocabrouter
 
