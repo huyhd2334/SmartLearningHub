@@ -6,6 +6,7 @@ const ChineseUserVocabSchema = new mongoose.Schema({
     meaning: {type: String},
     english: {type: [String]},
     level: {type: Number, min: 0, max: 6, default: 0},
+    last: {type: Date}
 }
 )
 

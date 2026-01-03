@@ -6,10 +6,7 @@ import { toast } from 'sonner';
 
 
 const ChoseLanguePage = () => {
-  const location = useLocation()
-  const user = location.state?.user || "Guest"; 
-  const streak = location.state?.streak ?? 0; 
-
+  const user = JSON.parse(localStorage.getItem("user"))?.accountName || "Guest"
   const navigate = useNavigate()
   useEffect(() => {
     if (user === "Guest") {
@@ -34,7 +31,7 @@ const ChoseLanguePage = () => {
     />
       <div className='flex flex-col justify-center items-center min-h-screen space-y-20 md:space-y-16 sm:space-y-10 px-4 max-w-[1200px] mx-auto'>
         <HeaderChose user={user}/>
-        <ChoseLangue user={user} streak={streak} />
+        <ChoseLangue user={user}/>
       </div>
   </div>
   )

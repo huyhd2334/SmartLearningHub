@@ -27,8 +27,8 @@ export const LoginComponent = ({setShowSignUp, setShowLogin, setShowButton}) => 
 
       if (res.data.message) {
         toast.success("login successfull")
-        toast.success(res.data.streak)
-        navigate("/choselanguepage", { state: { user: accountName, streakEnglish: res.data.streakEnglish, streakChinese: res.data.streakChinese }})
+        localStorage.setItem("user", JSON.stringify({accountName}))
+        navigate("/choselanguepage")
         setAccountName("")
         setAccountPassW("")
       } else {

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const UserVocabSchema = new mongoose.Schema({
+const englishUserVocabsSchema = new mongoose.Schema({
     accountName: {type: String},
     pron: {type: String},
     vocab: {type: String},
@@ -8,8 +8,9 @@ const UserVocabSchema = new mongoose.Schema({
     meaning: {type: String},
     example: {type: String},
     level: {type: Number, min: 0, max: 6, default: 0},
+    last: {type: Date}
 }
 )
 
-const UserVocabs = mongoose.model("UserVocabs", UserVocabSchema)
+const UserVocabs = mongoose.model("englishUserVocabs", englishUserVocabsSchema)
 export default UserVocabs

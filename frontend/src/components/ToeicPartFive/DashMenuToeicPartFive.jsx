@@ -13,13 +13,13 @@ import {BookOpenText, Rows3} from 'lucide-react'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router'
 
-export function DashMenuToeicPartFive({user, streak}) {
+export function DashMenuToeicPartFive() {
   const navigate = useNavigate()
   const navigateToFlashCard = () => {
-    navigate("/flashcardpage", { state: { user: user, streak:streak}})
+    navigate("/flashcardpage")
     }
   const handelerBHome = () => {
-    navigate("/homepage", { state: { user: user, streak:streak}})
+    navigate("/homepage")
   }
   return (
     <Sheet className="text-black">

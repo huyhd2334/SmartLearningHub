@@ -12,7 +12,6 @@ const MainToeicPartFive = ({user}) => {
     const [correctCheck, setCorrectCheck] = useState([])
     const [incorrectCheck, setIncorrectCheck] = useState([])    
     useEffect(()=>{
-        const accessToken = localStorage.getItem("accessToken");
         const getQuestions = async() => {
             try{
                 const question = await api.post("/questionpartfive",{questionpartfive: "get"})

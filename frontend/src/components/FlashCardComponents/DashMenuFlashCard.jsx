@@ -13,13 +13,13 @@ import {Brain, Gamepad2, Rows3, WalletCards } from 'lucide-react'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router'
 
-export function DashMenuFlashCard({user, streakChinese, streakEnglish , langue}) {
+export function DashMenuFlashCard() {
   const navigate = useNavigate()
   const navigateToFlashCard = () => {
-    navigate("/flashcardpage", { state: { user: user, streakChinese: streakChinese, streakEnglish: streakEnglish, langue: langue}})
+    navigate("/flashcardpage")
     }
   const handelerBHome = () => {
-    navigate("/homepage", { state: { user: user, streakChinese:streakChinese, streakEnglish: streakEnglish, langue: langue}})
+    navigate("/homepage")
   }
   return (
     <Sheet className="text-black">

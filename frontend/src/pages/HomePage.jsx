@@ -11,12 +11,11 @@ import ToHistPage from '@/components/HomePageComponents/ToHistPage';
 import Announcement from '@/components/Announcement';
 
 const HomePage = () => {
-  const location = useLocation()
-  const streak = location.state?.streak ?? 0; 
-  const user = location.state?.user || "Guest"; 
-  const langue = location.state?.langue || "english"
-  const [announcement, setAnnouncement] = useState(true)
+  const user = JSON.parse(localStorage.getItem("user"))?.accountName || "Guest"
+  const langue = JSON.parse(localStorage.getItem("langue"))?.langue
+  const streak = JSON.parse(localStorage.getItem("streak"))?.streak
 
+  const [announcement, setAnnouncement] = useState(true)
   const navigate = useNavigate()
   useEffect(() => {
     if (user === "Guest") {

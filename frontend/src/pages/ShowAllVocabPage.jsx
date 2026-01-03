@@ -10,10 +10,9 @@ import { toast } from 'sonner'
 const ShowAllVocabPage = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [dataReady, setDataReady] = useState("")
-    const location = useLocation()
-    const streak = location.state?.streak ?? 0; 
-    const langue = location.state?.langue 
-    const user = location.state?.user || "Guest"; 
+    const user = JSON.parse(localStorage.getItem("user"))?.accountName || "Guest"
+    const langue = JSON.parse(localStorage.getItem("langue"))?.langue
+    const streak = JSON.parse(localStorage.getItem("streak"))?.streak
     const navigate = useNavigate()
     useEffect(() => {
       if (user === "Guest") {

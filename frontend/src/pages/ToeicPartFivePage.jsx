@@ -6,9 +6,9 @@ import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router';
 
 const ToeicPartFivePage = () => {
-    const location = useLocation()
-    const streak = location.state?.streak ?? 0; 
-    const user = location.state?.user || "Guest"; 
+    const user = JSON.parse(localStorage.getItem("user"))?.accountName || "Guest"
+    const langue = JSON.parse(localStorage.getItem("langue"))?.langue
+    const streak = JSON.parse(localStorage.getItem("streak"))?.streak
     const navigate = useNavigate()
     useEffect(() => {
       if (user === "Guest") {

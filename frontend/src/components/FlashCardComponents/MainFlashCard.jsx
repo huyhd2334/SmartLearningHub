@@ -14,7 +14,6 @@ import { Label } from '@radix-ui/react-dropdown-menu'
 
 const MainFlashCard = ({user, levelFlashCard, langue}) => {
     const [vocabList, setVocabList] = useState([])
-    const accessToken = localStorage.getItem("accessToken");
     useEffect(() => {
         const getuservocab = async() => {
             try{

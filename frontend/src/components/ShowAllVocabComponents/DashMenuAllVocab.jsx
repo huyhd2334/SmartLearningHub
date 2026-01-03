@@ -16,10 +16,10 @@ import { useNavigate } from 'react-router'
 export function DashMenuAllVocab({user, streak, langue}) {
   const navigate = useNavigate()
   const navigateToFlashCard = () => {
-    navigate("/flashcardpage", { state: { user: user, streak:streak, langue: langue}})
+    navigate("/flashcardpage")
     }
   const handelerBHome = () => {
-    navigate("/homepage", { state: { user: user, streak:streak, langue: langue}})
+    navigate("/homepage")
   }
   return (
     <Sheet className="text-black">

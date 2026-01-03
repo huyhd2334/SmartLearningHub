@@ -1,5 +1,7 @@
 import UserVocabs from "../models/english/englishUserVocab.js";
 import ChineseUserVocabs from "../models/chinese/chineseUserVocab.js"
+import Account from "../models/account.js";
+
 export const FetchUserVocab = async(req,res) => {
     try{
         const {accountName, level, langue} = req.body
@@ -45,7 +47,7 @@ export const AddUserVocab = async(req,res) => {
                     res.status(200).json({message: "updatelevel" })
                     console.log("Update result:", vocabUpdate)
                 }else{
-                    await UserVocabs.create({ accountName, vocab, pron , type, meaning, example, level: 0 });
+                    await UserVocabs.create({ accountName, vocab, pron , type, meaning, example, level: 0, last: new Date() });
                     console.log("Add vocab:", vocab)
                     res.status(200).json({message: "addnewvocab" })}
             }catch(error){console.error(error)}
@@ -60,10 +62,40 @@ export const AddUserVocab = async(req,res) => {
                                                 );
                     res.status(200).json({message: "updatelevel" })
                 }else{
-                    await ChineseUserVocabs.create({ accountName, vocab, meaning, english, pinyin, level: 0 });
+                    await ChineseUserVocabs.create({ accountName, vocab, meaning, english, pinyin, level: 0, last: new Date() });
                     res.status(200).json({message: "addnewvocab" })}
             }catch(error){console.error(error)}
         }
     }catch(error){
         console.error(error)}
+}
+
+export const getCurrentData = async (req, res) => {
+  try {
+    const { user, langue } = req.body
+
+    const startOfToday = new Date()
+    startOfToday.setHours(0, 0, 0, 0)
+
+    const endOfToday = new Date()
+    endOfToday.setHours(23, 59, 59, 999)
+
+    const VocabModel =
+      langue === "english" ? UserVocabs : ChineseUserVocabs
+
+    const vocabs = await VocabModel.find({
+      accountName: user,
+      createdAt: {
+        $gte: startOfToday,
+        $lte: endOfToday
+      }
+    })
+
+    const account = await Account.findOne({ accountName: user })
+
+    return res.status(200).json({createAccountDate: account?.createDate, vocabs: vocabs})
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ message: "Server error" })
+  }
 }

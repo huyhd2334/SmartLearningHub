@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from '../ui/button'
-import { handler } from 'tailwindcss-animate'
 
 const ChoseLevelFlashCard = ({setLevelFlashCard}) => {
   const handlerLevel = (level) => {

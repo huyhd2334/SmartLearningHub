@@ -1,11 +1,11 @@
-import TopicMain from '@/components/ComponentTopic/TopicMain.jsx'
+import TopicMain from '@/components/TopicComponents/TopicMain.jsx'
 import NavigationHome from '@/components/NavigateHomPage'
 import { useLocation } from 'react-router'
 
 const PageVocabTopics = () => {
-  const location = useLocation()
-  const langue = location.state?.langue 
-
+  const user = JSON.parse(localStorage.getItem("user"))?.accountName || "Guest"
+  const langue = JSON.parse(localStorage.getItem("langue"))?.langue
+  const streak = JSON.parse(localStorage.getItem("streak"))?.streak
   return (
     <div className='grid grid-cols-4 gap-y-5'>
         <aside className='flex flex-col col-span-4 text-black gap-y-5'>

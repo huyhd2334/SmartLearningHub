@@ -4,7 +4,7 @@ import Dict from "../models/english/englishDictAllWord.js"
 
 export const getAllVocabs = async(req,res) => {
     try {
-    const { offset, langue } = req.body;
+    const { offset, langue } = req.body
     if(langue === "english"){
         const offsetInt = parseInt(offset) || 0;
         const limit = 50
@@ -15,17 +15,17 @@ export const getAllVocabs = async(req,res) => {
         const offsetInt = parseInt(offset) || 0;
         const limit = 100
         const rows = await ChineseDict.find().skip(offsetInt).limit(limit)
-        res.status(200).json(rows);
+        res.status(200).json(rows)
     }
     }catch(err){
-        console.error(err);
-        res.status(500).json({ error: "Database error" });}  
+        console.error(err)
+        res.status(500).json({ error: "Database error" })}  
 }
 
 export const getAllVocabsTopic =  async(req, res) => {
     try {
        console.log("frontend call backend to get topics")
-       const {langue, topic} = req.body;
+       const {langue, topic} = req.body
        if(langue === "english" && topic === ""){
          const topics = await Dict.distinct("topic")
          if(topics){

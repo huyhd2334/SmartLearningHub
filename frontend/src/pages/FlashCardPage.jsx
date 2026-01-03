@@ -9,10 +9,9 @@ import { toast } from 'sonner';
 
 const FlashCardPages = () => {
     const [levelFlashCard, setLevelFlashCard] = useState(0)
-    const location = useLocation()
-    const streak = location.state?.streak ?? 0; 
-    const user = location.state?.user || "Guest"; 
-    const langue = location.state?.langue; 
+    const user = JSON.parse(localStorage.getItem("user"))?.accountName || "Guest"
+    const langue = JSON.parse(localStorage.getItem("langue"))?.langue
+    const streak = JSON.parse(localStorage.getItem("streak"))?.streak
     const navigate = useNavigate()
     useEffect(() => {
       if (user === "Guest") {

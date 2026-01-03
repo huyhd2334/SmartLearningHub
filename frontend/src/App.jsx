@@ -10,6 +10,7 @@ import FlashCardPages from "./pages/FlashCardPage.jsx"
 import ToeicPartFivePage from "./pages/ToeicPartFivePage.jsx"
 import PageHist from "./pages/HistPage.jsx"
 import PageVocabTopics from "./pages/PageVocabTopics.jsx"
+import PageProgress from "./pages/PageProgress.jsx"
 
 function App() {
   return (
@@ -57,6 +58,9 @@ function App() {
               path = "/vocab/topicspage"
               element = {<PageVocabTopics/>}
               />
+           <Route
+              path = "/vocab/progress"
+              element = {<PageProgress/>}/>
         </Routes>
     </BrowserRouter>
     </>

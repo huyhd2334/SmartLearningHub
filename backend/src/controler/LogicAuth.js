@@ -23,7 +23,7 @@ export const createAccount = async(req,res) => {
             // hashpasw
             const hashPassW = await bcrypt.hash(passW, 10) // salt = 10
             
-            const account = new Account({userName: userName, accountName: accountName, hashPassW: hashPassW, lastLogin: Date.now()})
+            const account = new Account({userName: userName, accountName: accountName, hashPassW: hashPassW, createDate: Date.now(), lastLogin: Date.now()})
             await account.save()
             res.status(200).json({message: true})
 
@@ -70,16 +70,8 @@ export const loginAccount = async (req, res) => {
         sameSite: "none",
         maxAge: REFRESH_TOKEN_TTL,
         })
-
-        const last = new Date(checkAccountName.lastLogin);
-        const now = new Date();
- 
-        if (last.toDateString() !== now.toDateString()) {
-            checkAccountName.streak += 1;
-            checkAccountName.lastLogin = now;
-            await checkAccountName.save();
-        }
-        return res.status(200).json({message: true ,streak: checkAccountName.streak, detail: `User ${checkAccountName.userName} logged in !`, accessToken})
+                
+        return res.status(200).json({message: true , detail: `User ${checkAccountName.userName} logged in !`, accessToken})
     } catch (error) {
         console.error("ERROR login:", error);
         res.status(500).json({ message: false, error: "Internal server error" });

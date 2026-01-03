@@ -24,7 +24,7 @@ const VocabFunction = [
   },
   {
     title: "Progress",
-    href: "/progress",
+    href: "/vocab/progress",
     description: "Displays progress of your learning path.",
   },
   {
@@ -194,14 +194,12 @@ const NavigationHome = ({ user, streak, langue }) => {
 };
 
 /* ===== COMPONENT PHỤ ===== */
-function ListItem({ title, children, href, user, streak, langue }) {
-  const stateToSend = { user, streak, langue };
+function ListItem({ title, children, href}) {
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
           to={href}
-          state={stateToSend}
           className="block p-3 rounded-md hover:bg-accent transition"
         >
           <div className="font-medium text-sm">{title}</div>
@@ -212,13 +210,11 @@ function ListItem({ title, children, href, user, streak, langue }) {
   );
 }
 
-function SimpleLink({ title, href, user, streak, langue }) {
-  const stateToSend = { user, streak, langue };
+function SimpleLink({ title, href}) {
   return (
     <NavigationMenuLink asChild>
       <Link
         to={href}
-        state={stateToSend}
         className="block p-3 rounded-md hover:bg-accent transition"
       >
         <div className="font-medium text-sm">{title}</div>
