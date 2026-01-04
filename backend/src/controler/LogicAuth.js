@@ -70,7 +70,10 @@ export const loginAccount = async (req, res) => {
         sameSite: "none",
         maxAge: REFRESH_TOKEN_TTL,
         })
-                
+
+        checkAccountName.lastLogin = new Date()
+        await checkAccountName.save()
+
         return res.status(200).json({message: true , detail: `User ${checkAccountName.userName} logged in !`, accessToken})
     } catch (error) {
         console.error("ERROR login:", error);
