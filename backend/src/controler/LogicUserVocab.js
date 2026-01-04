@@ -72,7 +72,7 @@ export const AddUserVocab = async(req,res) => {
 
 export const getCurrentData = async (req, res) => {
   try {
-    const { user, langue } = req.body
+    const { accountName, langue } = req.body
 
     const startOfToday = new Date()
     startOfToday.setHours(0, 0, 0, 0)
@@ -84,16 +84,23 @@ export const getCurrentData = async (req, res) => {
       langue === "english" ? UserVocabs : ChineseUserVocabs
 
     const vocabs = await VocabModel.find({
-      accountName: user,
-      createdAt: {
+      accountName,
+      last: {
         $gte: startOfToday,
         $lte: endOfToday
       }
     })
 
-    const account = await Account.findOne({ accountName: user })
+    const account = await Account.findOne({ accountName })
+    if (!account) {
+    return res.status(404).json({ message: "Account not found" })
+    }
+    const createDate = new Date(account.createDate)
 
-    return res.status(200).json({createAccountDate: account?.createDate, vocabs: vocabs})
+    console.log(createDate)
+    console.log(vocabs)
+
+    return res.status(200).json({createAccountDate: createDate, vocabs: vocabs})
   } catch (error) {
     console.error(error)
     return res.status(500).json({ message: "Server error" })

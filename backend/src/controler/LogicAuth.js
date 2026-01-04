@@ -23,7 +23,7 @@ export const createAccount = async(req,res) => {
             // hashpasw
             const hashPassW = await bcrypt.hash(passW, 10) // salt = 10
             
-            const account = new Account({userName: userName, accountName: accountName, hashPassW: hashPassW, createDate: Date.now(), lastLogin: Date.now()})
+            const account = new Account({userName: userName, accountName: accountName, hashPassW: hashPassW })
             await account.save()
             res.status(200).json({message: true})
 
@@ -70,9 +70,6 @@ export const loginAccount = async (req, res) => {
         sameSite: "none",
         maxAge: REFRESH_TOKEN_TTL,
         })
-
-        checkAccountName.lastLogin = new Date()
-        await checkAccountName.save()
 
         return res.status(200).json({message: true , detail: `User ${checkAccountName.userName} logged in !`, accessToken})
     } catch (error) {

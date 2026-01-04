@@ -15,7 +15,8 @@ const accountSchema = new mongoose.Schema(
     required: true
   },
   createDate:{
-    type: Date
+    type: Date,
+    default: Date.now
   },
   lastLogin: {
     type: Date,

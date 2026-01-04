@@ -16,11 +16,12 @@ export default function ProgressMain({user, langue}) {
   useEffect(() => {
     const getData =  async() => {
         try {
+          toast.success(user)
           const dataPrevious = await api.post("/getuservocab", {accountName: user, langue: langue})
           if(dataPrevious.data.vocabs){
               const dataCurrent = await api.post("/getcurrentdata", {accountName: user, langue: langue})
               toast.success(`Got ${user} data.`)
-              
+
               let createDay = new Date(dataCurrent.data.createAccountDate)
               let vocabsToday = dataCurrent.data.vocabs
               toast.info(createDay.toDateString())
@@ -33,14 +34,14 @@ export default function ProgressMain({user, langue}) {
                     {
                       metric: "Total Days",
                       current: now.toString(),
-                      previous: createDay.toDateString(),
+                      previous: createDay.toString(),
                       difference: "",
                       trend: "up",
                     },
                     {
                       metric: "Total Words",
                       current: vocabNumber,
-                      previous: vocabNumber,
+                      previous: vocabsToday.length,
                       difference: "",
                       trend: "up",
                     },
