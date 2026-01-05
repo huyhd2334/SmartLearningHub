@@ -4,7 +4,7 @@
   </h1>
 
   <h2 class="text-2xl font-semibold text-gray-800 flex items-center gap-2">
-    📝 Features
+     Features
   </h2>
   <p class="text-gray-700">
     This website helps learners practice <b>English</b> and <b>Chinese vocabulary</b>,
@@ -13,15 +13,15 @@
   </p>
 
   <ul class="list-disc pl-6 space-y-1 text-gray-700">
-    <li>📚 Add new words, meanings, examples, and pronunciation.</li>
-    <li>🔁 Review randomly by day or by forgetting rate.</li>
-    <li>🈶 Learn Chinese characters with Pinyin and Vietnamese meanings.</li>
-    <li>US Learn English characters with sample and Vietnamese meanings.</li>
-    <li>📈 Track personal learning progress with statistics and streaks.</li>
+    <li>Add new words, meanings, examples, and pronunciation.</li>
+    <li>Review randomly by day or by forgetting rate.</li>
+    <li>Learn Chinese characters with Pinyin and Vietnamese meanings.</li>
+    <li>Learn English characters with sample and Vietnamese meanings.</li>
+    <li>Track personal learning progress with statistics and streaks.</li>
   </ul>
 
   <h2 class="text-2xl font-semibold text-gray-800 flex items-center gap-2 mt-6">
-    🧠 Project Architecture
+    Project Architecture
   </h2>
   <pre class="bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
 📦 english-chinese-learning-web
@@ -37,7 +37,7 @@
   </p>
 
   <h2 class="text-2xl font-semibold text-gray-800 flex items-center gap-2">
-    👨‍💻 Development Member
+    Development Members
   </h2>
   <p class="text-gray-700">
     <b>Quốc Huy</b> — Fullstack Developer
