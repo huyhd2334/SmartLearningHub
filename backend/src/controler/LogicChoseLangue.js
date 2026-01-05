@@ -20,7 +20,7 @@ export const choseLangue = async(req, res) => {
 
                 console.log({last: last.getTime(), yesterday: yesterday.getTime(), today: today.getTime()})
 
-                if (last.getTime() === yesterday.getTime()){
+                if (last.getTime() === yesterday.getTime() && last.getTime() - yesterday.getTime() <= 86400000){
                     account.streakEnglish += 1
                 } else {account.streakEnglish = 1}
 
@@ -38,7 +38,7 @@ export const choseLangue = async(req, res) => {
                 yesterday.setDate(today.getDate() - 1)
 
                 console.log({last: last.getTime(), yesterday: yesterday.getTime(), today: today.getTime()})
-                if (last.getTime() === yesterday.getTime()) {
+                if (last.getTime() === yesterday.getTime() && last.getTime() - yesterday.getTime() <= 86400000) {
                    account.streakChinese += 1
                 } else {account.streakChinese = 1}
 

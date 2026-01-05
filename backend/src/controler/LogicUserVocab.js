@@ -80,14 +80,24 @@ export const getCurrentData = async (req, res) => {
     const endOfToday = new Date()
     endOfToday.setHours(23, 59, 59, 999)
 
-    const VocabModel =
-      langue === "english" ? UserVocabs : ChineseUserVocabs
+    const startOfYesterday = new Date(startOfToday.getDate() - 1)
+    const endOfYesterday = new Date(endOfToday.getDate() - 1)
 
-    const vocabs = await VocabModel.find({
+    const VocabModel = langue === "english" ? UserVocabs : ChineseUserVocabs
+
+    const vocabsToday = await VocabModel.find({
       accountName,
       last: {
         $gte: startOfToday,
         $lte: endOfToday
+      }
+    })
+
+    const vocabsYesterday = await VocabModel.find({
+      accountName,
+      last: {
+        $gte: startOfYesterday,
+        $lte: endOfYesterday
       }
     })
 
@@ -98,9 +108,10 @@ export const getCurrentData = async (req, res) => {
     const createDate = new Date(account.createDate)
 
     console.log(createDate)
-    console.log(vocabs)
+    console.log(vocabsToday)
+    console.log(vocabsYesterday)
 
-    return res.status(200).json({createAccountDate: createDate, vocabs: vocabs})
+    return res.status(200).json({createAccountDate: createDate, vocabsToday, vocabsYesterday})
   } catch (error) {
     console.error(error)
     return res.status(500).json({ message: "Server error" })

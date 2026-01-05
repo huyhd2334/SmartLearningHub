@@ -8,9 +8,6 @@ import { toast } from "sonner";
 
 
 export default function ProgressMain({user, langue}) {
-  
-  const [vocabs, setVocabs] = useState([])
-  const [vocabNumber, setVocabNumber] = useState(0)
   const [stats, setStats] = useState([])
 
   useEffect(() => {
@@ -23,27 +20,36 @@ export default function ProgressMain({user, langue}) {
               toast.success(`Got ${user} data.`)
 
               let createDay = new Date(dataCurrent.data.createAccountDate)
-              let vocabsToday = dataCurrent.data.vocabs
-              toast.info(createDay.toDateString())
               let now = new Date()
+
+              let vocabsToday = dataCurrent.data.vocabsToday
+              let vocabsYesterday = dataCurrent.data.vocabsYesterday
               
-              const vocabList = dataPrevious.data.vocabs
-              setVocabs(vocabList)
-              setVocabNumber(vocabList.length)
+              const trend = vocabsToday.length - vocabsYesterday.length >= 0 ? "up" : "down"
+
+              const normalize = d => {
+                new Date(d.getFullYear(), d.getMonth(), d.getDate())
+              }
+
+              const start = normalize(createDay)
+              const end = normalize(now)
+
+              const totalDays = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1
+ 
               setStats([
                     {
                       metric: "Total Days",
-                      current: now.toString(),
-                      previous: createDay.toString(),
-                      difference: "",
+                      current: `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`,
+                      previous: `${createDay.getDate()}/${createDay.getMonth() + 1}/${createDay.getFullYear()}`,
+                      difference: `${totalDays}`,
                       trend: "up",
                     },
                     {
-                      metric: "Total Words",
-                      current: vocabNumber,
-                      previous: vocabsToday.length,
-                      difference: "",
-                      trend: "up",
+                      metric: "Vocabulary",
+                      current: `today ${vocabsToday.length}`,
+                      previous: `yesterday ${vocabsYesterday.length}`,
+                      difference: vocabsToday.length - vocabsYesterday.length,
+                      trend: trend,
                     },
                     {
                       metric: "Streak",
@@ -64,7 +70,7 @@ export default function ProgressMain({user, langue}) {
   
   return (
     <div className="flex items-center justify-center p-10">
-      <div className="grid grid-cols-1 divide-y bg-border divide-border overflow-hidden rounded-lg md:grid-cols-3 md:divide-x md:divide-y-0">
+      <div className="grid grid-cols-1 divide-y bg-border divide-border overflow-hidden rounded-lg md:grid-cols-3 md:divide-x md:divide-y-0 space-x-3">
         {stats.map((item) => (
           <Card
             key={item.metric}
