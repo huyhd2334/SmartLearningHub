@@ -28,13 +28,13 @@ export default function ProgressMain({user, langue}) {
               const trend = vocabsToday.length - vocabsYesterday.length >= 0 ? "up" : "down"
 
               const normalize = d => {
-                new Date(d.getFullYear(), d.getMonth(), d.getDate())
+                 return new Date(d.getFullYear(), d.getMonth(), d.getDate())
               }
 
               const start = normalize(createDay)
               const end = normalize(now)
 
-              const totalDays = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1
+              const totalDays = Math.floor((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1
  
               setStats([
                     {
@@ -46,7 +46,7 @@ export default function ProgressMain({user, langue}) {
                     },
                     {
                       metric: "Vocabulary",
-                      current: `today ${vocabsToday.length}`,
+                      current: `Today vocabs: ${vocabsToday.length}`,
                       previous: `yesterday ${vocabsYesterday.length}`,
                       difference: vocabsToday.length - vocabsYesterday.length,
                       trend: trend,
@@ -70,14 +70,14 @@ export default function ProgressMain({user, langue}) {
   
   return (
     <div className="flex items-center justify-center p-10">
-      <div className="grid grid-cols-1 divide-y bg-border divide-border overflow-hidden rounded-lg md:grid-cols-3 md:divide-x md:divide-y-0 space-x-3">
+      <div className="grid grid-cols-1 divide-y divide-border overflow-hidden rounded-xl md:grid-cols-3 md:divide-x md:divide-y-0 space-x-4 bg-gray-50 h-[150px]">
         {stats.map((item) => (
           <Card
             key={item.metric}
             className="rounded-none border-0 shadow-sm py-0"
           >
             <CardContent className="p-4 sm:p-6">
-              <CardTitle className="text-base font-normal">
+              <CardTitle className="text-lg font-normal">
                 {item.metric}
               </CardTitle>
               <div className="mt-1 flex items-baseline gap-2 md:block lg:flex">

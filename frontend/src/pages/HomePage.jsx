@@ -26,7 +26,7 @@ const HomePage = () => {
   return (
     <div onClick={()=>{setAnnouncement(false)}}
          className='flex flex-col justify-center items-center min-h-screen left-10 text-black font-semibold md:space-y-30 sm:space-y-20 px-4 inset-0'>
-      <div className='absolute top-0 h-20 flex justify-center items-center border-2 border-gray-100 w-full bg-gray-50'><NavigationHome user={user} streak={streak} langue={langue}/></div>
+      <div className='absolute top-0 h-20 flex justify-center items-center border-2 border-gray-100 w-full bg-gray-50'><NavigationHome langue={langue}/></div>
       {announcement && (
         <div className='min-h-screen fixed inset-0 z-50 w-full h-full'>
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm"></div>

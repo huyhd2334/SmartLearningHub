@@ -3,6 +3,7 @@ import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip
 import { Bar, Doughnut } from "react-chartjs-2";
 import api from "@/lib/axios";
 import { ArcElement } from "chart.js";
+import BackButton from "../BackButton";
 
 ChartJS.register(
   CategoryScale,
@@ -73,7 +74,10 @@ const HistoryStatics = ({user, langue}) => {
 
   return (
     <div className="flex flex-col space-y-2 pl-15">
-      <h1 className="text-2xl font-semibold flex flex-row justify-center items-center w-30 h-10 border-2 bg-blue-400 rounded-4xl p-5 text-white"> Data </h1>
+      <div className="text-2xl font-semibold flex flex-row justify-start items-center space-x-3">
+        <BackButton/>
+        <a className="flex flex-col justify-center items-center text-3xl font-medium text-white bg-blue-400 rounded-3xl w-30 h-10">Data</a>
+      </div>
       <div className="flex flex-row justify-center items-center space-x-3">
       {showChart && dataFlashCard.datasets.length > 0 && (
         <div style={{ width: "1000px", height: "700px" }}>

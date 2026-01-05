@@ -125,7 +125,7 @@ const hskFunction = [
   },
 ];
 
-const NavigationHome = ({ user, streak, langue }) => {
+const NavigationHome = ({langue}) => {
   return (
     <NavigationMenu className="mx-auto max-w-7xl py-1 px-6">
       <NavigationMenuList className="flex w-full items-center justify-between gap-8 bg-gray-50">
@@ -142,9 +142,6 @@ const NavigationHome = ({ user, streak, langue }) => {
                   key={item.title}
                   title={item.title}
                   href={item.href}
-                  user={user}
-                  streak={streak}
-                  langue = {langue}
                 >
                   {item.description}
                 </ListItem>
@@ -165,9 +162,6 @@ const NavigationHome = ({ user, streak, langue }) => {
                   <SimpleLink
                     title={item.title}
                     href={item.href}
-                    user={user}
-                    streak={streak}
-                    langue={langue}
                   />
                 </li>
               ))}

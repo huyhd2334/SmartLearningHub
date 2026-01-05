@@ -18,7 +18,7 @@ const PageHist = () => {
     <div className='flex flex-col space-y-5 '>
       <HeaderHist/>
       <div>
-          <HistoryStatics user={user} streak={streak} langue={langue}/>
+        <HistoryStatics user={user} streak={streak} langue={langue}/>
       </div>
     </div>
   )

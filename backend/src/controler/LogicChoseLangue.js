@@ -1,8 +1,7 @@
-// import levelLangue from "../models/english/englishLevelLangue.js";
-// import ChineseLevelLangue from "../models/chinese/chineseLevelLangue.js";
-import Account from "../models/account.js";
+// import levelLangue from "../models/english/englishLevelLangue.js"
+// import ChineseLevelLangue from "../models/chinese/chineseLevelLangue.js"
+import Account from "../models/account.js"
 
-// Done
 export const choseLangue = async(req, res) => {
     try{
         const {accountName, langue} = req.body
