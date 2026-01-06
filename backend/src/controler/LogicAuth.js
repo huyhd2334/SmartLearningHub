@@ -31,7 +31,7 @@ export const createAccount = async(req,res) => {
             await levelLangue.create()
             
         }else{
-            res.status(404).json("Account Name invalid!")
+            return res.status(404).json("Account Name invalid!")
         }
     }catch(error){
         console.error(error)
@@ -63,22 +63,32 @@ export const loginAccount = async (req, res) => {
         // generate new session to save refresh token
         await Session.create({userId: checkAccountName._id, refreshToken, expiresAt: new Date(Date.now() + REFRESH_TOKEN_TTL),})
         
-        // return refresh token to cookie
-        res.cookie('refreshToken', refreshToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "none",
-        maxAge: REFRESH_TOKEN_TTL,
+        // set cookies
+        res
+        .cookie("accessToken", accessToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            maxAge: 30 * 60 * 1000, // 30 phút
         })
-
-        return res.status(200).json({message: true , detail: `User ${checkAccountName.userName} logged in !`, accessToken})
+        .cookie("refreshToken", refreshToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            maxAge: REFRESH_TOKEN_TTL,
+        })
+        .status(200)
+        .json({
+            message: true,
+            detail: `User ${checkAccountName.userName} logged in!`,
+        });
     } catch (error) {
         console.error("ERROR login:", error);
         res.status(500).json({ message: false, error: "Internal server error" });
     }
 };
 
-export const logout = async(req, res) => {
+export const logoutAccount = async(req, res) => {
     try {
         // get refresh token from cookie
         const token = req.cookies?.refreshToken;
@@ -99,3 +109,36 @@ export const logout = async(req, res) => {
         return res.status(500).json({message: "internal errors"})
     }
 }
+
+export const refreshToken = async (req, res) => {
+  try {
+    const token = req.cookies?.refreshToken;
+    if (!token) return res.sendStatus(401);
+
+    const session = await Session.findOne({ refreshToken: token });
+    if (!session || session.expiresAt < new Date()) {
+      return res.sendStatus(403);
+    }
+
+    // create new access token 
+    const newAccessToken = jwt.sign(
+      { user_id: session.userId },
+      process.env.ACCESS_TOKEN_SCRETE,
+      { expiresIn: "30m" }
+    );
+
+    // set cookie accessToken
+    res.cookie("accessToken", newAccessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 30 * 60 * 1000,
+    });
+
+    return res.status(200).json({ message: "Access token refreshed" });
+  } catch (err) {
+    console.error("Refresh token error:", err);
+    return res.sendStatus(500);
+  }
+};
+

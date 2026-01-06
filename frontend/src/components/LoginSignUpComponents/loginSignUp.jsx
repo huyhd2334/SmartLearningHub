@@ -21,10 +21,6 @@ export const LoginComponent = ({setShowSignUp, setShowLogin, setShowButton}) => 
       const res = await api.post("/auth/login", 
                                  { accountName, passW: accountPassW }, 
                                  { withCredentials: true }) // cookie refreshToken 
-      
-      const accessToken = res.data.accessToken
-      localStorage.setItem("accessToken", accessToken) 
-
       if (res.data.message) {
         toast.success("login successfull")
         localStorage.setItem("user", JSON.stringify({accountName}))

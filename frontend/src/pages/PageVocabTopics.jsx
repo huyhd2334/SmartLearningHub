@@ -1,6 +1,5 @@
 import TopicMain from '@/components/TopicComponents/TopicMain.jsx'
 import NavigationHome from '@/components/NavigateHomPage'
-import { useLocation } from 'react-router'
 import BackButton from '@/components/BackButton'
 
 const PageVocabTopics = () => {

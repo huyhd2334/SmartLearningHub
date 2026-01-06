@@ -10,7 +10,6 @@ import QuestionRouter from "./routers/routerQuestions.js"
 import routerFecthGgAPI from "./routers/routerGgAPI.js"
 import routerHist from "./routers/routerHist.js"
 import routerAuth from "./routers/routerJWT/routerAuth.js"
-import routerUser from "./routers/routerJWT/routerUser.js"
 import routerSurvey from "./routers/routerGenerateSurvey.js"
 import {protectedRouter} from "./middlewares/authMiddleware.js"
 import cookieParser from "cookie-parser"
@@ -38,9 +37,8 @@ app.use(cookieParser())
 // public routers
 app.use("/api/auth", routerAuth)
 app.use("/api", routerSurvey)
-// private routers
 
-app.use("/api", protectedRouter, routerUser)
+// private routers
 app.use("/api", protectedRouter, routerChoseLangue)
 app.use("/api", protectedRouter, FetchVocabrouter)
 app.use("/api", protectedRouter, routerCrawNews)
