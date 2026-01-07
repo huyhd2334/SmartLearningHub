@@ -19,7 +19,7 @@ export const LoginComponent = ({setShowSignUp, setShowLogin, setShowButton}) => 
       }
       // api + jwt
       const res = await api.post("/auth/login", 
-                                 { accountName, passW: accountPassW }, 
+                                 { accountName, passW: accountPassW, device: "web" }, 
                                  { withCredentials: true }) // cookie refreshToken 
       if (res.data.message) {
         toast.success("login successfull")

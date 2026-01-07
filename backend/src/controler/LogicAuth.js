@@ -39,7 +39,7 @@ export const createAccount = async(req,res) => {
 }
 export const loginAccount = async (req, res) => {
     try {
-        const { accountName, passW} = req.body;
+        const { accountName, passW, device} = req.body;
         if(!accountName || !passW) {
             return res.json({ message: false });
         }
@@ -64,24 +64,33 @@ export const loginAccount = async (req, res) => {
         await Session.create({userId: checkAccountName._id, refreshToken, expiresAt: new Date(Date.now() + REFRESH_TOKEN_TTL),})
         
         // set cookies
-        res
-        .cookie("accessToken", accessToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-            maxAge: 30 * 60 * 1000, // 30 phút
-        })
-        .cookie("refreshToken", refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-            maxAge: REFRESH_TOKEN_TTL,
-        })
-        .status(200)
-        .json({
+        if(device==="web"){
+            res
+            .cookie("accessToken", accessToken, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+                maxAge: 30 * 60 * 1000, // 30 phút
+            })
+            .cookie("refreshToken", refreshToken, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+                maxAge: REFRESH_TOKEN_TTL,
+            })
+            .status(200)
+            .json({
+                message: true,
+                detail: `User ${checkAccountName.userName} logged in!`,
+            });
+        }else{
+            res.status(200).json({
             message: true,
+            accessToken,
+            refreshToken,
             detail: `User ${checkAccountName.userName} logged in!`,
-        });
+            });
+        }
     } catch (error) {
         console.error("ERROR login:", error);
         res.status(500).json({ message: false, error: "Internal server error" });
@@ -112,33 +121,51 @@ export const logoutAccount = async(req, res) => {
 
 export const refreshToken = async (req, res) => {
   try {
-    const token = req.cookies?.refreshToken;
-    if (!token) return res.sendStatus(401);
+    let refreshToken;
 
-    const session = await Session.findOne({ refreshToken: token });
-    if (!session || session.expiresAt < new Date()) {
-      return res.sendStatus(403);
+    // Web → cookie
+    if (req.cookies?.refreshToken) {
+      refreshToken = req.cookies.refreshToken;
+    } 
+    // Mobile → body
+    else if (req.body?.refreshToken) {
+      refreshToken = req.body.refreshToken;
     }
 
-    // create new access token 
+    if (!refreshToken) {
+      return res.status(401).json({ message: "Refresh token required" });
+    }
+
+    const session = await Session.findOne({ refreshToken });
+    if (!session || session.expiresAt < new Date()) {
+      return res.status(403).json({ message: "Invalid refresh token" });
+    }
+
     const newAccessToken = jwt.sign(
       { user_id: session.userId },
       process.env.ACCESS_TOKEN_SCRETE,
-      { expiresIn: "30m" }
+      { expiresIn: ACCESS_TOKEN_TTL }
     );
 
-    // set cookie accessToken
-    res.cookie("accessToken", newAccessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      maxAge: 30 * 60 * 1000,
-    });
+    // Web → cookie
+    if (req.cookies?.refreshToken) {
+      return res
+        .cookie("accessToken", newAccessToken, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+          maxAge: ACCESS_TOKEN_TTL,
+        })
+        .json({ message: true });
+    }
 
-    return res.status(200).json({ message: "Access token refreshed" });
-  } catch (err) {
-    console.error("Refresh token error:", err);
-    return res.sendStatus(500);
+    // Mobile → trả JSON
+    return res.json({ message: true, accessToken: newAccessToken });
+
+  } catch (error) {
+    console.error("Refresh token error:", error);
+    return res.status(500).json({ message: false });
   }
 };
+
 
