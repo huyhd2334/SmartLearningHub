@@ -25,7 +25,7 @@ export const choseLangue = async(req, res) => {
 
                 account.lastLogin = today
                 await account.save()
-                return res.json({message: true, streak: account.streakEnglish})       
+                return res.json({message: true, streak: account.streakEnglish, userName: account.userName})       
             }else{
                 const last = new Date(account.lastLogin)
                 const today = new Date()
@@ -43,7 +43,7 @@ export const choseLangue = async(req, res) => {
 
                 account.lastLogin = today
                 await account.save()
-                return res.json({message: true, streak: account.streakChinese}) 
+                return res.json({message: true, streak: account.streakChinese, userName: account.userName}) 
             }
         }else{console.error("ERROR choselangue", error)}
     }catch(error){console.error("ERROR choselangue", error)}
