@@ -55,7 +55,7 @@ export const loginAccount = async (req, res) => {
             return res.json({ message: false })
         }
         // access token
-        const accessToken = jwt.sign({user_id: checkAccountName._id}, process.env.ACCESS_TOKEN_SCRETE, {expiresIn: ACCESS_TOKEN_TTL})
+        const accessToken = jwt.sign({user_id: checkAccountName._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: ACCESS_TOKEN_TTL})
         
         // generate refresh token
         const refreshToken = crypto.randomBytes(64).toString("hex")
