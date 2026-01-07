@@ -15,7 +15,7 @@ export default function ProgressMain({user, langue}) {
         try {
           toast.success(user)
           const dataPrevious = await api.post("/getuservocab", {accountName: user, langue: langue})
-          if(dataPrevious.data.vocabs){
+          if(dataPrevious.data.message){
               const dataCurrent = await api.post("/getcurrentdata", {accountName: user, langue: langue})
               toast.success(`Got ${user} data.`)
 

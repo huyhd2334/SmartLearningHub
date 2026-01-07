@@ -8,22 +8,22 @@ export const FetchUserVocab = async(req,res) => {
         if (langue === "english"){
             if(level === undefined || level === null){ 
                 const vocabs = await UserVocabs.find({ accountName});
-                res.status(200).json({vocabs: vocabs})
+                res.status(200).json({message: true, vocabs: vocabs})
             }else{
                 const level = req.body.level !== undefined ? Number(req.body.level) : undefined;
                 console.log("Backend got level:", level);
                 const vocabs = await UserVocabs.find({ accountName: accountName , level: level});
-                res.status(200).json({vocabs: vocabs})
+                res.status(200).json({message: true, vocabs: vocabs})
             }
         }else{
             if(level === undefined || level === null){ 
                 const vocabs = await ChineseUserVocabs.find({ accountName});
-                res.status(200).json({vocabs: vocabs})
+                res.status(200).json({message:true, vocabs: vocabs})
             }else{
                 const level = req.body.level !== undefined ? Number(req.body.level) : undefined;
                 console.log("Backend got level:", level);
                 const vocabs = await ChineseUserVocabs.find({ accountName, level});
-                res.status(200).json({vocabs: vocabs})
+                res.status(200).json({message: true, vocabs: vocabs})
             }
         }
     }catch(error){
