@@ -1,3 +1,6 @@
+import jwt from "jsonwebtoken"
+import Account from "../models/account.js"
+
 export const protectedRouter = async (req, res, next) => {
   try {
     const token =
@@ -9,10 +12,14 @@ export const protectedRouter = async (req, res, next) => {
       return res.status(401).json({ message: "Access token is required" });
     }
 
+    console.log("TOKEN:", token);
+    console.log("SECRET:", process.env.ACCESS_TOKEN_SECRET);
+
     let decodedUser;
     try {
-      decodedUser = jwt.verify(token, process.env.ACCESS_TOKEN_SCRETE);
+      decodedUser = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     } catch (err) {
+      console.log(err)
       return res.status(403).json({ message: "Invalid or expired token!" });
     }
 
