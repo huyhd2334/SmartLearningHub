@@ -19,7 +19,7 @@ export const getAllVocabs = async(req,res) => {
         const offsetInt = parseInt(offset) || 0
         const limit = 100
         if(offsetInt === 0){
-           const rows = await Dict.find()
+           const rows = await ChineseDict.find()
            return res.status(200).json({message: true, rows})
         }
         const rows = await ChineseDict.find().skip(offsetInt).limit(limit)
