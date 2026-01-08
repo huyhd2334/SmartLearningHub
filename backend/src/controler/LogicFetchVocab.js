@@ -8,18 +8,26 @@ export const getAllVocabs = async(req,res) => {
     if(langue === "english"){
         const offsetInt = parseInt(offset) || 0;
         const limit = 50
+        if(offsetInt === 0){
+           const rows = await Dict.find()
+           return res.status(200).json({message: true, rows})
+        }
         const rows = await Dict.find().skip(offsetInt).limit(limit)
-        res.status(200).json(rows);
+        return res.status(200).json({message: true, rows})
     }else{
       // chinese
-        const offsetInt = parseInt(offset) || 0;
+        const offsetInt = parseInt(offset) || 0
         const limit = 100
+        if(offsetInt === 0){
+           const rows = await Dict.find()
+           return res.status(200).json({message: true, rows})
+        }
         const rows = await ChineseDict.find().skip(offsetInt).limit(limit)
-        res.status(200).json(rows)
+        res.status(200).json({message: true, rows})
     }
     }catch(err){
         console.error(err)
-        res.status(500).json({ error: "Database error" })}  
+        res.status(500).json({message: false, detail: "Database error" })}  
 }
 
 export const getAllVocabsTopic =  async(req, res) => {

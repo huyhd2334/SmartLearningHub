@@ -11,9 +11,9 @@ const ShowAllVocab = ({ value, setDataReady, user, langue }) => {
     try {
         const res = await api.post("/getallvocab", { offset: (value-1) * 100 + 1 , langue: langue})
         toast.success(`get page ${value}`)
-        if(res.data){
+        if(res.data.message){
           setDataReady(true)
-          setVocabList(res.data)
+          setVocabList(res.data.rows)
           console.log("langue", langue)
           console.log("res.data:", res.data);
         } else {
