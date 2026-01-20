@@ -49,7 +49,7 @@ export const AddUserVocab = async(req,res) => {
                 }else{
                     await UserVocabs.create({ accountName, vocab, pron , type, meaning, example, level: 0, last: new Date() });
                     console.log("Add vocab:", vocab)
-                    res.status(200).json({message: "addnewvocab" })}
+                    res.status(200).json({message: true })}
             }catch(error){console.error(error)}
         }else{
             try{
@@ -63,7 +63,7 @@ export const AddUserVocab = async(req,res) => {
                     res.status(200).json({message: "updatelevel" })
                 }else{
                     await ChineseUserVocabs.create({ accountName, vocab, meaning, english, pinyin, level: 0, last: new Date() });
-                    res.status(200).json({message: "addnewvocab" })}
+                    res.status(200).json({message: true })}
             }catch(error){console.error(error)}
         }
     }catch(error){

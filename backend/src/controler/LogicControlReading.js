@@ -1,9 +1,6 @@
 import Reading from "../models/english/englishReading.js";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-import lemmatizer from 'wink-lemmatizer';
-import Dict from "../models/english/englishDictAllWord.js";
-import ChineseDict from "../models/chinese/chineseDictAllWord.js"
 import ChineseReading from "../models/chinese/chineseReading.js"
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
@@ -79,7 +76,7 @@ export const splitReading = async(req, res) => {
 
                         const segmented = segment.doSegment(data.content);
                         const words = segmented
-                        .map(w => w.w)               // lấy từ
+                        .map(w => w.w)             
                         .filter(w => !chineseStopWords.has(w));
 
                         console.log("Segmented words:", words);
@@ -104,69 +101,51 @@ export const splitReading = async(req, res) => {
     }
 }
 
-const translateChineseWord = async (word) => {
+export const callAPiTranslate = async (word) => {
   try {
-    const res = await axios.get("https://translate.googleapis.com/translate_a/single", {
-      params: {
-        client: "gtx",
-        sl: "zh-CN",
-        tl: "vi",
-        dt: "t",
-        q: word
-      }
-    });
-    const meaning = res.data[0].map(item => item[0]).join("");
-    return {
-      vocab: word,
-      pinyin: "",
-      meaning,
-      english: ""
-    };
-  } catch (err) {
-    console.error(err);
-    return null;
+    console.log("finddetail", word);
+
+    if (!word || typeof word !== "string") {
+      return { success: false, message: "Invalid word" };
+    }
+
+    const url = `https://dict.minhqnd.com/api/v1/lookup?word=${encodeURIComponent(word)}`;
+    const { data } = await axios.get(url);
+    
+    console.log(data)
+
+    if (!data || !Array.isArray(data.results) || data.results.length === 0) {
+      return { success: false, message: "Word not found" };
+    }
+    return {success: true, detail: data.results};
+
+  } catch (error) {
+    console.error("Dictionary API error:", error.message);
+    return {success: false, message: "Dictionary API failed"};
   }
 };
+
+
 export const FindDetail = async (req, res) => {
-    try {
-        const { word, langue } = req.body;
-        if(langue === "english"){
-            if (!word) return res.status(404).json({ message: "error" });
-            const lowerWord = word.toLowerCase();
-            let result = await Dict.findOne({ vocab: lowerWord });
-            if (result) return res.status(200).json({ message: "oke", detail: result });
-            const verb = lemmatizer.verb(lowerWord);
-            if (verb) {
-                result = await Dict.findOne({ vocab: verb });
-                if (result) return res.status(200).json({ message: "oke", detail: result });
-            }
-            const noun = lemmatizer.noun(lowerWord);
-            if (noun) {
-                result = await Dict.findOne({ vocab: noun });
-                if (result) return res.status(200).json({ message: "oke", detail: result });
-            }
-            const adj = lemmatizer.adjective(lowerWord);
-            if (adj) {
-                result = await Dict.findOne({ vocab: adj });
-                if (result) return res.status(200).json({ message: "oke", detail: result });
-            }
-            // fallback Google API
-            const apiResult = await translateChineseWord(word);
-            if (apiResult) return res.status(200).json({ message: "oke", detail: apiResult });
-            
-            return res.status(200).json({ message: "Not found" });
-        }else{
-            let result = await ChineseDict.findOne({ vocab: word });
-            if (result) return res.status(200).json({ message: "oke", detail: result });
+  try {
+    const { word } = req.body;
 
-            // fallback Google API
-            const apiResult = await translateChineseWord(word);
-            if (apiResult) return res.status(200).json({ message: "oke", detail: apiResult });
-
-            return res.status(200).json({ message: "Not found" });
-            }
-    }catch(error) {
-        console.error(error);
-        return res.status(500).json({ message: "internal error" });
+    if (!word) {
+      return res.status(500).json({success: false, message: "Word is required"})
     }
+
+    const result = await callAPiTranslate(word);
+    if (!result.success) {
+      return res.status(500).json({success: false, message: "callAPI func error"});
+    }
+    
+    const detail = result.detail
+
+    console.log("send", result.detail[0].pronunciations)
+    return res.status(200).json({success: true, detail});
+
+  } catch (error) {
+      console.error("FindDetail error:", error);
+      return res.status(500).json({success: false, message: "Internal server error"});
+  }
 };
