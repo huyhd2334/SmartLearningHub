@@ -7,7 +7,6 @@ import routerChoseLangue from "./routers/routerChoseLangue.js";
 import FetchVocabrouter from "./routers/routerFetchVocab.js";
 import routerCrawNews from "./routers/routerCrawNews.js";
 import QuestionRouter from "./routers/routerQuestions.js"
-import routerFecthGgAPI from "./routers/routerGgAPI.js"
 import routerHist from "./routers/routerHist.js"
 import routerAuth from "./routers/routerJWT/routerAuth.js"
 import routerSurvey from "./routers/routerGenerateSurvey.js"
@@ -43,7 +42,6 @@ app.use("/api", protectedRouter, routerChoseLangue)
 app.use("/api", protectedRouter, FetchVocabrouter)
 app.use("/api", protectedRouter, routerCrawNews)
 app.use("/api", protectedRouter, QuestionRouter)
-app.use("/api", protectedRouter, routerFecthGgAPI)
 app.use("/api", protectedRouter, routerHist)
 
 if (process.env.NODE_ENV === "production") {
