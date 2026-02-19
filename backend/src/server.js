@@ -12,6 +12,7 @@ import routerAuth from "./routers/routerJWT/routerAuth.js"
 import routerSurvey from "./routers/routerGenerateSurvey.js"
 import {protectedRouter} from "./middlewares/authMiddleware.js"
 import cookieParser from "cookie-parser"
+import UpdateRouter from "./routers/routerUpdateLevelVocab.js";
 
 dotenv.config();
 const __dirname = path.resolve();
@@ -38,6 +39,7 @@ app.use("/api/auth", routerAuth)
 app.use("/api", routerSurvey)
 
 // private routers
+app.use("/api", protectedRouter, UpdateRouter)
 app.use("/api", protectedRouter, routerChoseLangue)
 app.use("/api", protectedRouter, FetchVocabrouter)
 app.use("/api", protectedRouter, routerCrawNews)

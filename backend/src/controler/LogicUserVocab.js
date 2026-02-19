@@ -1,6 +1,7 @@
 import UserVocabs from "../models/english/englishUserVocab.js";
 import ChineseUserVocabs from "../models/chinese/chineseUserVocab.js"
 import Account from "../models/account.js";
+import { spacedRepetition } from "./LogicReviewVocab.js";
 
 export const FetchUserVocab = async(req,res) => {
     try{
@@ -42,8 +43,8 @@ export const AddUserVocab = async(req,res) => {
                 if(vocabUpdate){
                     await UserVocabs.updateOne(
                                                 { accountName, vocab },
-                                                { $inc: { level: 1 } }
-                                                );
+                                                { $inc: { level: 1 },
+                                                  $set: { last: new Date() }},);
                     res.status(200).json({message: "updatelevel" })
                     console.log("Update result:", vocabUpdate)
                 }else{
@@ -58,7 +59,8 @@ export const AddUserVocab = async(req,res) => {
                 if(vocabUpdate){
                     await ChineseUserVocabs.updateOne(
                                                 { accountName, vocab },
-                                                { $inc: { level: 1 } }
+                                                { $inc: { level: 1 },
+                                                  $set: {last: new Date()}}
                                                 );
                     res.status(200).json({message: "updatelevel" })
                 }else{
@@ -116,4 +118,15 @@ export const getCurrentData = async (req, res) => {
     console.error(error)
     return res.status(500).json({ message: "Server error" })
   }
+}
+
+export const updateRisk = async (req, res) => {
+    try {
+        const {accountName, vocab, langue, iscorrect} = req.body
+        console.log(accountName)
+        let risk = await spacedRepetition(accountName, vocab, langue, iscorrect)
+        console.log("update risk oke", vocab, risk)
+    } catch (error) {
+        console.error(error)
+    }
 }

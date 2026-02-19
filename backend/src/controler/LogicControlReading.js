@@ -8,8 +8,6 @@ const Segment = require("segment"); // CommonJS
 const segment = new Segment();
 import axios from "axios";
 
-
-// Khởi tạo segment (tùy chọn có lọc stopword)
 segment.useDefault();
 
 sqlite3.verbose();

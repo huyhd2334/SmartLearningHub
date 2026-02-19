@@ -1,7 +1,7 @@
 import TranslateTool from '@/components/TranslateTool';
-import { DashMenuToeicPartFive } from '@/components/ToeicPartFive/DashMenuToeicPartFive';
-import HeaderToeicPartFive from '@/components/ToeicPartFive/HeaderToeicPartFive.jsx'
-import MainToeicPartFive from '@/components/ToeicPartFive/MainToeicPartFive';
+import { DashMenuToeicPartFive } from '@/components/ToeicPartFiveComponents/DashMenuToeicPartFive';
+import HeaderToeicPartFive from '@/components/ToeicPartFiveComponents/HeaderToeicPartFive.jsx'
+import MainToeicPartFive from '@/components/ToeicPartFiveComponents/MainToeicPartFive';
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router';
 
