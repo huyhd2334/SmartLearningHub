@@ -121,12 +121,18 @@ export const getCurrentData = async (req, res) => {
 }
 
 export const updateRisk = async (req, res) => {
-    try {
-        const {accountName, vocab, langue, iscorrect} = req.body
-        console.log(accountName)
-        let risk = await spacedRepetition(accountName, vocab, langue, iscorrect)
-        console.log("update risk oke", vocab, risk)
-    } catch (error) {
-        console.error(error)
-    }
+  try {
+    const { accountName, vocab, langue, iscorrect } = req.body;
+
+    const risk = await spacedRepetition({accountName, vocab, langue, iscorrect})
+
+    return res.status(200).json({success: true, risk})
+
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({
+      success: false,
+      message: "Server error"
+    })
+  }
 }

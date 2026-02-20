@@ -37,6 +37,11 @@ const VocabFunction = [
     href: "/vocab/showallvocabpage",
     description: "a font, a fortiori, a posteriori, .... ",
   },
+  {
+    title: "Flash Cards",
+    href: "/flashcardpage",
+    description: "flash card to learn vocabs faster"
+  }
 ];
 
 const ToeicFunction = [

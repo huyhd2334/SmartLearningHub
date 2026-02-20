@@ -3,8 +3,8 @@ import { DashMenuFlashCard } from '@/components/FlashCardComponents/DashMenuFlas
 import HeaderFlashCard from '@/components/FlashCardComponents/HeaderFlashCard';
 import MainFlashCard from '@/components/FlashCardComponents/MainFlashCard';
 import { Award, ChartNoAxesCombined } from 'lucide-react';
-import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router';
+import { useEffect, useState } from 'react'
+import {useNavigate } from 'react-router';
 import { toast } from 'sonner';
 
 const FlashCardPages = () => {
