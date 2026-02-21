@@ -1,6 +1,31 @@
 import UserVocabs from "../models/english/englishUserVocab.js";
 import ChineseUserVocabs from "../models/chinese/chineseUserVocab.js";
 
+export const vocabReview = async(req, res) => {
+      try {
+        const {accountName, langue} = req.body
+        if(!accountName || !langue){
+          console.log("account name or langue undefine")
+          return res.status(500).json({success: false})
+        }
+        let model;
+        
+        if(langue === "english"){
+          model = UserVocabs
+        }else{model = ChineseUserVocabs}
+        
+        const topRisk = await model.find({accountName}).sort({risk: -1}).skip(0).limit(10)
+
+        if(topRisk){
+          console.log(topRisk)
+          return res.status(200).json({success: true, vocabs: topRisk})
+        }else{return res.status(500).json({success: false})}
+      } catch (error) {
+        console.error(error)
+        console.log("error when get top risk on backend phase")
+      }
+}
+
 export const spacedRepetition = async ({ accountName, vocab, langue, iscorrect }) => {
   try {
     let model

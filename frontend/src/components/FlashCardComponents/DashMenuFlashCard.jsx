@@ -47,13 +47,11 @@ export function DashMenuFlashCard() {
             <div className='flex flex-row space-x-2 text-black'>
               <Button size="xl" className="w-60 h-7 text-black"><Brain className='w-5 h-5'/> Practice</Button>
             </div>
-            {/* <Input id="sheet-demo-username" defaultValue="@peduarte" /> */}
           </div>
         </div>
         <SheetFooter>
           <Button onClick={()=>handelerBHome()}>BackToHome</Button>
           <SheetClose asChild className='mt-3'>
-            {/* <Button variant="outline">Close</Button> */}
           </SheetClose>
         </SheetFooter>
       </SheetContent>

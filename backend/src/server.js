@@ -12,7 +12,7 @@ import routerAuth from "./routers/routerJWT/routerAuth.js"
 import routerSurvey from "./routers/routerGenerateSurvey.js"
 import {protectedRouter} from "./middlewares/authMiddleware.js"
 import cookieParser from "cookie-parser"
-import UpdateRouter from "./routers/routerUpdateLevelVocab.js";
+import UpdateRouter from "./routers/routerUpdate_ReviewVocab.js";
 
 dotenv.config();
 const __dirname = path.resolve();

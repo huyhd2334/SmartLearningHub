@@ -1,15 +1,17 @@
 "use client";
-import React from "react";
-import { Link } from "react-router-dom";
-import { LogOut, UserCog } from "lucide-react";
+import { Link} from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router';
+
+import { CircleUserRound, FileChartPie} from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
+  NavigationMenuLink, 
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Button } from "./ui/button";
 
 const VocabFunction = [
   {
@@ -130,7 +132,13 @@ const hskFunction = [
   },
 ];
 
+
 const NavigationHome = ({langue}) => {
+  const navigate = useNavigate()
+
+  const handelReview = () => {
+    navigate("/vocab/review")
+  }
   return (
     <NavigationMenu className="mx-auto max-w-7xl py-1 px-6">
       <NavigationMenuList className="flex w-full items-center justify-between gap-8 bg-gray-50">
@@ -176,23 +184,20 @@ const NavigationHome = ({langue}) => {
 
         {/* User icon */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger>
-            <UserCog className="w-7 h-7" />
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[300px] gap-2 p-4">
-              <li className="flex flex-col gap-2">
-                <IconLink icon={<LogOut/>} label="log out" />
-              </li>
-            </ul>
-          </NavigationMenuContent>
+          <div><CircleUserRound /></div>
+        </NavigationMenuItem>
+
+        {/* Review icon */}
+        <NavigationMenuItem>
+          <Button className=" bg-blue-500 hover:text-black" onClick={handelReview}>
+             Review <FileChartPie /> 
+          </Button>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
 };
 
-/* ===== COMPONENT PHỤ ===== */
 function ListItem({ title, children, href}) {
   return (
     <li>
@@ -217,15 +222,6 @@ function SimpleLink({ title, href}) {
         className="block p-3 rounded-md hover:bg-accent transition"
       >
         <div className="font-medium text-sm">{title}</div>
-      </Link>
-    </NavigationMenuLink>
-  );
-}
-
-function IconLink() {
-  return (
-    <NavigationMenuLink asChild>
-      <Link to="/" className="flex items-center gap-2 hover:text-primary">
       </Link>
     </NavigationMenuLink>
   );

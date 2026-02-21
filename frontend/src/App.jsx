@@ -11,6 +11,7 @@ import ToeicPartFivePage from "./pages/ToeicPartFivePage.jsx"
 import PageHist from "./pages/HistPage.jsx"
 import PageVocabTopics from "./pages/PageVocabTopics.jsx"
 import PageProgress from "./pages/PageProgress.jsx"
+import ReviewPage from "./pages/ReviewPage.jsx"
 
 function App() {
   return (
@@ -61,6 +62,9 @@ function App() {
            <Route
               path = "/vocab/progress"
               element = {<PageProgress/>}/>
+           <Route
+              path = "/vocab/review"
+              element = {<ReviewPage/>} />
         </Routes>
     </BrowserRouter>
     </>
